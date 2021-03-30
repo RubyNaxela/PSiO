@@ -1,0 +1,61 @@
+header h1 {
+    display: flex;
+    align-items: center;
+    background-color: #f6f8fa;
+    border: 1px solid rgba(27,31,35,.15);
+    font-size: 14px !important;
+    min-height: 20px;
+    padding: 9px 10px 10px !important;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    width: 890px;
+}
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 980px;
+    padding: 45px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+/* Dark mode by RubyNaxela */
+
+body {
+    background-color: #313335 !important;
+}
+
+header h1 {
+    background-color: #3c3f41 !important;
+}
+
+main {
+    border-color: #333 !important;
+}
+
+table td, .header th {
+    border-color: #666 !important;
+}
+
+h1, h2, h3, h4, h5, h6, h7, header h1, p, ol, ul, table{
+    color: #b8bfc6 !important;
+}
+
+.header th {
+    background-color: #222 !important;
+}
+
+tr.even td {
+    background-color: #2b2b2b !important;
+}
+
+tr.odd td {
+    background-color: #3c3f41 !important;
+}
+
+pre {
+    background-color: #d4d4d4 !important;
+    filter: invert(1) hue-rotate(75deg) contrast(1) !important;
+}
