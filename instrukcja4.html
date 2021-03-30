@@ -283,6 +283,7 @@
   </style>
   <link rel="stylesheet" href="css/github-markdown.css">
   <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -390,7 +391,8 @@
       |<code>+</code>|Dany element występuje 1 lub więcej razy| |<code>?</code>|Dany element występuje 0 lub 1 razy|
       |<code>{n}</code>|Dany element występuje dokładnie n razy| |<code>{n,}</code>|Dany element występuje
       <code>n</code> lub więcej razy| |<code>{min,max}</code>|Dany element występuje <code>min</code>, nie więcej niż
-      <code>max</code> razy|</p>
+      <code>max</code> razy|
+    </p>
     <p><strong>Uwaga</strong>: jeśli w danym wzorcu chcemy wykorzystać któryś z w/w kwantyfikatorów lub symboli
       uogólniających jako zwykły znak należy go poprzedzić backslashem np.: <code>\.</code> zostanie potraktowana jako
       znak kropki a nie oznaczenie dowolnego znaku.</p>
@@ -444,7 +446,8 @@
     <p>Przy używaniu ich w języku C++ należy pamiętać żeby wszystkie wystąpienia znaku <code>\</code> zastąpić podwójnym
       backslashem <code>\\</code> np. <code>\\w</code> lub poprzedź tekst wyrażenia regularnego znakiem
       <code>R"(text)"</code> np. <code>std::regex re(R"(\d*)")</code> - zwróć uwagę na dodatkowe nawiasy okrągłe, w
-      których należy umieścić całe wyrażenie.</p>
+      których należy umieścić całe wyrażenie.
+    </p>
     <h3 id="stdregex_match">std::regex_match</h3>
     <p>Funkcja służy do zweryfikowania czy ciąg przekazany jako argument jest w pełni zgodny ze wzorcem. Uruchom i
       przeanalizuj poniższy kod:</p>
@@ -484,7 +487,8 @@
       <code>std::string</code> zawierający tekst dopasowanej <em>n</em>-tej grupy umieszczonej we wzorcu (gdzie
       <em>n</em> &lt;= liczbie grup) |m[n].matched()| true/false - w zależności od tego czy dana grupa została
       dopasowana (nie każda grupa, poprawnie dopasowanego wzorca, musi zostać dopasowana np. <code>(sth)\|(sth)</code> -
-      w wyrażeniu są 2 grupy, dla dopasowania wzorca wystarczy, że zostanie dopasowana tylko jedna z nich)</p>
+      w wyrażeniu są 2 grupy, dla dopasowania wzorca wystarczy, że zostanie dopasowana tylko jedna z nich)
+    </p>
     <p>Żeby znaleźć w tekście więcej (wszystkie) pasujące do wzorca ciągi funkcję <code>std::regex_search</code> można
       wywoływać cyklicznie, podając jako tekst <code>m.sufix()</code> z ostatnio znalezionego dopasowania. Przeanalizuj
       poniższy przykład zawierający użycie grup i iterowane przeszukiwanie tekstu:</p>
@@ -516,7 +520,8 @@
       <li>
         <p>Spróbuj napisać program, który wykorzystuje wyrażenia regularne stworzone w zadaniu 4 i używając
           <code>std::regex_match</code> przeparsuj następującą kolekcję numerów rejestracyjnych zwracając te, które
-          pochodzą z poznania (PO) lub powiatu poznańskiego (PZ):</p>
+          pochodzą z poznania (PO) lub powiatu poznańskiego (PZ):
+        </p>
         <div class="sourceCode" id="cb6">
           <pre
             class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2004%20-%20Pliki,%20wyra%bfenia%20regularne.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>string&gt; lines = {<span class="st">"PO12345"</span>, <span class="st">"PO 12345"</span>, <span class="st">"PZ973ND"</span>, <span class="st">"WE20456"</span>};</span></code></pre>
@@ -531,7 +536,8 @@
       uruchamiania programu. W przypadku uruchamiania programu z poziomu Qt Creator domyślnym folderem uruchomieniowym
       jest folder kompilacji znajdujący się <em>obok</em> folderu projektu, o nazwie:
       <em>build-&lt;project_name&gt;-&lt;kit_name&gt;-&lt;build_type&gt;</em>, np.
-      <em>build-regex-Desktop_Qt_5_13_2_MinGW_64_bit-Debug</em>.</p>
+      <em>build-regex-Desktop_Qt_5_13_2_MinGW_64_bit-Debug</em>.
+    </p>
     <h3 id="wczytanie-pliku-wyraz-po-wyrazie">Wczytanie pliku wyraz po wyrazie</h3>
     <div class="sourceCode" id="cb7">
       <pre
@@ -558,7 +564,8 @@
 <span id="cb8-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2004%20-%20Pliki,%20wyra%bfenia%20regularne.html#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
     </div>
     <p><strong>Uwaga</strong>: kod wymaga dodatkowych plików nagłówkowych <code>&lt;fstream&gt;</code>,
-      <code>&lt;sstream&gt;</code></p>
+      <code>&lt;sstream&gt;</code>
+    </p>
     <h3 id="zapisywanie-danych-do-pliku">Zapisywanie danych do pliku</h3>
     <p>Zapis danych do pliku tekstowego jest analogiczny do wyświetlania danych na konsoli, z tą różnicą że dane
       zapisywane są do innego strumienia. Poniższy kod zapisuje kolejne wartości funkcji sinus oraz wartość argumentu:
@@ -580,7 +587,8 @@
     <ol start="8" type="1">
       <li>Wczytaj <a href="http://jug.put.poznan.pl/lab-psio/_resources/04/numeryTelefonowGoogle.html">plik</a> z
         wynikami wyszukiwania numerów telefonów z Google i używając <code>std::regex_search</code> lub
-        <code>std::regex_iterator</code> wyświetl wszystkie numery pasujące do stworzonego wcześniej wzorca.</li>
+        <code>std::regex_iterator</code> wyświetl wszystkie numery pasujące do stworzonego wcześniej wzorca.
+      </li>
     </ol>
     <hr>
     <h2 id="stdpairstdtuple">std::pair/std::tuple</h2>
@@ -588,7 +596,8 @@
       kurs waluty. Te informacje mogą być reprezentowane jako struktura, ale dla prostych elementów (par elementów) nie
       zawsze ma sens definiowanie nowego typu strukturalnego (z nazwanymi polami). Możliwe jest wtedy wykorzystanie
       kontenera STL typu <code>std::pair</code>, który jest wzorcem struktury o dwóch polach: <code>first</code> i
-      <code>second</code>.</p>
+      <code>second</code>.
+    </p>
     <p>Np. definicja pary przechowującej kurs waluty może mieć postać:</p>
     <div class="sourceCode" id="cb10">
       <pre
@@ -613,7 +622,8 @@
     </div>
     <p>Użycie <code>auto[currency, rate] = exchange_rate_usd;</code> w domyślnie skonfigurowanym środowisku spowoduje
       pojawienie się <em>Warning</em> w czasie kompilacji. Aby korzystać z standardu C++17 należy wyedytować plik
-      <code>.pro</code> projektu i zamienić:</p>
+      <code>.pro</code> projektu i zamienić:
+    </p>
     <pre class="qmake"><code>CONFIG += console c++11</code></pre>
     <p>na:</p>
     <pre class="qmake"><code>CONFIG += console c++17</code></pre>
@@ -655,7 +665,8 @@
       elementu</h3>
     <p>Element dodawany do mapy musi być umieszczony w ściśle określonym miejscu wynikającym z organizacji BST. Stąd
       kontener ten nie posiada metody <code>emplace_back</code>, tylko metodę <code>emplace</code> i metodę
-      <code>try_emplace</code>.</p>
+      <code>try_emplace</code>.
+    </p>
     <div class="sourceCode" id="cb18">
       <pre
         class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2004%20-%20Pliki,%20wyra%bfenia%20regularne.html#cb18-1" aria-hidden="true" tabindex="-1"></a>word_statistics.emplace(<span class="st">"the"</span>,<span class="dv">1</span>); <span class="co">//dodaje słowo "the" i przyporządkowaną mu wartość: 1 odpowiada to dodaniu pary: make_pair&lt;std:string, int&gt;("the",1)</span></span></code></pre>
@@ -678,7 +689,8 @@
       używając np. metody <a href="https://en.cppreference.com/w/cpp/container/map/find"><code>find</code></a> lub <a
         href="https://en.cppreference.com/w/cpp/container/map/contains"><code>contains</code></a> (C++20). Można również
       użyć metody <code>at</code>, która w przypadku nie znalezienia elementu generuje wyjątek
-      <code>std::out_of_range</code>.</p>
+      <code>std::out_of_range</code>.
+    </p>
     <div class="sourceCode" id="cb21">
       <pre
         class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2004%20-%20Pliki,%20wyra%bfenia%20regularne.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string word2find = <span class="st">"elephant"</span>;</span>
@@ -755,7 +767,8 @@
       <code>https://www.biblioteka.wroc.pl/filie/filia-nr-7</code>. Łatwiej to zauważyć gdy np. w Google Chrome, na
       podglądzie strony, wybierzesz funkcję inspect <a
         href="http://jug.put.poznan.pl/lab-psio/_resources/04/google_inspect.png">preview</a>, wtedy możesz zobaczyć
-      zagnieżdżoną strukturę dokumentu html.</p>
+      zagnieżdżoną strukturę dokumentu html.
+    </p>
     <ul>
       <li>Stwórz wyrażenie regularne, które wyodrębnia wyniki poszczególnych znalezionych w wyszukiwarce pozycji i
         wyodrębni z niego hyperlink z adresem znalezionej strony</li>
@@ -773,7 +786,8 @@
       <li>stwórz funkcję <code>std::string href_trimmed = href_trim(href_full)</code>, która z hyperlinku wyodrębni
         wyłącznie nazwę domeny np. dla <code>https://www.biblioteka.wroc.pl/filie/filia-nr-7</code> będzie to
         <code>biblioteka.wroc.pl</code>. Użyj tej wartości jako klucza mapy (wtedy telefony różnych filii zostaną
-        pogrupowane w obrębie jednego klucza)</li>
+        pogrupowane w obrębie jednego klucza)
+      </li>
       <li>używając algorytmu <code>std::unique_copy</code> lub kontenera <code>std::set</code> spraw, żeby dla danego
         wpisu numery telefonów się nie powtarzały (może się zdarzyć, że dany numer pojawia się na kilku stronach
         należących do tej samej domeny)</li>
