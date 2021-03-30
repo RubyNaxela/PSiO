@@ -39,8 +39,12 @@ table td, .header th {
     border-color: #666 !important;
 }
 
-h1, h2, h3, h4, h5, h6, h7, header h1, p, ol, ul, table{
+h1, h2, h3, h4, h5, h6, h7, header h1, p, ol, ul, table {
     color: #b8bfc6 !important;
+}
+
+code > span {
+    color: #24292e !important;
 }
 
 .header th {
