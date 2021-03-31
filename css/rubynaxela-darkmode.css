@@ -42,5 +42,46 @@ pre {
 }
 
 img.black-and-white {
-  filter: invert(1) hue-rotate(180deg) contrast(0.65) !important;
+  filter: invert(1) hue-rotate(180deg) contrast(0.65);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#rubynaxela-navbar {
+  background-color: #2b2b2b;
+  color: #b8bfc6;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  margin: 0;
+  padding: 8px;
+}
+
+#rubynaxela-navbar a {
+  color: #b8bfc6;
+  text-decoration: none;
+}
+
+#rubynaxela-navbar a:hover {
+  text-decoration: underline;
+}
+
+#rubynaxela-navbar-wrapper {
+  position: relative;
+}
+
+#rubynaxela-navbar #rubynaxela-navbar-left {
+  font-weight: 600;
+}
+
+#rubynaxela-navbar #rubynaxela-navbar-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.33;
+}
+
+header .title {
+  transform: translateY(10px);
 }
