@@ -15,4 +15,5 @@ const navbar = `
 
 document.addEventListener("DOMContentLoaded", () => {
     document.body.innerHTML = navbar + document.body.innerHTML;
+    document.querySelector("header .title").style.transform = "translateY(10px)";
 });

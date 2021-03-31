@@ -81,7 +81,3 @@ body {
   right: 0;
   opacity: 0.33;
 }
-
-header .title {
-  transform: translateY(10px);
-}
