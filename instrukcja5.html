@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://jug.put.poznan.pl/lab-psio/Lab%2005%20-%20CodinGame%20wst%eap,%20IO.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 05 - CodinGame wstęp, IO</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 05 - CodinGame wstęp, IO</h1>
+    </header>
+    <h1 id="lab-05---codingame">Lab 05 - CodinGame</h1>
+    <h2 id="codingame">Codingame</h2>
+    <p>Codingame jest platformą online, która umożliwia rozwiązywanie zadań programistycznych. Charakterystyczną cechą
+      jest wykorzystanie gamifikacji (grywalizacji - wykorzystywanie schematów i mechanizmów znanych z gier poza
+      kontekstem gier, w celu zwiększenia zaangażowania osób wykonujących określone zadania [<a
+        href="https://pl.wikipedia.org/wiki/Grywalizacja">źródło</a>]) do uatrakcyjnienia zadań. Dodatkowo łamigówki w
+      wielu przypadkach oferują atrakcyjną wizualizację.</p>
+    <p>Platforma jest dostępna pod adresem:</p>
+    <p><a href="https://www.codingame.com/">https://www.codingame.com/</a></p>
+    <p>Zadania można rowiązywać bez zakładania konta, jeśli jednak nasze postępy mają być zapisywane, a za wykonane
+      zadania chcemy otrzymywać punkty, konto będzie niezbędne. Możliwe jest obejrzenie listy wyników, np. dla osób z
+      Polski (Leaderboards): <a
+        href="https://www.codingame.com/leaderboards/general/country/pl">https://www.codingame.com/leaderboards/general/country/pl</a>
+    </p>
+    <p>Codingame powstało w 2014 roku [<a href="https://fr.wikipedia.org/wiki/CodinGame">źródło</a>] i od tego czasu
+      znacząco rozszerzyło swoją ofertę. Komercyjnym celem platformy jest połączenie zdolnych programistów z
+      zainteresowanymi firmami, które oferują specjalne zadania rekrutacyjne. Oprócz tego platforma stała się popularnym
+      miejscem do trenowania umiejętności programowania z dużą społecznością. Obecnie dostępne są następujące zadania /
+      rozgrywki:</p>
+    <ul>
+      <li>
+        <p>Menu Practice:</p>
+        <ul>
+          <li>Puzzles (Easy, Medium, Hard, Very hard) - klasyczna rozgrywka polegająca na rozwiązaniu określonego
+            zadania programistycznego. Zwykle poruszają określony problem algorytmiczny (np. grafy), nie ma limitu
+            czasowego ani interakcji pomiędzy użytkownikami. Dostepne zadania o zróżnicowanym poziomie trudności i na
+            tego typu ćwiczeniach skupimy się na zajęciach.</li>
+          <li>Sponsored Puzzles - identyczne jak Puzzles, ale zaproponowane przez określoną firmę na potrzeby
+            rekrutacji. Uwaga - nie mają określonego poziomu trudności (szacować można po liczbie punktów exp i liczbie
+            rozwiązań - np. zadanie od Nintendo zrobiło tylko 390 osób).</li>
+        </ul>
+      </li>
+      <li>
+        <p>Menu Compete:</p>
+        <ul>
+          <li>Contests - ograniczone czasowo konkursy o różnej postaci - od klasycznych zadań, przez optymalizację i
+            programowanie botów. Czas od kilku godzin do tygodnia. Potyczka w jednym z konkursów:</li>
+        </ul>
+        <p><a
+            href="https://www.codingame.com/share-replay/417606860">https://www.codingame.com/share-replay/417606860</a>
+          <a
+            href="https://www.codingame.com/share-replay/419367124">https://www.codingame.com/share-replay/419367124</a>
+        </p>
+        <ul>
+          <li>Clash of Code - 5 minutowe rozwiazywanie prostych zadań na żywo przeciwko innym użytkownikom.</li>
+          <li>Bot programming - programowanie botów, które ze sobą rywalizują.</li>
+          <li>Code golf - zadanie polegające na rozwiązaniu jednego z klasycznych zadań za pomocą kodu, który ma jak
+            najmniej zanków.</li>
+          <li>Optimization - optymalizacja zadanego problemu.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Pierwszym zadaniem, z którym się zmierzymy będzie <strong>Power of Thor</strong> - <a
+        href="https://www.codingame.com/ide/puzzle/power-of-thor">https://www.codingame.com/ide/puzzle/power-of-thor</a>
+    </p>
+    <p>Proszę się zalogować na swoje konto lub utworzyć nowe. Po przejściu do zadania widzimy interfejs użytkownika,
+      składa się on z kilku elementów.</p>
+    <p><img src="img/introduction_1.png" alt="introduction"></p>
+    <p>Prostokąt numer 1 - wizualizacja działania programu - tutaj będziemy obserwować przebieg zadania.</p>
+    <p>Prostokąt numer 2 - opis zadania, zarówno od strony technicznej (wymagania, format danych wejściowych i
+      wyjściowych, przykłady ograniczenia), jak również krótki fabularny wstęp mający nas zmotywować do pracy.</p>
+    <hr>
+    <h4 id="-zadanie-1-">🛠🔥 Zadanie 1 🛠🔥</h4>
+    <p>Zapoznaj się z opisem zadania.</p>
+    <hr>
+    <p>Istotne informacje w skrócie:</p>
+    <ul>
+      <li>na starcie otrzymujemy współrzędne <em>x</em> oraz <em>y</em> Thora oraz miejsca docelowego,</li>
+      <li>w każdej turze należy podjąć decyzję gdzie Thor ma się przemieścić - jeden z kierunków
+        północ/południe/wschód/zachód lub ich sensowna kombinacja,</li>
+      <li>celem jest wykonywanie takich ruchów, które pozwolą dotrzeć Thorowi do miejsca docelowego,</li>
+      <li>liczba ruchów do wykonania jest ograniczona, więc wskazana jest optymalna ścieżka.</li>
+    </ul>
+    <p>Zanim przejdziemy do szczegółowego omówienia technikaliów spójrzmy na udostępnione środowisko programistyczne.
+    </p>
+    <p><img src="img/ide.png" alt="ide"></p>
+    <p>Jeśli z jakiegoś powodu nie jest wybrany język C++ - wybierz go z listy. Warto wspomnieć, że dostępnych jest
+      bardzo wiele różnych języków, więc jeśli ktoś preferuje inny to oczywiście można przełączyć. Edytor ma
+      autouzupełnianie za pomocą: <em>Ctrl + Spacja</em>, a program wygląda identycznie jak standardowy program w C++
+      (main, include bibliotek, itd.).</p>
+    <p>Rozgrywka we wszystkich zadaniach odbywa się w trybie turowym. Napisany program komunikuje się z serwerem poprzez
+      standardowe wejście/wyjście. Do odczytu danych od serwera używamy np. <code>std::cin</code>, do informowania o
+      wyniku działania obliczeń używamy np. <code>std::cout</code>.</p>
+    <p>W przypadku gry <em>Thor</em>, na samym początku odczytywane są pozycje bohatera oraz celu do którego ma dotrzeć.
+      W związku z turowym charakterem i nieznaną liczbą tur do rozegrania, kolejne kroki rozgrywki przetwarzane są za
+      pomocą pętli <code>while</code> (linia 23).</p>
+    <p>W celu synchronizacji z serwerem odczytywana jest pozostała liczba ruchów do wykonania (linie 24-25). Nie ma ona
+      jednak żadnego praktycznego zastosowania. W linii 32 znajduje się wynik obliczeń naszego programu, w tym przypadku
+      zawsze udzielamy odpowiedzi "SE", czyli tor ma się udać na południowy-wschód.</p>
+    <hr>
+    <h4 id="-zadanie-1-cd-">🛠🔥 Zadanie 1 cd 🛠🔥</h4>
+    <ul>
+      <li>Kliknij PLAY TESTCASE dla pierwszego testu.</li>
+    </ul>
+    <p><img src="img/test_fail.png" alt="test_fail"></p>
+    <ul>
+      <li>
+        <p>Test nie został zaliczony bo Thor zamiast poruszać się na zachód poruszał się w kierunku
+          południowo-wschodnim. Co jest zgodne z uruchomionym programem.</p>
+      </li>
+      <li>
+        <p>Zmodyfikuj program tak, aby zaliczyć pierwszy test.</p>
+      </li>
+    </ul>
+    <hr>
+    <p>Zwróć uwagę na przyciski pod oknem wizualizacji - umożliwiają krokowe wykonywanie programy w celu jego analizy i
+      obserwacji stanu gry w znajdującym się poniżej oknie <em>Console output</em>. Wyświetla ono informacje o
+      standardowym wyjściu, czyli odpowiedziach programu oraz wewnętrzny stan gry (np. pozycja Thora) -
+      <strong>UWAGA</strong> - wenętrzny stan gry nie oddaje stanu zmiennych. Aby je wyświetlić w oknie <em>Console
+        Output</em> niezbędne jest użycie standardowego strumienia błędów (<code>std::cerr</code>).
+    </p>
+    <p><img src="img/test_success.png" alt="test_success"></p>
+    <hr>
+    <h4 id="-zadanie-1-cd--1">🛠🔥 Zadanie 1 cd 🛠🔥</h4>
+    <p>Od komentuj linijkę 28 i uruchom program - w <em>Console output</em> powinna się pojawić wiadomość <em>Debug
+        messages...</em>. Zmodyfikuj program aby wyświetlać tam pozycję <em>Thora</em>.</p>
+    <hr>
+    <p>Podejście używane w zadaniach Codingame to technika TDD (Test-driven development - <a
+        href="https://en.wikipedia.org/wiki/Test-driven_development">wiki</a>). Zanim nastąpi etap implementowania
+      zadanej funkcjonalności pisane są automatyczne testy, które umożliwiają sprawdzenie poprawności działania
+      programu. W końcu jaki ma być efekt działania programy jest z góry znane, więc testy można przygotować, a
+      następnie stopniowo implementować rozwiązanie realizujące wszystkie wymagania. W przypadku Codingame testy już są
+      gotowe, a naszym zadaniem jest napisanie programu, które <em>zda</em> je wszystkie. Zalecanym podejściem jest
+      iteracyjne rozwiązanie problemu - rozpoczęcie od prostego podejścia i stopniowe go rozbudowywanie.</p>
+    <p>Czas odzyskać moce <em>Mjollnira</em> i powstrzymać <em>Lokiego</em>, klawiatury w dłoń!</p>
+    <hr>
+    <h4 id="-zadanie-1-cd--2">🛠🔥 Zadanie 1 cd 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Z wykorzystaniem instrukcji warunkowej <em>if</em>, pozycji <em>Thora</em> oraz pozycji celu napisz program,
+          który będzie wybierał kierunek w poziomie (wschód-zachód). Sprawdź działanie na pierwszym teście.</p>
+      </li>
+      <li>
+        <p>Rozbuduj program o analogiczne rozwiązanie dla opcji północ-południe. Sprawdź działanie na teście numer dwa.
+        </p>
+      </li>
+      <li>
+        <p>Napisz program, który połączy odpowiedzi dwóch powyższych bloków w kombinację kierunków. Tj. jeśli blok
+          odpowiadający za ruch w poziomie zaproponował W, a odpowiadający za ruch w pionie N, finalną odpowiedzią
+          powinno być NW. Pamiętaj, że pozycja <em>Thora</em> ulega zmianie, więc zmienne przechowujące jego pozycję
+          również powinny być uaktualnione!</p>
+      </li>
+    </ul>
+    <hr>
+    <p>Realizacja powyższych kroków powinna umożliwić przejście wszystkich testów - program można przekazać do oceny
+      (wykonanie na innym zbiorze testów).</p>
+    <hr>
+    <h4 id="-zadanie-2-">🛠🔥 Zadanie 2 🛠🔥</h4>
+    <p>Kolejne zadanie będzie z kategorii <em>MEDIUM</em> - success rate - 45%!</p>
+    <p><a
+        href="https://www.codingame.com/ide/puzzle/shadows-of-the-knight-episode-1">https://www.codingame.com/ide/puzzle/shadows-of-the-knight-episode-1</a>
+    </p>
+    <p>Tym razem musimy pomóc Batmanowi rozbroić bombę na czas! Zadanie dotyczy praktycznego zastosowania wyszukiwania
+      binarnego.</p>
+    <p>Szczegóły każdego zadania, wraz ze wskazaniem co jest w nim wykorzystywane można znaleźć na stronie dotyczącej
+      zadania - <a
+        href="https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1">https://www.codingame.com/training/medium/shadows-of-the-knight-episode-1</a>.
+    </p>
+    <p>Przeszukiwanie binarne było omawiany na wykładzie, dodatkowo - <a
+        href="https://www.codingame.com/learn/binary-search">https://www.codingame.com/learn/binary-search</a></p>
+    <p>Podobnie jak w przypadku poprzedniego zadania rozpocznij od prostej implementacji i stopniowo ją rozszerzaj.</p>
+    <p><strong>Podejście pierwsze - naiwne</strong></p>
+    <p>W każdej turze przesuwaj bohatera o jedno pole w kierunku bomby. Rozwiązanie to nie jest optymalne, ale pozwala
+      zawsze odnaleźć drogę do celu i stanowi punkt wyjściowy do dalszych prac.</p>
+    <p><strong>Podejście drugie - przeszukiwanie binarne</strong></p>
+    <p>Spróbuj zaimplementować wyszukiwanie binarne dla opisanego problemu. Wykorzystaj opracowane rozwiązanie, które
+      przesuwało bohatera o jedno pole w odpowiednim kierunku. Tym razem przesuń go o połowę dostępnego dystansu. Test 4
+      wymaga obsługi tylko jednego wymiaru - prawidłowe rozwiazanie można potem rozszerzyć na oba. Pamiętaj o
+      aktualizacji minimalnej i maksymalnej wartości x i y do odwiedzenia po każdym ruchu.</p>
+    <hr>
+    <h2 id="zadanie-domowe-">Zadanie domowe 🏠🔥</h2>
+    <h4 id="zadanie-1">Zadanie 1</h4>
+    <p>Wykonać następujące zadania z Codingame:</p>
+    <ul>
+      <li>THE DESCENT - <a
+          href="https://www.codingame.com/training/easy/the-descent">https://www.codingame.com/training/easy/the-descent</a>
+      </li>
+      <li>MIME TYPE - <a
+          href="https://www.codingame.com/training/easy/mime-type">https://www.codingame.com/training/easy/mime-type</a>
+      </li>
+      <li>HORSE-RACING DUALS - <a
+          href="https://www.codingame.com/training/easy/horse-racing-duals">https://www.codingame.com/training/easy/horse-racing-duals</a>
+      </li>
+      <li>TEMPERATURES - <a
+          href="https://www.codingame.com/training/easy/temperatures">https://www.codingame.com/training/easy/temperatures</a>
+      </li>
+      <li>CHUCK NORRIS - <a
+          href="https://www.codingame.com/training/easy/chuck-norris">https://www.codingame.com/training/easy/chuck-norris</a>
+      </li>
+      <li>MARS LANDER - EPISODE 1 - <a
+          href="https://www.codingame.com/training/easy/mars-lander-episode-1">https://www.codingame.com/training/easy/mars-lander-episode-1</a>
+      </li>
+      <li>ASCII ART - <a
+          href="https://www.codingame.com/training/easy/ascii-art">https://www.codingame.com/training/easy/ascii-art</a>
+      </li>
+      <li>DEFIBRILLATORS - <a
+          href="https://www.codingame.com/training/easy/defibrillators">https://www.codingame.com/training/easy/defibrillators</a>
+      </li>
+    </ul>
+    <h4 id="zadanie-2">Zadanie 2</h4>
+    <p>Wykonać wybrane przez siebie trzy zdania z kategorii Easy (inne niż wskazane w Zadaniu 1).</p>
+    <hr>
+    <p>Autorzy: <em>Michał Fularz</em></p>
+  </main>
+
+
+</body>
+
+</html>

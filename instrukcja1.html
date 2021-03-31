@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 01 - Proste algorytmy, vector</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 01 - Proste algorytmy, vector</h1>
+    </header>
+    <h1 id="lab-01---vector-algorytmy">Lab 01 - <code>vector</code>, algorytmy</h1>
+    <h2 id="wstęp---kontener-vector">Wstęp - kontener <code>vector</code></h2>
+    <p>W C++ kontenerem lub kolekcją nazywamy strukturę danych, która pozwala na przechowywanie wielu elementów
+      <strong>tego samego typu</strong>.
+    </p>
+    <p>Najprostszym kontenerem, który będziemy wykorzystywać podczas niektórych z dzisiejszych zadań jest
+      <code>vector</code>. Kontenery z biblioteki standardowej zdefiniowane są w nagłówkach o nazwie takiej samej jak
+      nazwa kontenera, stąd aby użyć <code>vector</code>a musimy załączyć jego nagłówek:
+    </p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span></code></pre>
+    </div>
+    <p>Wewnętrznie wektor jest tablicą, "opakowaną" w klasę dostarczającą interfejs ułatwiający wiele czynności takich
+      jak zmianę jego rozmiaru, dodawanie elementów, kopiowanie całego wektora czy użycie algorytmów.</p>
+    <h3 id="tworzenie-wektorów">Tworzenie wektorów</h3>
+    <p>Klasa <code>vector</code> jest <em>szablonem</em> - może przechowywać dowolny typ zmiennych, obiektów, jednak
+      musi on być znany w trakcie kompilacji i podajemy go w momencie tworzenia wektora w nawiasach ostrych:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; v1; <span class="co">// utworzenie pustego wektora v1 przechowującego elementy typu int</span></span></code></pre>
+    </div>
+    <p><code>vector</code> możemy utworzyć na kilka sposobów, poza pustym kontenerem (jak powyżej), możemy od razu
+      zainicjalizować go wartościami:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; some_zeros(<span class="dv">5</span>); <span class="co">// 5-elementowy wektor o domyślnych wartościach (0 dla typów liczbowych)</span></span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; four_pies(<span class="dv">4</span>, <span class="fl">3.14</span>); <span class="co">// 4-elementowy wektor, wszystkie elementy o wartości 3.14</span></span></code></pre>
+    </div>
+    <p>Możliwe jest również użycie <strong>listy inicjalizacyjnej</strong>:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>string&gt; messages = {<span class="st">"nope"</span>, <span class="st">"cool"</span>, <span class="st">"OK"</span>}; <span class="co">// 3-elementowy wektor z podanymi wartościami</span></span></code></pre>
+    </div>
+    <p>Wektory mogą przechowywać klasy, struktury; elementami wektora mogą być też inne kolekcje, np. kolejny wektor,
+      pozwalając na stworzenie wielowymiarowych struktur:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;&gt; matrix; <span class="co">// wektor wektorów (struktura dwuwymiarowa)</span></span></code></pre>
+    </div>
+    <h3 id="dostęp-do-elementów-wektora">Dostęp do elementów wektora</h3>
+    <p>Ponieważ wektor jest wewnętrznie tablicą, możliwy jest <strong>swobodny dostęp</strong> do poszczególnych
+      elementów, dokładnie tak jak w tablicy (pamiętaj, że indeksowanie zaczyna się od 0):</p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; numbers = {<span class="fl">1.0</span>, -<span class="dv">100</span>, <span class="fl">1.4142</span>};</span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; numbers[<span class="dv">1</span>] &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// wypisze -100</span></span>
+<span id="cb6-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb6-3" aria-hidden="true" tabindex="-1"></a>numbers[<span class="dv">2</span>] = <span class="fl">3.14</span>; <span class="co">// zmodyfikuje trzeci element</span></span></code></pre>
+    </div>
+    <p>Bieżący rozmiar wektora można sprawdzić metodą <code>size()</code>. W ten sposób możemy np. przejrzeć kontener
+      tak jak tablicę:</p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; numbers.size(); i++) {</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="bu">std::</span>cout &lt;&lt; numbers[i] &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb7-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>W przypadku kontenerów dużym ułatwieniem jest możliwość korzystania z pętli skróconej typu <em>range-based for
+        loop</em>:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb8-1" aria-hidden="true" tabindex="-1"></a>                            <span class="co">// wykonuje pętlę dla każdego elementu w numbers, w każdym przebiegu</span></span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">double</span> &amp;n : numbers) { <span class="co">// tworzy zmienną n - referencję do danego elementu</span></span>
+<span id="cb8-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; n &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb8-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Możliwy jest również dostęp z wykorzystaniem <strong>iteratorów</strong> - obiektów zachowujących się jak
+      wskaźniki, ale dedykowanych konkretnemu typowi kontenera. Więcej o iteratorach dowiesz się na kolejnych zajęciach.
+    </p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt;::iterator it = numbers.begin(); it != numbers.end(); it++) {</span>
+<span id="cb9-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; *it &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// it zachowuje się jak wskaźnik, musimy wyłuskać spod niego wartość</span></span>
+<span id="cb9-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb9-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <h3 id="modyfikacja-wektora">Modyfikacja wektora</h3>
+    <p>Najczęściej wykonywane operacje modyfikujące zawartość wektora to:</p>
+    <ul>
+      <li><code>emplace_back(value)</code> - dodaje wartość na końcu wektora, np.
+        <code>numbers.emplace_back(777.0);</code>
+      </li>
+      <li><code>resize(size)</code> - zmienia rozmiar wektora na podaną wartość</li>
+      <li><code>clear()</code> - usuwa wszystkie elementy i zmienia rozmiar wektora na 0</li>
+    </ul>
+    <p>Chociaż wektor może być dowolnie modyfikowany, każda zmiana jego rozmiaru może się wiązać z koniecznością
+      zaalokowania nowej pamięci i przeniesienia wszystkich elementów. Jeśli znasz liczbę elementów w trakcie tworzenia
+      kolekcji, warto utworzyć od razu wektor o zadanej wielkości.</p>
+    <h3 id="kopiowanie-przekazywanie-do-funkcji">Kopiowanie, przekazywanie do funkcji</h3>
+    <p>Wektor, podobnie jak inne kontenery, ma zaimplementowane mechanizmy kopiujące jego zawartość element po elemencie
+      w przypadku zapisywania do nowej zmiennej.</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; a = {<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>};</span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; b = a; <span class="co">// spowoduje utworzenie nowego wektora (zaalokowanie nowej pamięci)</span></span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb10-3" aria-hidden="true" tabindex="-1"></a>                        <span class="co">// i skopiowanie zawartości element po elemencie</span></span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb10-4" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">1</span>] = <span class="dv">100</span>; <span class="co">// modyfikuje tylko wektor b</span></span></code></pre>
+    </div>
+    <p>Oznacza to, że w przypadku przekazywania wektora jako argumentu do funkcji poprzez wartość, zostanie on
+      niepotrzebnie skopiowany, a jakiekolwiek zmiany będą odbywały się na kopii, wewnątrz funkcji.</p>
+    <p>Jeśli argument ma podlegać modyfikacji należy go przekazać jako referencję (znak <code>&amp;</code> przed nazwą
+      argumentu), a jeśli modyfikacja oryginalnej kolekcji nie jest wymagana, należy przekazywać argument jako
+      <code>const reference</code>:
+    </p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> print_vector(<span class="at">const</span> <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; &amp;param) {</span>
+<span id="cb11-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* read-only stuff */</span> </span>
+<span id="cb11-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <h3 id="dokumentacja">Dokumentacja</h3>
+    <p>W instrukcji przedstawiono jedynie podstawową funkcjonalność, szegółowy opis można znaleźć w dokumentacji, np:
+    </p>
+    <p><a href="http://www.cplusplus.com/reference/vector/vector/">http://www.cplusplus.com/reference/vector/vector/</a>
+    </p>
+    <p><a
+        href="https://en.cppreference.com/w/cpp/container/vector">https://en.cppreference.com/w/cpp/container/vector</a>
+    </p>
+    <h2 id="-zadania-do-samodzielnego-wykonania-">🛠🔥 Zadania do samodzielnego wykonania 🛠🔥</h2>
+    <hr>
+    <h3 id="-zadanie-1-wypełnianie-i-wyświetlanie-wektora">🛠 Zadanie 1: wypełnianie i wyświetlanie wektora</h3>
+    <p>Utwórz wektor liczb całkowitych o rozmiarze <strong>podanym przez użytkownika</strong> w konsoli.</p>
+    <p>Napisz dwie funkcje:</p>
+    <ul>
+      <li><code>fill_progressive</code>, która wypełni przekazany do niej wektor kolejnymi liczbami całkowitymi od 1 do
+        <code>n</code>, gdzie <code>n</code> to długość wektora
+      </li>
+      <li><code>print_vector</code>, która wyświetli elementy wektora w konsoli, oddzielone przecinkami</li>
+    </ul>
+    <p>Przykładowo:</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; vec(<span class="dv">6</span>);</span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb12-2" aria-hidden="true" tabindex="-1"></a>fill_progressive(vec);</span>
+<span id="cb12-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb12-3" aria-hidden="true" tabindex="-1"></a>print_vector(vec);</span></code></pre>
+    </div>
+    <p>Wynik:</p>
+    <pre><code>1, 2, 3, 4, 5, 6</code></pre>
+    <hr>
+    <h3 id="-zadanie-2-minmax">🛠 Zadanie 2: min/max</h3>
+    <p>Napisz funkcję <code>min_max</code> znajdującą minimum i maksimum w przekazanym do niej wektorze liczb typu
+      <code>double</code>. Znalezione wartości zwróć przez dwa argumenty-referencje:
+    </p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> min;</span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> max;</span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">double</span>&gt; values = {-<span class="fl">1.0</span>, <span class="dv">100</span>, <span class="fl">3.14</span>, -<span class="fl">999.9</span>, <span class="fl">21.37</span>};</span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb14-5" aria-hidden="true" tabindex="-1"></a>min_max(values, min, max); <span class="co">// wpisze znalezione wartości do zmiennych min i max</span></span></code></pre>
+    </div>
+    <hr>
+    <h3 id="-zadanie-3-silnia">🛠 Zadanie 3: silnia</h3>
+    <p>Napisz funkcję <code>factorial</code>, która wyznaczy silnię z przekazanego argumentu <strong>bez użycia
+        rekurencji</strong>. Aby umożliwić operacje na dużych liczbach całkowitych wykorzystaj typ zmiennych
+      <code>uint64_t</code>.
+    </p>
+    <p>Przykładowe wywołanie funkcji powinno wyglądać następująco:</p>
+    <div class="sourceCode" id="cb15">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">uint64_t</span> result = factorial(<span class="dv">15</span>);</span>
+<span id="cb15-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; result &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// wynik: 1307674368000</span></span></code></pre>
+    </div>
+    <hr>
+    <h3 id="-zadanie-4-silnia-rekurencyjna">🛠 Zadanie 4: silnia rekurencyjna</h3>
+    <p>Napisz funkcję <code>factorial_r</code>, która wyznaczy silnię z przekazanego argumentu <strong>z użyciem
+        rekurencji</strong>. Aby umożliwić operacje na dużych liczbach całkowitych wykorzystaj typ zmiennych
+      <code>uint64_t</code>. Wykorzystaj definicję silni:
+    </p>
+    <p><img class="black-and-white" src="img/silnia.svg" alt="Silnia"></p>
+    <p>Przykładowe wywołanie funkcji powinno wyglądać następująco:</p>
+    <div class="sourceCode" id="cb16">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">uint64_t</span> result = factorial_r(<span class="dv">15</span>);</span>
+<span id="cb16-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; result &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p>Wynik:</p>
+    <pre><code>1307674368000</code></pre>
+    <hr>
+    <h3 id="-zadanie-5-liczby-pierwsze">🛠 Zadanie 5: liczby pierwsze</h3>
+    <p>Napisz funkcję <code>is_prime</code> sprawdzającą czy podana liczba jest liczbą pierwszą (dzieli się bez reszty
+      tylko przez 1 i siebie samą), tak aby można było jej użyć w poniższym przykładzie:</p>
+    <div class="sourceCode" id="cb18">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> prime_or_not_prime = <span class="dv">13</span>;</span>
+<span id="cb18-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_prime(prime_or_not_prime)) {</span>
+<span id="cb18-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; prime_or_not_prime &lt;&lt; <span class="st">" is prime!"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb18-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb18-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb18-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; prime_or_not_prime &lt;&lt; <span class="st">" is not prime!"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb18-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb18-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Jaki jest największy potencjalny dzielnik, jaki warto sprawdzać dla danej liczby?</p>
+    <p>Następnie zapytaj użytkownika o wprowadzenie zakresu (dolna i górna granica) i wykorzystując funkcję
+      <code>is_prime</code> wyświetl liczby pierwsze z żądanego zakresu, np:
+    </p>
+    <pre><code>&gt; 1
+&gt; 10
+2 3 5 7</code></pre>
+    <p>Zastanów się jak można przyspieszyć przeszukiwanie zakresu - czy jakieś liczby można łatwo pominąć?</p>
+    <hr>
+    <h3 id="-zadanie-6-wzór-na-π">🛠 Zadanie 6: wzór na π</h3>
+    <p>Szczególny przypadek szeregu naprzemiennego, zwany wzorem Leibniza, pozwala na wyznaczenie przybliżenia liczby π:
+    </p>
+    <p><img class="black-and-white" src="img/leibniz.svg" alt="Wzór Leibniza"></p>
+    <p>Napisz funkcję <code>leibniz_pi</code>, która obliczy π z zadaną dokładnością zadaną w parametrze - sumuj wyrazy
+      tak długo, aż kolejny dodawany wyraz nie będzie mniejszy niż zadana dokładność. Możesz porównać uzyskany wynik ze
+      stałą <code>M_PI</code> z nagłówka <code>&lt;cmath&gt;</code>.</p>
+    <div class="sourceCode" id="cb20">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> stop_at = <span class="fl">0.001</span>;</span>
+<span id="cb20-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> pi_approx = pi_leibniz(stop_at);</span>
+<span id="cb20-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; pi_approx &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb20-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"error: "</span> &lt;&lt; pi_approx - M_PI &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <hr>
+    <h3 id="-zadanie-7-rysowanie-kwadratu">🛠 Zadanie 7: rysowanie kwadratu</h3>
+    <p>Napisz funkcję <code>draw_square</code>, która narysuje w konsoli pusty w środku kwadrat o zadanym boku, złożony
+      ze znaków <code>#</code>:</p>
+    <div class="sourceCode" id="cb21">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb21-1" aria-hidden="true" tabindex="-1"></a>draw_square(<span class="dv">4</span>);</span></code></pre>
+    </div>
+    <p>Wynik:</p>
+    <pre><code>####
+#  #
+#  #
+####</code></pre>
+    <p>Następnie zmodyfikuj funkcję poprzez dodanie dwóch parametrów logicznych <code>left_diagonal</code> i
+      <code>right_diagonal</code>. Ustawienie jednego z nich (bądź obu) na wartość <code>true</code> powinno powodować
+      narysowanie wewnątrz kwadratu odpowiednich przekątnych, przykładowo:
+    </p>
+    <div class="sourceCode" id="cb23">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb23-1" aria-hidden="true" tabindex="-1"></a>draw_square(<span class="dv">6</span>, <span class="kw">true</span>, <span class="kw">false</span>);</span></code></pre>
+    </div>
+    <p>Wynik:</p>
+    <pre><code>######
+##   #
+# #  #
+#  # #
+#   ##
+######</code></pre>
+    <div class="sourceCode" id="cb25">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2001%20-%20Proste%20algorytmy,%20vector.html#cb25-1" aria-hidden="true" tabindex="-1"></a>draw_square(<span class="dv">7</span>, <span class="kw">true</span>, <span class="kw">true</span>);</span></code></pre>
+    </div>
+    <p>Wynik:</p>
+    <pre><code>#######
+##   ##
+# # # #
+#  #  #
+# # # #
+##   ##
+#######</code></pre>
+    <hr>
+    <h3 id="-zadanie-8-nwd---algorytm-euklidesa">🛠 Zadanie 8: NWD - algorytm Euklidesa</h3>
+    <p>Algorytm Euklidesa pozwala znaleźć największy wspólny dzielnik dwóch liczb. Dla danych liczb <code>a</code> i
+      <code>b</code> algorytm można opisać słownie jako:
+    </p>
+    <ol type="1">
+      <li>oblicz <code>c</code> jako resztę z dzielenia <code>a</code> przez <code>b</code></li>
+      <li>zastąp <code>a</code> liczbą <code>b</code>, następnie <code>b</code> liczbą <code>c</code></li>
+      <li>jeżeli wartość <code>b</code> wynosi 0, to <code>a</code> jest szukaną wartością NWD, w przeciwnym wypadku
+        przejdź do kroku 1</li>
+    </ol>
+    <p>Zastanów się jak przenieść powyższy opis na mechanizmy (pętle, warunki) języka C++. Napisz funkcję
+      <code>gcd(a, b)</code> implementującą opisany algorytm i zwracającą uzyskany wynik.
+    </p>
+    <hr>
+    <p>Autorzy: <em>Jakub Tomczyński</em></p>
+  </main>
+
+
+</body>
+
+</html>

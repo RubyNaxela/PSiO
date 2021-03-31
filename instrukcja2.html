@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 02 - Algorytmy</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 02 - Algorytmy</h1>
+    </header>
+    <h1 id="lab-02---algorytmy">Lab 02 - Algorytmy</h1>
+    <h2 id="przydatne-metody-klasy-stdstring">Przydatne metody klasy <code>std::string</code></h2>
+    <h3 id="stringfind"><code>string::find(...)</code></h3>
+    <p>Metoda <code>find</code> pozwala znaleźć w <code>string</code>-u pierwsze wystąpienie znaku lub ciągu znaków (w
+      zależności od tego, czy przekażemy jako argument pojedynczy znak - <code>char</code> lub ciąg znaków -
+      <code>std::string</code>). Do przechowywania indeksu położenia znaku będziemy posługiwali się typem
+      <code>size_t</code> - typem całkowitym, bez znaku, zwracanym standardowo przez metody typu <code>find</code>,
+      <code>size()</code>, <code>length()</code> itp. Przykładowo:
+    </p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text = <span class="st">"Ala ma kota"</span>;</span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">size_t</span> position = text.find(<span class="ch">'a'</span>);</span>
+<span id="cb1-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Pierwsze wystąpienie litery a znajduje się na pozycji "</span> &lt;&lt; position &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p>Opcjonalny drugi argument pozwala podać pozycję, od której rozpocznie się przeszukiwanie. Rozbudowując powyższy
+      przykład, możemy rozpocząć przeszukiwanie od znaku następującego po poprzednim trafieniu, szukając tym samym
+      kolejnego wystąpienia.</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb2-1" aria-hidden="true" tabindex="-1"></a>position = text.find(<span class="ch">'a'</span>, position + <span class="dv">1</span>);</span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Kolejne: "</span> &lt;&lt; position &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p>W przypadku nie znalezienia żądanego znaku/ciągu, <code>string::find()</code> zwraca
+      wartość&nbsp;<code>std::string::npos</code>. Sprawdzając zwróconą wartość możemy łatwo zapętlić wyszukiwanie w
+      celu znalezienia wszystkich wystąpień:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-1" aria-hidden="true" tabindex="-1"></a>position = <span class="dv">0</span>; <span class="co">// zaczynamy wyszukiwanie od początku</span></span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">// zapisujemy wynik wyszukiwania w zmiennej position, rozpoczynamy wyszukiwanie od znaku </span></span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// następującego po poprzedniej wartości position</span></span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ((position = text.find(<span class="ch">'a'</span>, position + <span class="dv">1</span>)) != <span class="bu">std::</span>string<span class="bu">::</span>npos) { </span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// wyszukujemy tak długo, jak find() zwraca wartości różne od npos</span></span>
+<span id="cb3-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Trafienie: "</span> &lt;&lt; position &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb3-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <hr>
+    <h3 id="stringsubstr"><code>string::substr(...)</code></h3>
+    <p>Metoda <code>susbstr</code> zwraca fragment oryginalnego napisu, zgodnie z przekazanymi wartościami - indeksem
+      początku fragmentu, oraz, opcjonalnie - jego długością.</p>
+    <p>Przykladowo:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text = <span class="st">"Ala ma kota"</span>;</span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text2 = text.substr(<span class="dv">7</span>); <span class="co">// "kota" - od pozycji 7 do końca</span></span>
+<span id="cb4-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text3 = text.substr(<span class="dv">7</span>, <span class="dv">3</span>); <span class="co">// "kot" - od pozycji 7, 3 znaki</span></span>
+<span id="cb4-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dt">size_t</span> position_of_ma = text.find(<span class="st">"ma"</span>); <span class="co">// 4</span></span>
+<span id="cb4-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text4 = text.substr(position_of_ma); <span class="co">// od początku wyrazu "ma" do końca</span></span></code></pre>
+    </div>
+    <hr>
+    <h2 id="przykład-wczytywania-pliku-csv">Przykład wczytywania pliku csv</h2>
+    <p>Jest wiele możliwości wczytywania plików, poniżej znajdziecie propozycję, która może być użyta do wczytania
+      plików, gdzie dane mają układ tabelaryczny tzn. każdy wiersz zawiera tą samą liczbę danych, które oddzielone są
+      separatorem (najczęściej przecinkiem lub średnikiem). W przykładzie wczytany zostanie wczytany <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/02/kursy_usd_eur.csv">kursy_usd_eur.csv</a> zawierający w
+      każdym wierszu dane opisane w pierwszym wierszu (nagłówku):</p>
+    <ul>
+      <li><code>data</code> - data notowań</li>
+      <li><code>1USD</code> - kurs dolara w PLN</li>
+      <li><code>1EUR</code> - kurs w euro w PLN</li>
+      <li><code>pelny numer tabeli</code> - numer tabeli kursów wg NBP</li>
+    </ul>
+    <p>Wszystkie elementy są oddzielone przecinkami.</p>
+    <p>Dane zostaną wczytane do wektora, którego element jest strukturą z atrybutami odpowiadającymi kolumnom opisanym
+      powyżej:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Exchange_rate</span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string date;</span>
+<span id="cb5-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> usd;</span>
+<span id="cb5-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> eur;</span>
+<span id="cb5-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string table_id;</span>
+<span id="cb5-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb5-7" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Do wczytania może zostać użyty następujący kod, który otwiera plik i wczytuje najpierw cały wiersz a następnie
+      zamienia go na strumień używając klasy <code>std::stringstream</code> i dane z wiersza wczytuje funkcją
+      <code>std::getline</code>, której trzecim argumentem jest separator (domyślnie separatorem jest znak końca linii
+      (<code>\n</code>) stąd funkcja wczytująca cały wiersz ma tylko 2 argumenty). Dana wczytana za pomocą
+      <code>std::getline</code> jest wartością typu string, stąd w przypadku danych np. numerycznych musi zostać
+      skonwertowana (np. przy użyciu funkcji <code>std::stod</code> lub <code>std::stoi</code>).
+    </p>
+    <p>W przypadku środowiska Qt Creator, plik należy umieścić w tym samym katalogu co katalog kompilacji projektu,
+      który jest tworzony obok katalogu ze źródłami (np.
+      <code>build-nazwa_projektu-Desktop_Qt_5_13_2_MinGW_64_bit-Debug</code>) lub podać pełną ścieżkę, np.
+      <code>C:/Users/nazwa_uzytkownika/Downloads/kursy_usd_eur.csv</code>.
+    </p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>fstream file(<span class="st">"kursy_usd_eur.csv"</span>, <span class="bu">std::</span>fstream<span class="bu">::</span>in);</span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;Exchange_rate&gt; rates;</span>
+<span id="cb6-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (file.is_open()) {</span>
+<span id="cb6-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string line;</span>
+<span id="cb6-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>getline(file, line); <span class="co">// wczytuje pierwszą linię z nagłówkiem i ją ignoruje</span></span>
+<span id="cb6-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="bu">std::</span>getline(file, line)) {<span class="co">//wczytuje kolejne linie aż do końca pliku</span></span>
+<span id="cb6-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>stringstream str(line);<span class="co">//tworzy strumień, którego źródłem jest wczytana linia</span></span>
+<span id="cb6-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-9" aria-hidden="true" tabindex="-1"></a>        Exchange_rate er;</span>
+<span id="cb6-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>getline(str, er.date, <span class="ch">','</span>); <span class="co">//wczytuje date (pierwszy element wiersza)</span></span>
+<span id="cb6-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>string double_str;</span>
+<span id="cb6-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>getline(str, double_str, <span class="ch">','</span>);  <span class="co">// wczytuje kurs USD (jako tekst)</span></span>
+<span id="cb6-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-13" aria-hidden="true" tabindex="-1"></a>        er.usd = <span class="bu">std::</span>stod(double_str);      <span class="co">//zamiana na string-&gt;double</span></span>
+<span id="cb6-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>getline(str, double_str, <span class="ch">','</span>);  <span class="co">// wczytuje kurs EUR (jako tekst)</span></span>
+<span id="cb6-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-15" aria-hidden="true" tabindex="-1"></a>        er.eur = <span class="bu">std::</span>stod(double_str);      <span class="co">//zamiana na string-&gt;double</span></span>
+<span id="cb6-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>getline(str, er.table_id, <span class="ch">','</span>); <span class="co">// wczytuje ostatnią kolumnę z numerem tabeli NBP</span></span>
+<span id="cb6-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-17" aria-hidden="true" tabindex="-1"></a>        rates.emplace_back(er); <span class="co">//dodaje element do kolekcji</span></span>
+<span id="cb6-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb6-19" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Uwaga, wykonanie kodu wymaga dołączenia następujących plików nagłówkowych: <code>&lt;fstream&gt;</code>,
+      <code>&lt;iostream&gt;</code>, <code>&lt;sstream&gt;</code>, <code>&lt;vector&gt;</code>
+    </p>
+    <hr>
+    <h2 id="-zadania-do-samodzielnego-wykonania-">🛠🔥 Zadania do samodzielnego wykonania 🛠🔥</h2>
+    <hr>
+    <h3 id="-zadanie-1-palindrom">🛠 Zadanie 1: palindrom</h3>
+    <p>Napisz funkcję <code>is_palindrome</code> sprawdzającą czy podany napis jest palindromem:</p>
+    <p>Przykładowe użycie:</p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string word = <span class="st">"racecar"</span>;</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (is_palindrome(word)) {</span>
+<span id="cb7-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"To palindrom!"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb7-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb7-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb7-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Nope"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb7-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb7-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p><strong>Wersja zaawansowana:</strong></p>
+    <p>Ignoruj spacje i wielkość znaków:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string sentence = <span class="st">"Never odd or even"</span>;</span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb8-2" aria-hidden="true" tabindex="-1"></a>is_palindrome(word); <span class="co">// true</span></span></code></pre>
+    </div>
+    <hr>
+    <h3 id="-zadanie-2-znalezienie-wszystkich-wystąpień-znaku">🛠 Zadanie 2: znalezienie wszystkich wystąpień znaku</h3>
+    <p>Napisz funkcję <code>find_all</code> zwracającą indeksy wszystkich wystąpień danego znaku</p>
+    <p>Przykładowe użycie:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string input = <span class="st">"Ala ma kota"</span>;</span>
+<span id="cb9-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="dt">size_t</span>&gt; pos = find_all(input, <span class="ch">'a'</span>); <span class="co">// wynik: {2, 5, 10}</span></span></code></pre>
+    </div>
+    <hr>
+    <h3 id="-zadanie-3-szukanie-najdłuższego-wyrazu">🛠 Zadanie 3: szukanie najdłuższego wyrazu</h3>
+    <p>Napisz funkcję <code>find_longest_word</code> zwracającą najdłuższy wyraz znaleziony w przekazanym do niej ciągu.
+    </p>
+    <p>Przykładowe użycie:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string input = <span class="st">"Ala ma kota kot jezdzi na Roombie"</span>;</span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string longest = find_longest_word(input); <span class="co">// "Roombie"</span></span></code></pre>
+    </div>
+    <p><strong>Podpowiedź:</strong> Sprawdź w dokumentacji metody <code>string::find()</code> oraz
+      <code>string::substr()</code>.
+    </p>
+    <hr>
+    <h3 id="-zadanie-4-podział-napisów">🛠 Zadanie 4: podział napisów</h3>
+    <p>Napisz funkcję <code>split</code> pozwalającą podzielić napis wejściowy na fragmenty i zwracającą wektor napisów.
+      Domyślnym separatorem fragmentów powinna być spacja, ale funkcja powinna mieć opcjonalny argument definiujący
+      <strong>znak</strong> separatora.
+    </p>
+    <p>Przykładowe użycie:</p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string sentence = <span class="st">"Ala ma kota"</span>;</span>
+<span id="cb11-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>string&gt; words = split(sentence); <span class="co">// wynik: {"Ala", "ma", "kota"}</span></span>
+<span id="cb11-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string csv = <span class="st">"Mount Everest,8848,1953"</span>;</span>
+<span id="cb11-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>string&gt; data = split(csv, <span class="ch">','</span>); <span class="co">// wynik: {"Mount Everest", "8848", "1953"}</span></span></code></pre>
+    </div>
+    <p><strong>Podpowiedź:</strong> Sprawdź w dokumentacji metody <code>string::find()</code> oraz
+      <code>string::substr()</code>.
+    </p>
+    <hr>
+    <h3 id="-zadanie-5-znajdź-i-zamień">🛠 Zadanie 5: znajdź i zamień</h3>
+    <p>Napisz funkcję <code>find_and_replace</code> pozwalającą podmienić szukaną frazę w napisie wejściowym na inną i
+      zwracającą napis po modyfikacji.</p>
+    <p>Przykładowe użycie:</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string input = <span class="st">"Ala ma kota, kot zjadl Ale!"</span>;</span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string output = find_and_replace(input, <span class="st">"kot"</span>, <span class="st">"hefalump"</span>);</span>
+<span id="cb12-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">// wynik: "Ala ma hefalumpa, hefalump zjadl Ale!"</span></span></code></pre>
+    </div>
+    <p><strong>Podpowiedź:</strong> Sprawdź w dokumentacji metody <code>string::find()</code> oraz
+      <code>string::replace()</code>.
+    </p>
+    <hr>
+    <h3 id="-zadanie-6-sortowanie-bąbelkowe">🛠 Zadanie 6: Sortowanie bąbelkowe</h3>
+    <p>Napisz funkcję sortującą przekazany do niej wektor liczb typu <code>double</code> przez sortowanie bombelkowe (
+      ͡° ͜ʖ ͡°)</p>
+    <p>Algorytm sortowania bąbelkowego porównuje kolejno sąsiednie pary elementów i zamienia je, jeśli są ułożone w złej
+      kolejności. Operacja powtarzana jest na całym zbiorze aż do momentu, kiedy w całym zbiorze nie zostaną zamienione
+      żadne elementy. Ponieważ z każdą iteracją największy element "wypływa" na koniec kolekcji, każda kolejna iteracja
+      może pomijać coraz więcej elementów z końca zbioru.</p>
+    <p>Poniżej przedstawiono schemat blokowy algorytmu (kliknij na obrazek aby powiększyć):</p>
+    <p><a href="http://jug.put.poznan.pl/lab-psio/_images/02/bubble_sort_vertical.svg"><img class="black-and-white"
+          src="img/bubble_sort_vertical_thumb.svg" alt="Sortowanie bombelkowe"></a></p>
+    <p>Przeanalizuj schemat, zastanów się za pomocą jakich pętli można opisać przebieg algorytmu.</p>
+    <hr>
+    <h3 id="-zadanie-7-przeszukiwanie-binarne">🛠 Zadanie 7: Przeszukiwanie binarne</h3>
+    <p>Napisz funkcję <code>binary_search</code> znajdującą zadaną wartość w posortowanej rosnąco kolekcji - wektorze
+      <code>double</code> - i zwracającą jej indeks. Wykorzystaj algorytm przeszukiwania binarnego, który dzieli
+      przeszukiwany zbiór na połowy, aż dotrze do poszukiwanego elementu:
+    </p>
+    <ol type="1">
+      <li>Sprawdź wartość <em>środkową</em> w kolekcji. Jeśli jest:</li>
+    </ol>
+    <ul>
+      <li>poszukiwaną wartością: koniec algorytmu</li>
+      <li>większa od poszukiwanej wartości: poszukiwany element znajduje się w pierwszej połowie kolekcji</li>
+      <li>mniejsza od poszukiwanej wartości: poszukiwany element znajduje się w drugiej połowie kolekcji</li>
+    </ul>
+    <ol start="2" type="1">
+      <li>Twój nowy zbiór to wybrana połowa.</li>
+      <li>Wróć do kroku <em>1</em> z nowym zbiorem wejściowym, aż do znalezienia poszukiwanego elementu lub wyczerpania
+        możliwości.</li>
+    </ol>
+    <p>Przykładowo, dla zbioru <em>1; 2; 5; 8; 9; 11; 15</em> i szukanego elementu <em>5</em>:</p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>indeks</th>
+          <th>0</th>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+          <th>5</th>
+          <th>6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td>wartość</td>
+          <td>1</td>
+          <td>2</td>
+          <td>5</td>
+          <td>8</td>
+          <td>9</td>
+          <td>11</td>
+          <td>15</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Wartość środkowa: <em>8</em>, wybieramy lewą połowę zbioru</p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>indeks</th>
+          <th>0</th>
+          <th>1</th>
+          <th>2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td>wartość</td>
+          <td>1</td>
+          <td>2</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Wartość środkowa: <em>2</em>, wybieramy prawą połowę zbioru</p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>indeks</th>
+          <th>2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td>wartość</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Wynik: wartość <em>5</em> znajduje się na pozycji <code>2</code></p>
+    <p>Pamiętaj, że zbiory mogą mieć parzystą lub nieparzystą liczbę elementów oraz o przypadku, gdzie nie szukany
+      element nie znajduje się w zbiorze - zwróć wtedy indeks <code>-1</code>.</p>
+    <hr>
+    <h3 id="-zadanie-8-kursy-walut">🛠 Zadanie 8: Kursy walut</h3>
+    <ol type="1">
+      <li>Wczytaj plik <a href="http://jug.put.poznan.pl/lab-psio/_resources/02/kursy_usd_eur.csv">kursy_usd_eur.csv</a>
+        zgodnie z wytycznymi z wprowadzenia</li>
+      <li>Posortuj plik względem kursu USD modyfikując algorytm sortowania bąbelkowego - twórz w tym celu 2 funkcje
+        <code>sort_usd(rates)</code> oraz <code>sort_eur(rates)</code> sortująca wektor z danymi kursów wg kursu USD i
+        EUR.
+      </li>
+      <li>Wyświetl 10 dni (datę oraz wartość), w których kurs USD był najwyższy</li>
+      <li>Wyświetl 10 dni (datę oraz wartość), w których kurs EUR był najniższy</li>
+      <li>Użyj przeszukiwania binarnego żeby sprawdzić, w którym dniu kurs USD wynosił 3.9011PLN</li>
+    </ol>
+    <hr>
+    <h3 id="-zadanie-9-temperatury">🛠 Zadanie 9: Temperatury</h3>
+    <ol type="1">
+      <li>Wczytaj plik <a href="http://jug.put.poznan.pl/lab-psio/_resources/02/temp02-2020.csv">temp02-2020.csv</a>
+        zawierający dane z pewnej stacji pogodowej rejestrowane w lutym 2020 roku. Dane powinny zostać umieszczone w
+        wektorze z elementem strukturalnym odpowiadającym poszczególnym kolumnom. Przeanalizuj pierwszy wiersz pliku i
+        określ co zawiera każda z kolumn oraz jaki jest separator</li>
+      <li>Określ minimalną, maksymalną oraz medianę temperatur. Sugestia: posortuj wektor danych względem temperatury.
+      </li>
+    </ol>
+    <hr>
+    <h3 id="-zadanie-10-znajdywanie-miejsca-zerowe-wielomianu-metodą-bisekcji">🛠 Zadanie 10: Znajdywanie miejsca zerowe
+      wielomianu metodą bisekcji</h3>
+    <ol type="1">
+      <li>
+        <p>Napisać funkcję <code>std::vector&lt;double&gt; p = get_poly(n)</code>, gdzie <code>p</code> jest wektorem
+          współczynników wielomianu, <code>n</code> liczbą elementów do pobrania od użytkownika (i rzędem wielomianu+1)
+        </p>
+      </li>
+      <li>
+        <p>Napisać funkcję <code>double res = poly(x,p)</code>, gdzie <code>p</code> jest wektorem współczynników
+          wielomianu rzędu <code>n = p.size()-1</code>, a <code>x</code> wartością, dla której należy obliczyć wartość
+          wielomianu:</p>
+        <p><code>y(x) = p[0] + p[1] * x + p[2] * x^2 + ... + p[n] * x^n;</code></p>
+      </li>
+      <li>
+        <p>Napisać funkcję:</p>
+        <div class="sourceCode" id="cb13">
+          <pre
+            class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb13-1" aria-hidden="true" tabindex="-1"></a>vector&lt;<span class="dt">double</span>&gt; zeros = zero(x_min,x_max, p, step); </span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">//oraz funkcja pomocnicza</span></span>
+<span id="cb13-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2002%20-%20Algorytmy.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">double</span> x=zero_r(x1,x1+step,p);</span></code></pre>
+        </div>
+        <ul>
+          <li>funkcja <code>zero(...)</code> przeszukuje zakres wielomianu <code>p</code> od <code>x_min</code> do
+            <code>x_max</code> z krokiem <code>step</code> i zwraca wektor zawierający wszystkie miejsca zerowe
+            wielomianu w tym zakresie.
+          </li>
+          <li>gdy znajdzie taką para <code>x1 = x_min+k*step</code> i <code>x2 = x_min+(k+1)*step</code>, dla której
+            zmienia się znak wielomianu, wywołuje dla tego przedziału rekurencyjną funkcję
+            <code>zero_r(bottom,top,p)</code>.
+          </li>
+          <li>funkcja <code>zero_r(bottom,top,p)</code> wyznacza kolejne przybliżenia miejsca zerowego wielomianu
+            <code>p</code> metodą przeszukiwania binarnego.
+            <ul>
+              <li>W każdym kroku zakres poszukiwań (<code>top-bottom</code>) funkcja <code>zero_r</code> wyznacza
+                wartość miejsca zerowego dla początku, końca i środka przedziału</li>
+              <li>wywołuje rekurencyjnie zero_r w przedziale <code>(bottom,middle)</code> lub <code>(middle, top)</code>
+                w zależności os tego, w którym z nich leży miejsce zerowe (wartość wielomianu dla początku i końca
+                przedziału maja różne znaki).</li>
+              <li>Funkcja rekurencyjna kończy działanie (zwraca wynik gdy szerokość zakresu ('top-bottom') będzie
+                <code>&lt;1e-9</code>.
+              </li>
+              <li>Przykładowy sposób działania algorytmu bisekcji przedstawiono na rysunku <a
+                  href="img/bisection.png"><img class="black-and-white" src="img/bisection.png" alt="bisekcja.png"></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <hr>
+    <p>Autorzy: <em>Jakub Tomczyński</em>, <em>Piotr Kaczmarek</em></p>
+  </main>
+
+
+</body>
+
+</html>

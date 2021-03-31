@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 06 - Klasy - rozszerzenie</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 06 - Klasy - rozszerzenie</h1>
+    </header>
+    <h1 id="lab-06---klasy-i-wzorce---usystematyzowanie-wiadomości">Lab 06 - Klasy i wzorce - usystematyzowanie
+      wiadomości</h1>
+    <h2 id="informacje-wstępne">Informacje wstępne</h2>
+    <h3 id="use-case-klasy-histogram">Use case klasy Histogram</h3>
+    <p>Jako przykład wprowadzający stworzymy klasę histogram, której celem jest reprezentacja częstości wystąpień
+      konkretnych elementów zbioru. Histogram reprezentuję częstość wystąpień elementów w pewnym zbiorze</p>
+    <p><a href="img/histogram.png"><img class="black-and-white" src="img/histogram.png" alt="histogram"></a></p>
+    <p>Klasa histogramu powinna umożliwiać gromadzenie danych i ich integrację, wizualizację oraz konwersję. Dla
+      przykładowego zbioru danych z rysunku, wprowadzenie pełnego zbioru przedstawionego na rysunku powinno skutkować
+      stworzeniem następującej reprezentacji wewnętrznej histogramu:</p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>przedział</th>
+          <th>wartość</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td>1</td>
+          <td>4</td>
+        </tr>
+        <tr class="even">
+          <td>2</td>
+          <td>2</td>
+        </tr>
+        <tr class="odd">
+          <td>7</td>
+          <td>1</td>
+        </tr>
+        <tr class="even">
+          <td>8</td>
+          <td>1</td>
+        </tr>
+        <tr class="odd">
+          <td>9</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>W dalszym przykładzie zastosowania klasy zostanie stworzona klasa <code>Histogram</code> umożliwiająca
+      reprezentację ocen. Dane wejściowe zawierają wyniki pewnego egzaminu wyrażone w punktach w skali 0-10pkt. W
+      ogólności, histogram może reprezentować częstość występowania danych w przedziałach obejmujących kilka wartości
+      elementów (wtedy liczba przedziałów będzie mniejsza niż liczba unikalnych wartości zbioru danych). W przykładzie
+      jednak zakładamy, że każda unikalna wartość jest osobnym przedziałem histogramu.</p>
+    <p>Zakładamy przy tym następujący use case:</p>
+    <h4 id="definiowanie-obiektów-konstruktory">Definiowanie obiektów (konstruktory)</h4>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb1-1" aria-hidden="true" tabindex="-1"></a>Histogram hist; <span class="co">//Konstruktor domyślny</span></span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb1-2" aria-hidden="true" tabindex="-1"></a>Histogram hist_2(<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;({<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">12</span>})); <span class="co">// definiuje obiekt wywołując konstruktor inicjujący go listą wyników w punktach</span></span></code></pre>
+    </div>
+    <h4 id="metody-wprowadzania-i-modyfikacji-danych-do-histogramu">Metody wprowadzania i modyfikacji danych do
+      histogramu</h4>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-1" aria-hidden="true" tabindex="-1"></a>    hist.emplace(<span class="dv">20</span>); <span class="co">//dodaje ocenę 20pkt</span></span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    hist.emplace(<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;({<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">6</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">12</span>}));</span>
+<span id="cb2-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    hist &lt;&lt; <span class="dv">10</span> &lt;&lt; <span class="dv">12</span> &lt;&lt; <span class="dv">20</span> &lt;&lt; <span class="dv">21</span>; <span class="co">// kolejne elementy zawierają punktację poszczególnych studentów</span></span>
+<span id="cb2-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    cin &gt;&gt; hist; <span class="co">// pobiera dane od użytkownika (pobierając najpierw liczbę wyników, które chce wprowadzić)</span></span>
+<span id="cb2-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    hist.from_csv(<span class="st">R"(../wyniki.csv)"</span>, <span class="ch">','</span>, <span class="dv">4</span>); <span class="co">//wczytuje plik csv, argumentami są nazwa pliku, separator kolumn oraz index kolumny w której znajdują się dane dla histogramu</span></span>
+<span id="cb2-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb2-11" aria-hidden="true" tabindex="-1"></a>    hist_2.clear(); <span class="co">//usuwa wszystkie dane z histogramu // jeśli dane nie zostaną usunięte kolejne wywołania operatora zapisu do strumienia lub</span></span></code></pre>
+    </div>
+    <h4 id="operacje-na-histogramie">Operacje na histogramie</h4>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">using</span> Bin = <span class="dt">int</span>; <span class="co">// alias typu wartości dla przedziału histogramu</span></span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">using</span> Frequency = <span class="dt">int</span>; <span class="co">// alias typu wartości dla częstości wystąpień</span></span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; hist; <span class="co">// zapis histogramu do strumienia tekstowego</span></span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>ofstream file(<span class="st">"histogram.txt"</span>);</span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    file &lt;&lt; hist; <span class="co">// zapis histogramu do pliku (identycznie jak dla wyświetlenia go na konsoli)</span></span>
+<span id="cb3-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> freq = hist[<span class="fl">10.5</span>]; <span class="co">// zwraca częstość dla przedziału do którego należy wartość 10.5</span></span>
+<span id="cb3-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;Bin, Bin&gt; range = hist.range(); <span class="co">// zwraca początkowy i końcowy przedział.</span></span>
+<span id="cb3-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;Bin, Frequency&gt; max = hist.max(); <span class="co">// zwraca najczęściej występujący przedział oraz jego częstość</span></span>
+<span id="cb3-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;Bin&gt; bins = hist.unique_bins(); <span class="co">// zwraca listę unikalnych, niepustych przedziałów</span></span>
+<span id="cb3-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-15" aria-hidden="true" tabindex="-1"></a>                                                </span>
+<span id="cb3-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>pair&lt;Bin, Frequency&gt;&gt; items = hist.unique_items(); <span class="co">// zwraca listę niepustych przedziałów oraz częstość wystąpień</span></span>
+<span id="cb3-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">//konwersja na inne typy</span></span>
+<span id="cb3-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">using</span> BinsVector = <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>pair&lt;Bin, Frequency&gt;&gt;;</span>
+<span id="cb3-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-20" aria-hidden="true" tabindex="-1"></a>    BinsVector items_vect = <span class="kw">static_cast</span>&lt;BinsVector&gt;(hist); <span class="co">// operator rzutowania działa tak samo jak  Histogram::unique_items</span></span>
+<span id="cb3-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb3-21" aria-hidden="true" tabindex="-1"></a>    print(items_vect); <span class="co">// zewnętrzna funkcja wyświetlająca wektor elementów histogramu</span></span></code></pre>
+    </div>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <ol type="1">
+      <li>Przeanalizuj powyższy przykład użycia oraz umieszczone komentarze wyjaśniające. W oparciu o swoją
+        dotychczasową wiedzę (nie analizując dalszego ciągu wprowadzenia) wyodrębnij konstruktory, metody oraz operatory
+        niezbędne do jego uruchomienia. Zastanów się jakie atrybuty (pola) musi mieć klasa <code>Histogram</code>, tak
+        by możliwa była reprezentacja i uaktualnianie histogramu. <strong>Podpowiedź:</strong> Na zajęciach Lab04
+        realizowałeś program wyświetlający częstość wystąpień słów z pliku tekstowego, zastanów się jak wykorzystaną tam
+        reprezentację zastosować w klasie <code>Histogram</code>. Jeśli masz problem ze stworzeniem odpowiedniej
+        reprezentacji metod i konstruktora, zapoznaj się z:
+        <ul>
+          <li><a
+              href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html">instrukcją
+              wprowadzającą do programowania obiektowego</a></li>
+          <li><a
+              href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html">instrukcją
+              wprowadzającą do operatorów</a></li>
+        </ul>
+      </li>
+      <li>Deklarację klasy umieść w pliku nagłówkowym <code>histogram.h</code> i dołącz go do swojego pliku źródłowego
+        zawierającego funkcję główną oraz zamieszczony powyżej przykład użycia. Spróbuj skompilować program, zobacz dla
+        których linii przykładu użycia kompilator zwraca błąd (np. <code>Identifier ... not found</code>,
+        <code>no member named ...</code>, <code>no variable conversion from...</code>). Jeśli proces budowania wyświetla
+        tylko błędy linkera (<code>undefined reference to ...</code>), oznacza to ze udało Ci się stworzyć deklarację
+        klasy zgodną z przykładem użycia.
+      </li>
+    </ol>
+    <p>Pamiętaj, żeby plik nagłówkowy zawierał dyrektywy preprocesora pełniące rolę strażnika załączenia:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-1" aria-hidden="true" tabindex="-1"></a>        <span class="pp">#ifndef HISTOGRAM_H</span></span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-2" aria-hidden="true" tabindex="-1"></a>        <span class="pp">#define HISTOGRAM_H</span></span>
+<span id="cb4-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">class</span> Histogram</span>
+<span id="cb4-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb4-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">//deklaracje pól i metod</span></span>
+<span id="cb4-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-9" aria-hidden="true" tabindex="-1"></a>        };</span>
+<span id="cb4-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="pp">#endif</span></span></code></pre>
+    </div>
+    <p>ewentualnie:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-1" aria-hidden="true" tabindex="-1"></a>        <span class="pp">#pragma once</span></span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">class</span> Histogram</span>
+<span id="cb5-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-4" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb5-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">//deklaracje pól i metod</span></span>
+<span id="cb5-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb5-8" aria-hidden="true" tabindex="-1"></a>        };</span></code></pre>
+    </div>
+    <ol start="3" type="1">
+      <li>Popraw deklarację klasy <code>Histogram</code> stosując następujące zalecenia:
+        <ul>
+          <li>wszystkie pola klasy deklaruj jako prywatne,</li>
+          <li>wszystkie obiekty przekazywane jako argument metody/funkcji, powinny być przekazywane przez referencję
+            <code>Type &amp;param</code> (jeśli funkcja/metoda je modyfikuje) lub referencję do stałej
+            <code>const Type&amp; param</code> (jeśli są wykorzystywane do odczytu) - zabieg ten pozwoli na skrócenie
+            czasu wykonania metody, ponieważ argument nie będzie kopiowany,
+          </li>
+          <li>wszystkie metody, które nie modyfikują zawartości obiektu (należące do grupy przykładu użycia
+            <code>Operacje na histogramie</code>) zadeklaruj jako metody stałe (umieszczając słowo kluczowe
+            <code>const</code> na końcu deklaracji metody). Stosowanie metod stałych umożliwia ich wywołanie dla
+            obiektu, który jest stałą (np. został przekazany jako referencja do stałej). Ponadto, dzięki temu w
+            interfejsie klasy możemy jawnie wskazać, które metody nie modyfikują wewnętrznego stanu obiektu. np. dla
+            metody <code>range</code>:
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">// deklaracja wewnątrz deklaracji klasy Histogram (plik histogram.h):</span></span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>pair&lt;Bin, Bin&gt; range() <span class="at">const</span>;</span>
+<span id="cb6-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">//-------------------------</span></span>
+<span id="cb6-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">// definicja (plik histogram.cpp)</span></span>
+<span id="cb6-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>pair&lt;Bin, Bin&gt; Histogram::range() <span class="at">const</span>{</span>
+<span id="cb6-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="co">// ciało funkcji</span></span>
+<span id="cb6-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> {min,max};</span>
+<span id="cb6-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb6-9" aria-hidden="true" tabindex="-1"></a>        }</span></code></pre>
+    </div>
+    <ol start="4" type="1">
+      <li>
+        <p>Po stworzeniu prawidłowej deklaracji spróbuj stworzyć definicje poszczególnych metod klasy
+          <code>Histogram</code> umieszczając je w odrębnym pliku <code>histogram.cpp</code>. W metodach tj.
+          <code>Histogram::max</code>, <code>Histogram::unique_items</code> spróbuj wykorzystać algorytmy STL
+          <code>std::max_element</code>, <code>std::copy</code> a jeśli trzeba, wyrażenia lambda.
+        </p>
+      </li>
+      <li>
+        <p>Spróbuj zaimplmenetować uniwersalną metodę wczytującą <code>Histogram::from_csv</code> z argumentami
+          umożliwiającymi podanie nazwy pliku, separatora elementów oraz kolumny w której znajdują się wartości
+          wejściowe dla histogramu. Wczytaj załączony do zadania <a
+            href="http://jug.put.poznan.pl/lab-psio/_resources/wyniki.csv">plik</a>, który zawiera wyniki egzaminu w
+          formie tabelarycznej, oddzielonej przecinkami, a wynik punktowy danej osoby jest w kolumnie 5. Uruchom
+          przykład przekazując pobrany plik z danymi, możesz go również przetestować na danych z innym separatorem i
+          układem kolumn.</p>
+      </li>
+    </ol>
+    <h3 id="deklaracja-klasy-histogram">Deklaracja klasy <code>Histogram</code></h3>
+    <p>Poniższej zaprezentowano pełną deklarację klasy histogram, jednak zachęcamy Ciebie żebyś z niej skorzystał tylko
+      w celu weryfikacji lub porównania napisanego przez Ciebie kodu.</p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Histogram</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb7-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>map&lt;<span class="dt">int</span>, <span class="dt">int</span>&gt; <span class="va">bins_</span>;</span>
+<span id="cb7-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">using</span> BinsVector = <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>pair&lt;<span class="dt">int</span>, <span class="dt">int</span>&gt;&gt;;</span>
+<span id="cb7-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb7-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-8" aria-hidden="true" tabindex="-1"></a>    Histogram(<span class="at">const</span> <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; &amp;data = <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;());</span>
+<span id="cb7-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> emplace(<span class="dt">int</span> v);</span>
+<span id="cb7-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> emplace(<span class="at">const</span> <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; &amp;data);</span>
+<span id="cb7-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> clear();</span>
+<span id="cb7-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> from_csv(<span class="at">const</span> <span class="bu">std::</span>string &amp;filename, <span class="dt">char</span> delim = <span class="ch">','</span>, <span class="dt">int</span> column_idx = <span class="dv">4</span>);</span>
+<span id="cb7-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;<span class="dt">int</span>, <span class="dt">int</span>&gt; max() <span class="at">const</span>;</span>
+<span id="cb7-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;<span class="dt">int</span>, <span class="dt">int</span>&gt; range() <span class="at">const</span>;</span>
+<span id="cb7-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; unique_bins() <span class="at">const</span>;</span>
+<span id="cb7-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-17" aria-hidden="true" tabindex="-1"></a>    BinsVector unique_items() <span class="at">const</span>;</span>
+<span id="cb7-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-19" aria-hidden="true" tabindex="-1"></a>    Histogram&amp; <span class="kw">operator</span>&lt;&lt;(<span class="dt">int</span> v);</span>
+<span id="cb7-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">static</span> Histogram generate(<span class="dt">int</span> min, <span class="dt">int</span> max, <span class="dt">int</span> count);<span class="co">// tworzy histogram zawierający wartości losowe, gdzie kolejne argumenty oznaczają wartość minimalną, maksymalną, liczbę elementów</span></span>
+<span id="cb7-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="kw">operator</span>[](<span class="dt">int</span> v) <span class="at">const</span>; <span class="co">// zwraca częstość dla binu w indeksie</span></span>
+<span id="cb7-22"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">operator</span> BinsVector(); <span class="co">// operator konwersji na typ `BinsVector` (`std::vector&lt;std::pair&lt;int, int&gt;&gt;`)</span></span>
+<span id="cb7-23"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">friend</span> <span class="bu">std::</span>istream &amp;<span class="kw">operator</span>&gt;&gt;(<span class="bu">std::</span>istream &amp;str, Histogram &amp;hist);</span>
+<span id="cb7-25"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">friend</span> <span class="bu">std::</span>ostream &amp;<span class="kw">operator</span>&lt;&lt;(<span class="bu">std::</span>ostream &amp;str, <span class="at">const</span> Histogram &amp;hist);</span>
+<span id="cb7-26"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb7-26" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <h3 id="metody-statyczne">Metody statyczne</h3>
+    <p>Załóżmy, że przykład użycia wzbogacony zostanie o możliwość inicjacji wartościami losowymi.</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb8-1" aria-hidden="true" tabindex="-1"></a>Histogram hist_3 = Histogram::generate(-<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">100</span>); <span class="co">// tworzy histogram zawierający wartości losowe, gdzie kolejne argumenty oznaczają wartość minimalną, maksymalną, liczbę elementów</span></span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb8-2" aria-hidden="true" tabindex="-1"></a>Histogram hist_3 = Histogram::generate(<span class="dv">100</span>, [](){ <span class="cf">return</span> -<span class="dv">10</span> + rand() % <span class="dv">21</span>; }); <span class="co">// tworzy histogram zawierający wartości losowe,  liczbę elementów do losowania oraz wskaźnik do funkcji losującej pojedynczy element</span></span></code></pre>
+    </div>
+    <p>Żeby napisać deklaracje i definicje metod <code>Histogram::generate</code> z przykładu użycia trzeba wyjaśnić 2
+      zagadnienia</p>
+    <h4 id="metody-statyczne-1">Metody statyczne</h4>
+    <p>Podane wyżej metody <code>Histogram::generate</code> są wywoływane bez konieczności użycia obiektu (instancji
+      klasy). Metody takie nazywa się metodami statycznymi.</p>
+    <ul>
+      <li>Deklaracja metody statycznej jest identyczna jak zwykłej metody tylko przed deklaracją umieszczone jest słowo
+        kluczowe <code>static</code>.</li>
+      <li>Definicja metody statycznej podlega pewnym ograniczeniom, ponieważ nie może ona odwoływać się do pól oraz
+        metod, które nie są statyczne.</li>
+    </ul>
+    <p>deklaracja metody <code>Histogram::generate</code> pasującej do pierwszego przykładu użycia może mieć postać:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="at">static</span> Histogram generate(<span class="dt">int</span> min, <span class="dt">int</span> max, <span class="dt">int</span> counter);</span></code></pre>
+    </div>
+    <p>Natomiast definicja może mieć postać:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-1" aria-hidden="true" tabindex="-1"></a>Histogram Histogram::generate(<span class="dt">int</span> count, <span class="dt">int</span> (*func_ptr)())</span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    Histogram h;</span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; counter; i++)</span>
+<span id="cb10-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-5" aria-hidden="true" tabindex="-1"></a>        h.emplace(func_ptr());</span>
+<span id="cb10-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> h;</span>
+<span id="cb10-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <h4 id="wskaźniki-do-funkcji">Wskaźniki do funkcji</h4>
+    <p>W drugim przykładzie użycia <code>Histogram::generate</code>, jako argument przekazywana jest funkcja generująca
+      pojedynczą próbkę. Dotychczas przekazywałeś wielokrotnie funkcję jako argument wywołania (np. w algorytmach STL),
+      teraz dowiesz się w jaki sposób zdefiniować funkcję, której argumentem jest wyrażenie lambda lub inna funkcja.</p>
+    <p>W ogólności, dla funkcji zadeklarowanej jako:</p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb11-1" aria-hidden="true" tabindex="-1"></a> typ_zwracany nazwa_funkcji(typ_arg1, typ_arg2);</span></code></pre>
+    </div>
+    <p>Funkcja ta, może być reprezentowana i wywoływana za pomocą swojej nazwy lub wskaźnika definiowanego następująco:
+    </p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb12-1" aria-hidden="true" tabindex="-1"></a> typ_zwracany (*nazwa_wskaznika)(typ_arg1, typ_arg2)); <span class="co">// deklaracja zmiennej typu wskaźnik do funkcji</span></span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb12-2" aria-hidden="true" tabindex="-1"></a> nazwa_wskaznika = nazwa_funkcji; <span class="co">// przypisanie funkcji 'nazwa_funkcji' do wskaźnika</span></span>
+<span id="cb12-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb12-4" aria-hidden="true" tabindex="-1"></a> nazwa_wskaznka(arg1, arg2); <span class="co">//wywołanie funkcji 'nazwa_funkcji' przez wskaźnik do funkcji - wywołanie jest równoważne zapisowi nazwa_funkcji(arg1, arg2)</span></span></code></pre>
+    </div>
+    <p>podczas deklarowania typów funkcyjnych, użyteczne może być wykorzystanie aliasów <code>using</code>:</p>
+    <div class="sourceCode" id="cb13">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb13-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">using</span> typ_funkcji = typ_zwracany (*)(typ_arg1, typ_arg2); <span class="co">// zdefiniowanie typu funkcji</span></span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb13-2" aria-hidden="true" tabindex="-1"></a> typ_funkcji nazwa_wskaznika = <span class="kw">nullptr</span>; <span class="co">// deklaracji wskaźnika na funkcję (chwilowo nie wskazuje na nic)</span></span>
+<span id="cb13-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="co">// - deklaracja wygląda jak deklaracja zwykłej zmiennej</span></span>
+<span id="cb13-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb13-4" aria-hidden="true" tabindex="-1"></a> nazwa_wskaznika = nazwa_funkcji; <span class="co">// przypisanie  funkcji `nazwa_funkcji` do wskaźnika</span></span>
+<span id="cb13-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb13-6" aria-hidden="true" tabindex="-1"></a> typ_funkcji nazwa_wskaznika2 = nazwa_funkcji; <span class="co">// analogicznie do poporzedniego przykładu</span></span></code></pre>
+    </div>
+    <p>Przypisanie funkcji do wskaźnika jest możliwe wtedy i tylko wtedy gdy ściśle zgodny jest typ funkcji oraz typy i
+      liczba argumentów</p>
+    <p>Załóżmy następujące funkcje:</p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> sum (<span class="dt">float</span> a, <span class="dt">float</span> b){</span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a + b;</span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> mul (<span class="dt">float</span> a, <span class="dt">float</span> b){</span>
+<span id="cb14-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a * b;</span>
+<span id="cb14-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb14-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Wtedy możliwe jest następujące wykorzystanie wskaźnika do funkcji:</p>
+    <div class="sourceCode" id="cb15">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> (*operacja)(<span class="dt">float</span> a, <span class="dt">float</span> b); <span class="co">//deklaracja zmiennej typu wskaźnik do funkcji</span></span>
+<span id="cb15-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">// lub równoważnie</span></span>
+<span id="cb15-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> operacja_typ = <span class="dt">float</span> (*)(<span class="dt">float</span> a, <span class="dt">float</span> b); <span class="co">// definicja typu</span></span>
+<span id="cb15-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-4" aria-hidden="true" tabindex="-1"></a>operacja_typ operacja; <span class="co">// deklaracja zmiennej typu wskaźnik do funkcji</span></span>
+<span id="cb15-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-6" aria-hidden="true" tabindex="-1"></a>operacja = sum; <span class="co">// przypisuje funkcję sum</span></span>
+<span id="cb15-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; operacja(<span class="dv">3</span>, <span class="dv">3</span>); <span class="co">// wyswietli 6 - dodawanie</span></span>
+<span id="cb15-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-9" aria-hidden="true" tabindex="-1"></a>operacja = mul; <span class="co">// przypisuje funkcję mul</span></span>
+<span id="cb15-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; operacja(<span class="dv">3</span>, <span class="dv">3</span>); <span class="co">// wyswietli 9 - mnożenie</span></span>
+<span id="cb15-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-12" aria-hidden="true" tabindex="-1"></a>operacja = [](<span class="dt">float</span> a, <span class="dt">float</span> b){ <span class="cf">return</span> a - b;}; <span class="co">// przypisuje wyrażenie lambda</span></span>
+<span id="cb15-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; operacja(<span class="dv">3</span>, <span class="dv">3</span>); <span class="co">// wyswietli 0 - odejmowanie za pomocą wyrażenia lambda</span></span></code></pre>
+    </div>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <ol start="6" type="1">
+      <li>Wskaźnik do funkcji może również być argumentem wywołania innej funkcji, wtedy jeden z argumentów funkcji jest
+        typu wskaźnika do funkcji określającego typ, oraz argumenty funkcji. Na podstawie przedstawionych powyżej
+        informacji stwórz deklarację i definicję metody statycznej <code>Histogram::generate</code> umożliwiającej
+        wywołanie w postaci:</li>
+    </ol>
+    <div class="sourceCode" id="cb16">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb16-1" aria-hidden="true" tabindex="-1"></a>    Histogram hist_3 = Histogram::generate(<span class="dv">100</span>, [](){ <span class="cf">return</span> -<span class="dv">10</span> + rand() % <span class="dv">21</span>; }); <span class="co">// tworzy histogram zawierający wartości losowe,  liczbę elementów do losowania oraz wskaźnik do funkcji losującej pojedynczy element</span></span></code></pre>
+    </div>
+    <h3 id="szablony">Szablony</h3>
+    <h4 id="funkcje-szablonowe">Funkcje szablonowe</h4>
+    <p>Szablony (ang. templates) są kolejnym mechanizmem wprowadzonym w języku C++ pozwalającym zmniejszyć częstość
+      pojawianie się duplikatów w kodzie.</p>
+    <!--Przykładowo załóżmy, że mamy zdefiniowane trzy wektory o następujących typach:
+
+```cpp
+std::vector<double> vec_double;
+std::vector<int> vec_int;
+std::vector<complex> vec_complex;
+```
+
+oraz chcemy zaimplementować podstawowe operacje na tych wektorach takie jak mnożenie, dodawanie, odejmowanie. W klasycznym podejściu konieczne jest zaimplementowanie oddzielnego zestawu funkcji dla każdego typu:
+
+```cpp
+std::vector<double> add(const std::vector<double>& A,
+                        const std::vector<double>& B);
+
+std::vector<int> add(const std::vector<int>& A,
+                     const std::vector<int>& B);
+
+std::vector<complex> add(const std::vector<complex>& A,
+                         const std::vector<complex>& B);
+```
+
+pomimo tego, że algorytm i implementacja są praktycznie identyczne. Aby uniknąć takiego powtarzania można wykorzystać szablony, które zamienią fragment implementacji we wzór, który będzie modyfikowany w zależności od potrzeb programisty. -->
+
+    <p>Szablonem w C++ może zostać dowolna funkcja, metoda, struktura czy klasa poprzez dodanie słowa kluczowego
+      <code>template</code> oraz listy parametrów szablonowych <code>&lt;typename T&gt;</code> przed
+      deklaracją/definicją odpowiedniego elementu.
+    </p>
+    <!-- Na przykład dla powyższych funkcji wykorzystanie wygląda następująco:
+
+```cpp
+template <typename T>
+std::vector<T> add(const std::vector<T>& A,
+                   const std::vector<T>& B){
+                       return A+B; //musi istnieć operator+ dla danego typu
+                   }
+```
+
+a wykorzystanie następująco:
+
+```cpp
+add(vec_double, vec_double);
+add(vec_int, vec_int);
+add(vec_complex, vec_complex);
+```
+
+Wywołanie funkcji dodaj wygląda identycznie jak w przypadku klasycznym, jednakże główną różnicą jest to, że nie jest konieczne przeciążanie i implementowanie funkcji dla każdego możliwego typu. Kompilator sam zadba o wygenerowanie odpowiedniej implementacji na podstawie szablonu. Jednak takie wywołanie jest możliwe, tylko wówczas, gdy co najmniej jeden z argumentów musi być typu szablonowego. -->
+
+    <p>Załóżmy, że mamy dany szablon funkcji</p>
+    <div class="sourceCode" id="cb17">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> &lt;<span class="kw">typename</span> T&gt;</span>
+<span id="cb17-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt; createMatrix(<span class="dt">int</span> m, <span class="dt">int</span> n) {</span>
+<span id="cb17-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb17-3" aria-hidden="true" tabindex="-1"></a>\\ ...</span>
+<span id="cb17-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb17-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Zadaniem powyższej funkcji ma być utworzenie i zwrócenie macierzy o wymiarach <code>m</code> na <code>n</code>.
+      Gdybyśmy mieli do czynienia z konkretnym typem np. <code>int</code> to macierz mogłaby zostać utworzona w
+      następujący sposób:</p>
+    <div class="sourceCode" id="cb18">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;&gt; A(m);</span>
+<span id="cb18-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb18-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb18-3" aria-hidden="true" tabindex="-1"></a>       A[i] = <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;(n);</span>
+<span id="cb18-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre>
+    </div>
+    <p>Dla typu szablonowego zapis jest analogiczny:</p>
+    <div class="sourceCode" id="cb19">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb19-1" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt; A(m);</span>
+<span id="cb19-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb19-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb19-3" aria-hidden="true" tabindex="-1"></a>       A[i] = <span class="bu">std::</span>vector&lt;T&gt;(n);</span>
+<span id="cb19-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb19-4" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre>
+    </div>
+    <p>W momencie procesu specjalizacji szablonu <code>T</code> zostanie zastąpione odpowiednim typem wskazanym przez
+      użytkownika/programistę.</p>
+    <p>Kompletna funkcja będzie miała następującą postać:</p>
+    <div class="sourceCode" id="cb20">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> &lt;<span class="kw">typename</span> T&gt; </span>
+<span id="cb20-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt; createMatrix(<span class="dt">int</span> m, <span class="dt">int</span> n) {</span>
+<span id="cb20-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt; A(m);</span>
+<span id="cb20-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb20-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-5" aria-hidden="true" tabindex="-1"></a>        A[i] = <span class="bu">std::</span>vector&lt;T&gt;(n);</span>
+<span id="cb20-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A;</span>
+<span id="cb20-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb20-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Ponieważ wśród jawnych argumentów funkcji nie pojawia się żaden z typem <code>T</code> w związku z tym trzeba
+      wprost określić ten typ w czasie wywołania, tzn.:</p>
+    <div class="sourceCode" id="cb21">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;&gt; A1 = createMatrix&lt;<span class="dt">int</span>&gt;(<span class="dv">5</span>,<span class="dv">5</span>);</span>
+<span id="cb21-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt;&gt; A2 = createMatrix&lt;<span class="dt">float</span>&gt;(<span class="dv">5</span>,<span class="dv">5</span>);</span>
+<span id="cb21-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;complex&gt;&gt; A3 = createMatrix&lt;complex&gt;(<span class="dv">5</span>,<span class="dv">5</span>);</span></code></pre>
+    </div>
+    <p>W momencie kompilacji na podstawie zostaną wygenerowane następujące funkcje:</p>
+    <div class="sourceCode" id="cb22">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;&gt; createMatrix(<span class="dt">int</span> m, <span class="dt">int</span> n) {</span>
+<span id="cb22-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;&gt; A(m);</span>
+<span id="cb22-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb22-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-4" aria-hidden="true" tabindex="-1"></a>        A[i] = <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt;(n);</span>
+<span id="cb22-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A;</span>
+<span id="cb22-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt;&gt; createMatrix(<span class="dt">int</span> m, <span class="dt">int</span> n) {</span>
+<span id="cb22-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt;&gt; A(m);</span>
+<span id="cb22-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb22-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-11" aria-hidden="true" tabindex="-1"></a>       A[i] = <span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt;(n);</span>
+<span id="cb22-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A;</span>
+<span id="cb22-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;complex&gt;&gt; createMatrix(<span class="dt">int</span> m, <span class="dt">int</span> n) {</span>
+<span id="cb22-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;complex&gt;&gt; A(m);</span>
+<span id="cb22-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb22-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-18" aria-hidden="true" tabindex="-1"></a>        A[i] = <span class="bu">std::</span>vector&lt;complex&gt;(n);</span>
+<span id="cb22-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb22-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> A;</span>
+<span id="cb22-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb22-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Oczywiście trzeba tutaj zaznaczyć, że gdybyśmy ręcznie powyższe funkcje zaimplementowali w ten sposób kompilacja
+      by się nie powiodła -- mamy trzy funkcje o tej samej nazwie i liście argumentów.</p>
+    <p>Kolejny przypadek wykorzystania szablonów obejmuje występowanie typu szablonowego na liście argumentów funkcji,
+      np.:</p>
+    <div class="sourceCode" id="cb23">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> &lt;<span class="kw">typename</span> T&gt;</span>
+<span id="cb23-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt; copy(<span class="at">const</span> <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt;&amp; matrix) {</span>
+<span id="cb23-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">unsigned</span> <span class="dt">int</span> m = matrix.size();</span>
+<span id="cb23-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">unsigned</span> <span class="dt">int</span> n = matrix[<span class="dv">0</span>].size();</span>
+<span id="cb23-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;T&gt;&gt; matrixCopy = createMatrix(m, n);</span>
+<span id="cb23-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> i = <span class="dv">0</span>; i &lt; m; i++) {</span>
+<span id="cb23-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (<span class="dt">unsigned</span> <span class="dt">int</span> j = <span class="dv">0</span>; j &lt; n; j++) {</span>
+<span id="cb23-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-9" aria-hidden="true" tabindex="-1"></a>         matrixCopy[i][j] = matrix[i][j];</span>
+<span id="cb23-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> matrixCopy;</span>
+<span id="cb23-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Przykład programu wykorzystujący tę funkcję może wyglądać następująco:</p>
+    <div class="sourceCode" id="cb24">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> A = createMatrix&lt;<span class="dt">int</span>&gt;(<span class="dv">5</span>, <span class="dv">6</span>);</span>
+<span id="cb24-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">auto</span> B = copy(A);</span></code></pre>
+    </div>
+    <p>Jak można zauważyć w wywołaniu funkcji <code>copy</code> nie potrzeba już jawnie określać typu szablonu.</p>
+    <h4 id="szablony-struktur-i-klas">Szablony struktur i klas</h4>
+    <p>Zdefiniowanie szablonów struktury lub klasy polega na umieszczeniu przed jej deklaracją słowa kluczowego
+      <code>template </code>oraz listy parametrów szablonowych <code>&lt;typename T&gt;</code>. Załóżmy, że chcemy
+      stworzyć szablon klasy <code>Histogram</code> tak by możliwe było zliczanie nie tylko liczb całkowitych (jak w
+      poprzenim przykłądzie, lecz również elementów dowolnych typów. Dla uprzednio zdefiniowanej klasy
+      <code>Histogram</code> wykorzystanie szablonów wygląda następująco: (<em>funkcje i klasy szablonowe wraz z
+        implementacją umieszcza się w 99% przypadków w plikach nagłówkowych</em>)
+    </p>
+    <div class="sourceCode" id="cb25">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">// fragment klasy Histogram z poprzednich przykładów</span></span>
+<span id="cb25-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> &lt;<span class="kw">typename</span> T&gt;</span>
+<span id="cb25-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Histogram</span>
+<span id="cb25-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb25-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>map&lt;T, <span class="dt">int</span>&gt; <span class="va">bins_</span>;</span>
+<span id="cb25-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">using</span> BinsVector = <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>pair&lt;T, <span class="dt">int</span>&gt;&gt;;</span>
+<span id="cb25-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb25-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-10" aria-hidden="true" tabindex="-1"></a>    Histogram(<span class="at">const</span> <span class="bu">std::</span>vector&lt;T&gt; &amp;data = <span class="bu">std::</span>vector&lt;T&gt;()) {</span>
+<span id="cb25-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-12" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> emplace(<span class="at">const</span> T&amp; v);{</span>
+<span id="cb25-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> emplace(<span class="at">const</span> <span class="bu">std::</span>vector&lt;T&gt; &amp;data) {</span>
+<span id="cb25-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> clear() {</span>
+<span id="cb25-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-22"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-23"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> from_csv(<span class="at">const</span> <span class="bu">std::</span>string &amp;filename, <span class="dt">char</span> delim = <span class="ch">','</span>, <span class="dt">int</span> column_idx = <span class="dv">4</span>) {</span>
+<span id="cb25-24"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-25"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-26"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-26" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;T, <span class="dt">int</span>&gt; max() <span class="at">const</span> {</span>
+<span id="cb25-27"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-27" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-28"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-29"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;T, T&gt; range() <span class="at">const</span> {</span>
+<span id="cb25-30"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-31"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-32"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;T&gt; unique_bins() <span class="at">const</span> {</span>
+<span id="cb25-33"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-33" aria-hidden="true" tabindex="-1"></a>        <span class="co">// to implement</span></span>
+<span id="cb25-34"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-34" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-35"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb25-35" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Analizują przykład można zauważyć, że typ szablonowy może zostać zastosowany zarówno w typach pól struktury/klasy
+      (<code>bins_</code>) jak i w jej metodach czy konstruktorach. Należy pamiętać, że wszystkie funkcje i struktury
+      szablonowe muszą być zaimplementowane w plikach nagłówkowych!</p>
+    <p>Wykorzystanie powyższego szablonu umieszcza się zazwyczaj w plikach *.cpp, w których dołączany jest nagłówek z
+      zdefiniowanym szablonem. Np.:</p>
+    <div class="sourceCode" id="cb26">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb26-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"histogram.h"</span></span>
+<span id="cb26-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main()</span>
+<span id="cb26-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-4" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb26-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    Histogram&lt;<span class="dt">int</span>&gt; histogram_int;</span>
+<span id="cb26-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    Histogram&lt;<span class="dt">float</span>&gt; histogram_float;</span>
+<span id="cb26-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    Histogram&lt;<span class="bu">std::</span>string&gt; histogram_of_names;</span>
+<span id="cb26-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    histogram_int.emplace(<span class="dv">5</span>);</span>
+<span id="cb26-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    histogram_float.emplace(<span class="fl">12.3</span><span class="bu">f</span>);</span>
+<span id="cb26-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    histogram_of_names.emplace(<span class="st">"John"</span>);</span>
+<span id="cb26-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-13" aria-hidden="true" tabindex="-1"></a>    histogram_of_names.emplace(<span class="st">"John"</span>);</span>
+<span id="cb26-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-14" aria-hidden="true" tabindex="-1"></a>    histogram_of_names.emplace(<span class="st">"John"</span>);</span>
+<span id="cb26-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-15" aria-hidden="true" tabindex="-1"></a>    histogram_of_names.emplace(<span class="st">"Maria"</span>);</span>
+<span id="cb26-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    histogram_of_names.emplace(<span class="st">"Maria"</span>);</span>
+<span id="cb26-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>pair&lt;<span class="bu">std::</span>string, <span class="dt">int</span>&gt; mostFrequent = histogram_of_names.max();</span>
+<span id="cb26-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">// lub</span></span>
+<span id="cb26-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">auto</span> mostFrequent2 = histogram_of_names.max();</span>
+<span id="cb26-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb26-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p><em><strong>Uwaga:</strong></em> Ponieważ kompilator w momencie generowania implementacji funkcji, struktury musi
+      wiedzieć wszystko danym szablonie (musi znać również ciało funkcji szablonowej), przez co wszystkie szablony
+      powinny być umieszczone w pliku nagłówkowym modułu.</p>
+    <!-- ### Wykorzystanie typów szablonowych w strukturach
+
+W grafice komputerowej wykorzystuje się bardzo często struktury reprezentujące punkt na płaszczyźnie (lub w przestrzeni). Przykładowa implementacja została już zrobiona na poprzednich zajęciach. Jednakże w zależności od konkretnego zastosowania powinno wybierać sie reprezentację o typie bazowyZ wykorzystaniem szablonów zaimplementuj obsługę liczb zespolonych, gdzie precyzja reprezentacji części rzeczywistej i urojonej jest określona przez użytkownika/programistę biblioteki. Wykorzystując szablonową wersję implementacji liczb zem określonej precyzji. Np. w grafice 3D wykorzystuje się zazwyczaj zakres liczbowy od 0 do 1 (liczba zmiennoprzecinkowa), natomiast na płaszczyźnie wykorzystuje się liczby całkowite (liczba pikseli). Ponieważ niezależnie od precyzji typu bazowego punktu zachowuje się on zawsze tak samo, idealnym rozwiązaniem jest wykorzystanie szablonów.
+
+Struktury szablonowe deklaruje się w sposób analogiczny jak funkcje szablonowe:
+
+```cpp
+template <typename T>
+struct Point {
+    T x;
+    T y;
+    Color color;
+    Point (T v) {
+        x = y = v;
+    }
+    Point () {
+        x = T();
+        y = T();
+    }
+
+    T distance(const Point<T>& other) {
+        T x_diff = other.x - x;
+        T y_diff = other.y - y;
+        return std::sqrt(x_diff * x_diff + y_diff * y_diff);
+    }
+}; 
+```
+-->
+
+    <!-- Analizują przykład można zauważyć, że typ szablonowy może zostać zastosowany zarówno w typach pól struktury (`x, y`) jak i w jej metodach czy konstruktorach.
+Konstruktor domyślny w powyższym przykładzie ma za zadanie wypełnić pola `x, y` wartościami domyślnymi. Moze zostać to zrealizowane poprzez wywołanie konstruktora domyślnego typu szablonowego `T()`.  Co jest odpowiednikiem np.: `int()` lub `float()` - czyli `x, y` zostaną zainicjalizowane wartościami domyślnymi odpowiednich typu a dokładniej wartością $0$.
+
+Wykorzystanie struktury szablonowej wygląda następująco:
+
+```cpp
+Point<int> point_int(5);
+Point<float> point_float(2);
+Point<float> point2_float();
+``` -->
+
+    <!-- Dostęp do pół struktury się nie zmienił:
+
+```cpp
+point_int.x = 2;
+point_float.x =2.4f;
+point2_float.y = 1.3f;
+``` -->
+
+    <!-- Należy pamiętać, że wszystkie funkcje i struktury szablonowe muszą być zaimplementowane w plikach nagłówkowych! -->
+
+    <hr>
+    <h2 id="zadanie-domowe-">Zadanie domowe 🏠🔥</h2>
+    <h4 id="zadanie-1">Zadanie 1</h4>
+    <p>Stwórz pełną deklarację szablonu klasy <code>Histogram</code> i uruchom ją dla kilku przykładów, gdzie wejściem
+      są słowa (np. <a href="http://jug.put.poznan.pl/lab-psio/_resources/04/license.txt">plik</a>) i liczby (np. <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/wyniki.csv">plik</a>). Spróbuj tak zparametryzować metodę
+      <code>Histogram::from_csv</code>, żeby umożliwiała wczytanie obu plików. Zaimplementuj również szablonową funkcję
+      <code>print</code>
+    </p>
+    <h4 id="zadanie-2">Zadanie 2</h4>
+    <p>Z wykorzystaniem szablonów zaimplementuj obsługę liczb zespolonych, gdzie precyzja reprezentacji części
+      rzeczywistej i urojonej jest określona przez użytkownika/programistę biblioteki. Wykorzystując szablonową wersję
+      implementacji liczb zespolonych napisz program, który je wykorzystuje. Użyj typów bazowych:
+      <code>int, float, double</code>.
+    </p>
+    <h4 id="zadanie-3">Zadanie 3</h4>
+    <p>Z wykorzystaniem szablonów zaimplementuj operacje dodawania, odejmowania i mnożenia skalarnego dwóch wektorów o
+      długości <code>n</code> (tablice jednowymiarowe) oraz wyświetlania na standardowym wyjściu. Następnie przetestuj
+      działanie dla par wektorów o następujących typach: <code>int, float, complex</code>. Wektory możesz wypełnić
+      wartościami losowymi. Wykorzystaj zaimplementowana wcześniej bibliotekę liczb zespolonych.</p>
+    <h4 id="zadanie-4">Zadanie 4</h4>
+    <p>Napisz klasę <code>Matrix</code> reprezentującą macierz i umożliwiającą wykorzystanie dla następującego przykładu
+      użycia:</p>
+    <div class="sourceCode" id="cb27">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb27-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">// tworzy macierze 3x3</span></span>
+<span id="cb27-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-2" aria-hidden="true" tabindex="-1"></a>Matrix&lt;<span class="dt">double</span>&gt; M(<span class="dv">3</span>, <span class="dv">3</span>);</span>
+<span id="cb27-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-3" aria-hidden="true" tabindex="-1"></a>Matrix&lt;<span class="dt">double</span>&gt; C({{<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>},</span>
+<span id="cb27-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-4" aria-hidden="true" tabindex="-1"></a>                  {<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>},</span>
+<span id="cb27-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-5" aria-hidden="true" tabindex="-1"></a>                  {<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>}});</span>
+<span id="cb27-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-6" aria-hidden="true" tabindex="-1"></a>Matrix&lt;<span class="dt">double</span>&gt; D;</span>
+<span id="cb27-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cin &gt;&gt; D; <span class="co">// pobiera dane od użytkownika (zarówno jej wymiar jak i wartości poszczególnych elementów)</span></span>
+<span id="cb27-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-10" aria-hidden="true" tabindex="-1"></a>Matrix&lt;<span class="dt">int</span>&gt;  X = Matrix::eye(<span class="dv">3</span>,<span class="dv">3</span>); <span class="co">// metoda statyczna, zwraca macierz jednostkową</span></span>
+<span id="cb27-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; X &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb27-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co">// inicjalizacja zmienną losową</span></span>
+<span id="cb27-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="at">static</span> <span class="bu">std::</span>default_random_engine e{};</span>
+<span id="cb27-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>uniform_int_distribution&lt;<span class="dt">int</span>&gt; distriubution{<span class="dv">0</span>, <span class="dv">100</span>};</span>
+<span id="cb27-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-16" aria-hidden="true" tabindex="-1"></a>Matrix&lt;<span class="dt">int</span>&gt;  Y = Matrix::fill(<span class="dv">3</span>, <span class="dv">3</span>, [&amp;distribution](){ <span class="cf">return</span> distribution(e); }); <span class="co">// metoda statyczna, zwraca macierz o wymiarze 3x3, wypełnioną wartościami generowanymi przez funkcję będącą trzecim argumentem</span></span>
+<span id="cb27-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-18" aria-hidden="true" tabindex="-1"></a>Matrix&lt;<span class="dt">double</span>&gt;  B = <span class="dv">5</span> * M * D * <span class="dv">5</span> + <span class="dv">1</span>; <span class="co">// operacje arytmetyczne na macierzach - zdefiniuj wszystkie niezbędne operatory</span></span>
+<span id="cb27-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2006%20-%20Klasy%20-%20rozszerzenie.html#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; B &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p><strong>Uwagi:</strong></p>
+    <ul>
+      <li>
+        <p>operacja <code>Macierz + skalar</code> powinna dodawać do każdego z elementów macierzy wartość skalara,</p>
+      </li>
+      <li>
+        <p>zwróć uwagę, że <code>skalar * Macierz</code>, <code>Macierz * skalar</code> to dwa różne operatory.</p>
+      </li>
+      <li>
+        <p>operacje dodawania/mnożenia macierzy powinny weryfikować prawidłowość rozmiaru macierzy, będących
+          argumentami, w przypadku niemożliwości przeprowadzenia operacji (wskutek niedopasowania wymiaru) metoda
+          powinna zwracać standardowy wyjątek <code>std::out_of_range</code> (patrz <a
+            href="https://github.com/piokac/PSiO/blob/master/L6/binary_tree/binarytree.cpp">przykład z wykładu</a>).</p>
+      </li>
+      <li>
+        <p>Tworząc klasę zwróć uwagę na:</p>
+        <ul>
+          <li>spróbuj najpierw napisać deklarację klasy pasującą do przykładu użycia, a dopiero gdy kompilacja się
+            powiedzie, definicję poszczególnych metod</li>
+          <li>wszystkie obiekty przekazywane jako argument metody/funkcji, powinny być przekazywane przez referencję
+            (jeśli funkcja/metoda je modyfikuje) lub referencję do stałej (jeśli są wykorzystywane do odczytu) - zabieg
+            ten pozwoli skrócić czas wykonania metody, ponieważ argument nie będzie kopiowany</li>
+          <li>wszystkie metody, które nie modyfikują zawartości obiektu zadeklaruj jako metody stałe (umieszczając słowo
+            kluczowe <code>const</code> na końcu deklaracji metody).</li>
+          <li>wszystkie pola klasy deklaruj jako prywatne,</li>
+          <li>pola klasy, jeśli to możliwe inicjuj na liście inicjalizacyjnej a nie wewnątrz ciała konstruktora.</li>
+        </ul>
+      </li>
+    </ul>
+    <hr>
+    <p>Autorzy: <em>Piotr Kaczmarek</em>, <em>Przemysław Walkowiak</em></p>
+  </main>
+
+
+</body>
+
+</html>

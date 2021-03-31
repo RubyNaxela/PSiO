@@ -40,3 +40,7 @@ pre {
   background-color: #d4d4d4 !important;
   filter: invert(1) hue-rotate(75deg) contrast(1) !important;
 }
+
+img.black-and-white {
+  filter: invert(1) hue-rotate(180deg) contrast(0.65) !important;
+}
