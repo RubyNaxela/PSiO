@@ -41,6 +41,10 @@ pre {
   filter: invert(1) hue-rotate(75deg) contrast(1) !important;
 }
 
+code span.dv, code span.fl { 
+  color: #842969 !important;
+}
+
 img.black-and-white {
   filter: invert(1) hue-rotate(180deg) contrast(0.65);
 }
