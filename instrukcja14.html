@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 14 - Qt - sygnaly i sloty</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 14 - Qt - sygnaly i sloty</h1>
+    </header>
+    <h1 id="lab-14---qt---sygnały-i-sloty">Lab 14 - Qt - sygnały i sloty</h1>
+    <h2 id="sygnały-i-sloty">Sygnały i sloty</h2>
+    <h3 id="podstawy">Podstawy</h3>
+    <p>Qt implementuje mechanizm sygnałów i slotów. Jest to narzędzie pozwalające na zarządzanie asynchronicznymi
+      (występującymi w losowych momentach bez blokującego wykonywanie kodu oczekiwania na nie) zdarzeniami pochodzącymi
+      zarówno z programu, jak i od użytkownika lub systemu operacyjnego. Wykorzystanie sygnałów (ang. signals) i slotów
+      (ang. slots) jest bardzo proste. Każdy klasa w Qt może implementować sygnały, czyli funkcje emitujące jakieś
+      zdarzenie. Równocześnie każda klasa może implementować sloty, czyli funkcje przechwytujące i przetwarzające
+      powyższe sygnały. Na przykład klasa <code>QPushButton</code> posiada sygnał <code>clicked()</code>, który jest
+      emitowany w momencie wciśnięcia przez użytkownika przycisku.</p>
+    <p>Chcąc obsłużyć zdarzenie od przycisku, w klasie głównego okna musimy przygotować odpowiedni slot. W tym celu w
+      deklaracji klasy umieszczamy dyrektywę <code>slots:</code> z modyfikatorem dostępu (w tym przypadku
+      <code>private</code>), a zaraz pod nią deklarację funkcji która będzie obsługiwać dane zdarzenie:
+    </p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MainWindow : <span class="kw">public</span> <span class="ex">QMainWindow</span> {</span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-3" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb1-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span>:</span>
+<span id="cb1-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> my_button_slot();</span>
+<span id="cb1-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb1-7" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Następnie w pliku <code>.cpp</code> definiujemy naszą funkcję obsługującą zdarzenie:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> MainWindow::my_button_slot()</span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb2-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb2-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Utwórz nowy projekt <em>Qt Widgets Application</em></li>
+      <li>Korzystając z Qt Designer umieść w oknie jeden element typu <code>QPushButton</code> i <code>QLabel</code>,
+        dla zachowania kompatybilności z dalszymi przykłądami nie zmieniaj ich <code>objectName</code>. Przykładowy
+        wygląd okna:</li>
+    </ul>
+    <p><img class="black-and-white" src="img/01_widow_layout.PNG" alt="01_widow_layout"></p>
+    <ul>
+      <li>W plikach <code>mainwindow.cpp</code> i <code>mainwindow.h</code> przygotuj slot do obsługi przycisku zgodnie
+        z instrukcjami opisanymi powyżej.</li>
+    </ul>
+    <hr>
+    <p><strong>Uwaga:</strong> Na poprzednich zajęciach można było zauważyć, że Qt Creator potrafi sam generować wyżej
+      opisany kod dla kontrolek umieszczonych na formie - zazwyczaj warto korzystać z tej funkcji, jednak dla
+      demonstracji mechanizmu slotów celowo ją pomijamy.</p>
+    <h3 id="łączenie-sygnałów-do-slotów">Łączenie sygnałów do slotów</h3>
+    <p>Sygnały i sloty należy ze sobą połączyć za pomocą dedykowanej funkcji <code>connect(...)</code>. Łączy ona dwa
+      obiekty: wysyłający (sygnał) i odbierający (slot). <code>connect</code> musi być wywołana tylko raz. Wywołanie to
+      można umieścić np. w konstruktorze klasy. Aby połączyć zdarzenie wciśnięcia przycisku z naszym przygotowanym
+      slotem należy na przykład w konstruktorze klasy <code>MainWindow</code> wykonać:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb3-1" aria-hidden="true" tabindex="-1"></a>MainWindow::MainWindow(<span class="ex">QWidget</span> *parent): <span class="ex">QMainWindow</span>(parent), ui(<span class="kw">new</span> Ui::MainWindow)</span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb3-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    ui-&gt;setupUi(<span class="kw">this</span>);</span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">connect</span>(ui-&gt;pushButton, &amp;<span class="ex">QPushButton::</span>clicked, <span class="kw">this</span>, &amp;MainWindow::my_button_slot);</span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Funkcja <code>connect</code> w tym przypadku przyjmuje następujące argumenty:</p>
+    <ul>
+      <li>wskaźnik na obiekt wysyłający sygnał,</li>
+      <li>wskaźnik na prototyp funkcji, która stanowi sygnał,</li>
+      <li>wskaźnik na obiekt odbierający sygnał,</li>
+      <li>wskaźnik na prototyp funkcji, która stanowi slot.</li>
+    </ul>
+    <p><strong>Uwaga:</strong> jeśli na formie umieścimy przycisk nazywający się <code>pushButton</code> (domyślna
+      nazwa) oraz do klasy okna zawierającego przycisk dodamy slot o nazwie <code>on_pushButton_clicked</code> to Qt
+      niejawnie (bez wykorzystania w kodzie funkcji <code>connect</code>) podłączy sygnał <code>clicked</code> do tego
+      slotu. Aby uniknąć tego zachowania (jedynie dla demonstracji) w powyższych przykładach slot nazywa się
+      <code>my_button_slot</code>.
+    </p>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>W konstruktorze <code>MainWindow</code> dodaj <code>connect</code> łączący sygnał <code>clicked()</code>
+        przycisku z przygotowanym wcześniej slotem.</li>
+      <li>W slocie umieść kod, który w momencie wywołania zmieni zawartość tekstu elementu typu <code>QLabel</code> na
+        <em>NEW TEXT AFTER CLICK</em>.
+      </li>
+    </ul>
+    <hr>
+    <h3 id="dodatkowe-informacje">Dodatkowe informacje</h3>
+    <p>Jeden sygnał może wyzwalać wiele slotów i vice-versa - jeden slot może być wyzwalany przez wiele sygnałów, z
+      różnych obiektów. Więcej na temat sygnałów i slotów można znaleźć w opisie na <a
+        href="https://doc.qt.io/qt-5/signalsandslots.html">podstronie projektu Qt</a>.</p>
+    <h2 id="modalne-okna-dialogowe-i-komunikacja-z-wykorzystaniem-sygnałów">Modalne okna dialogowe i komunikacja z
+      wykorzystaniem sygnałów</h2>
+    <p>Modalne okna dialogowe to okna, które po wyświetleniu blokują dostęp do okna głównego do czasu aż nie zostaną
+      zamknięte. Mogą zostać wykorzystane do ustawiania parametrów konfiguracyjnych programu. Okna te, zazwyczaj
+      dziedziczą z klasy <code>QDialog</code> i zawierają przyciski OK i Anuluj.</p>
+    <p>Każde okno musi zostać utworzone jako oddzielna klasa. Najprościej wykorzystać do tego wbudowany w Qt Creator
+      kreator. W tym celu <em>File</em> → <em>New File or Project…</em>. W liście <em>Files and Classes</em> wybierz
+      kategorię <em>Qt</em>, następnie <em>Qt Designer Form Class</em>. Zatwierdź wybór przyciskiem <em>Choose…</em>:
+    </p>
+    <p><img class="black-and-white" src="img/02_new_qt_dialog.PNG" alt="02_new_qt_dialog"></p>
+    <p>W następnym oknie wybieramy <em>Dialog with Buttons Bottom</em> i klikamy <em>Next</em>. W następnym oknie możemy
+      nadać nazwę tworzonemu oknu dialogowemu. Wystaczy wyedytować pole <em>Class name</em> co spowoduje automatyczne
+      wypełnienie pozostałych pól. Zatwierdzamy klikając <em>Next</em>, a następnie <em>Finish</em>. Do drzewa projektu
+      zostaną automatycznie dodane pliki <code>.ui</code>, <code>.cpp</code> i <code>.h</code>.</p>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Do głównego okna programu :</p>
+        <ul>
+          <li>dodaj <code>QPushButton</code> z napisem <em>SETTINGS</em>, zmień <code>objectName</code> na
+            <code>settingsButton</code>,
+          </li>
+          <li>dodaj <code>QLabel</code> i wypełnij dowolnym napisem, zmień <code>objectName</code> na
+            <code>descriptionLabel</code>.
+          </li>
+        </ul>
+        <p><img class="black-and-white" src="img/03_widow_layout_with_settings.PNG" alt="03_widow_layout_with_settings">
+        </p>
+      </li>
+      <li>
+        <p>Korzystając z kreatora dodaj do projektu klasę okna dialogowego o nazwie <code>SettingsDialog</code>:</p>
+        <ul>
+          <li>elementy w oknie dialogowym umieść w <em>Form Layout</em>,</li>
+          <li>dodaj <code>QLineEdit</code>, zmień <code>objectName</code> na <code>descriptionTextEdit</code>,</li>
+          <li>dodaj <code>QCheckBox</code>, zmień <code>objectName</code> na <code>buttonEnabledCheckBox</code>.</li>
+        </ul>
+        <p><img class="black-and-white" src="img/04_setting_dialog_layout.PNG" alt="04_setting_dialog_layout">
+        </p>
+      </li>
+      <li>
+        <p>Do klasy głównego okna dodaj prywatny <code>slot</code>: <code>void open_settings()</code>, następnie za
+          pomocą mechanizmu <code>connect</code> połącz wciśnięcie przycisku <code>settingsButton</code> z wywołaniem
+          <code>open_settings()</code>.
+        </p>
+      </li>
+    </ul>
+    <hr>
+    <p>Aby mieć możliwość utworzenia okna dialogowego konieczne jest załączenie nagłówka klasy go opisującego w pliku
+      <code>mainwindow.cpp</code>, zależnie od nadanej nazwy klasy okna dialogowego, na przykład:
+    </p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"settingsdialog.h"</span></span></code></pre>
+    </div>
+    <p>Otwarcie okna modalnego, blokującego interfejs głównego okna, można wykonać w następujący sposób:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> MainWindow::open_settings()</span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb5-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    SettingsDialog dialog; <span class="co">// utworzenie obiektu okna dialogowego</span></span>
+<span id="cb5-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    dialog.exec(); <span class="co">// uruchomienie/wyświetlenie okna; okno główne będzie czekać na zamknięcie okna</span></span>
+<span id="cb5-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--3">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Dodaj do programu mechanizm otwierania okna dialogowego.</li>
+      <li>Przetestuj działanie programu.</li>
+    </ul>
+    <hr>
+    <p>Kolejnym krokiem koniecznym do realizacji okna ustawień jest przekazanie do niego aktualnych wartości ustawień,
+      tak aby zostały one zaprezentowane użytkownikowi. Istnieje wiele możliwości realizacji takiej procedury.
+      Przykładowo klasa <code>SettingsDialog</code> może posiadać publiczną metodę służącą do przekazania wartości. Inną
+      opcją jest przekazanie tych wartości w konstruktorze klasy <code>SettingsDialog</code>.</p>
+    <hr>
+    <h4 id="-zadanie--4">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Wybierz metodę przekazania wartości z okna głównego do okna dialogowego (metoda publiczna klasy
+        <code>SettingsDialog</code> lub modyfikacja konstruktora domyślnego <code>SettingsDialog</code>).
+      </li>
+      <li>Aby odczytać aktualny stan aktywności przycisku skorzystaj z:</li>
+    </ul>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb6-1" aria-hidden="true" tabindex="-1"></a>ui-&gt;pushButton-&gt;isEnabled() <span class="co">// typ bool</span></span></code></pre>
+    </div>
+    <ul>
+      <li>Aby odczytać aktualny napis z <code>QLabel</code> skorzystaj z:</li>
+    </ul>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ui-&gt;descriptionLabel-&gt;text() <span class="co">// typ QString</span></span></code></pre>
+    </div>
+    <ul>
+      <li>W konstruktorze lub publicznej metodzie klasy <code>SettingsDialog</code> skorzystaj z przekazanych informacji
+        i zmień ustawienia obiekty <code>QLineEdit</code> i <code>QCheckBox</code> tak aby odzwierciedlały wartości z
+        okna głównego, na przykład:</li>
+    </ul>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb8-1" aria-hidden="true" tabindex="-1"></a>ui-&gt;buttonEnabledCheckBox-&gt;setChecked(button_enabled);</span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb8-2" aria-hidden="true" tabindex="-1"></a>ui-&gt;descriptionTextEdit-&gt;setText(description_text);</span></code></pre>
+    </div>
+    <hr>
+    <p>Jedną z opcji na przechwycenie zamykania okna jest skorzystanie z domyślnie umieszczonych na nich przycisków
+      <em>OK</em> i <em>Cancel</em>. Jeżeli tworząc okno dialogowe w kreatorze jako <em>Dialog with Buttons Bottom</em>,
+      to Qt Designer automatycznie dodał do okna obiekt typu <code>QDialogButtonBox</code> o <code>objectName</code>
+      równej <code>buttonBox</code>. Obiekty typu <code>QDialogButtonBox</code> emitują sygnał
+      <code>QDialogButtonBox::accepted()</code> po wciśnięciu przycisku <em>OK</em>.
+    </p>
+    <hr>
+    <h4 id="-zadanie--5">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>W klasie <code>SettingsDialog</code> dodaj prywatny slot <code>void  buttonBoxClicked()</code> który posłuży
+        do przechwycenia wciśnięcia przycisku <em>OK</em>.</li>
+      <li>W konstruktorze <code>SettingsDialog</code> wykonał połączenie sygnału <code>accepted</code> z nowoutworzonym
+        slotem:</li>
+    </ul>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">connect</span>(ui-&gt;buttonBox, &amp;<span class="ex">QDialogButtonBox::</span>accepted, <span class="kw">this</span>, &amp;SettingsDialog::buttonBoxClicked);</span></code></pre>
+    </div>
+    <hr>
+    <p>Na ten moment, po wciśnięciu <em>OK</em> okno dialogowe zostanie zamknięte, natomiast zmodyfikowanie wartości
+      elementów w oknie ustawień nie wpłynie na okno główne, ustawienia nie zostały jeszcze przekazane do
+      <code>MainWindow</code>. Jedną z opcji do przekazania zmiennych pomiędzy klasami (w tym przypadku z
+      <code>SettingsDialog</code> do <code>MainWindow</code>) jest także skorzystanie z sygnałów. Klasa
+      <code>SettingsDialog</code> powinna emitować sygnał zawierający parametry poszczególnych obiektów na formularzu,
+      które potem mogą zostać przechwycone. W Qt każdy obiekt dziedziczący po <code>QObject</code> może emitować sygnały
+      za pomocą słowa kluczowego <code>emit</code>. W tym celu w deklaracji klasy umieszczamy dyrektywę
+      <code>signals:</code>, a zaraz pod nią deklarację sygnału wraz z parametrami które mogą być za jego pomocą
+      przekazane, na przykład:
+    </p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SettingsDialog : <span class="kw">public</span> <span class="ex">QDialog</span></span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/****/</span></span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">signals</span>:</span>
+<span id="cb10-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> changesAccepted(<span class="dt">bool</span> button_enabled, <span class="ex">QString</span> description_text);</span>
+<span id="cb10-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">/****/</span></span>
+<span id="cb10-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb10-9" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--6">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Do klasy <code>SettingsDialog</code> dodaj sygnał:</li>
+    </ul>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> changesAccepted(<span class="dt">bool</span> button_enabled, <span class="ex">QString</span> description_text);</span></code></pre>
+    </div>
+    <ul>
+      <li>Wewnątrz metody <code>SettingsDialog::buttonBoxClicked()</code> (wywołanej po kliknięciu przycisku
+        <em>OK</em>) umieść emisję sygnału <code>changesAccepted</code> z odpowiednimi parametrami:
+      </li>
+    </ul>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> SettingsDialog::buttonBoxClicked()</span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb12-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">emit</span> changesAccepted(ui-&gt;buttonEnabledCheckBox-&gt;isChecked(), ui-&gt;descriptionTextEdit-&gt;text());</span>
+<span id="cb12-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <hr>
+    <p>Ostatnim krokiem jest przechwycenie sygnału w oknie głównym, w tym celu w klasie <code>MainWindow</code>
+      konieczne jest utworzenie prywatnego slotu, który zostanie połączony z sygnałem wyemitowanym przez
+      <code>SettingsDialog</code>, a następnie odpowiednio obsłużony. Konieczne jest, aby slot posiadał listę parametrów
+      odpowiadających łączonemu do niego sygnałowi. Ważna jest kolejność oraz typ parametrów, nazwy argumentów mogą być
+      dowolne.
+    </p>
+    <hr>
+    <h4 id="-zadanie--7">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>W klasie <code>MainWindow</code> dodaj deklarację i implementację prywatnego slotu, z odpowiednimi
+        parametrami. W implementacji wykonaj zmiany elementów interfejsu na podstawie otrzymanych w slocie argumentów:
+      </li>
+    </ul>
+    <div class="sourceCode" id="cb13">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">//mainwindow.h</span></span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span>:</span>
+<span id="cb13-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> changeValues(<span class="dt">bool</span> button_enabled, <span class="ex">QString</span> description_text);</span></code></pre>
+    </div>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">//mainwindow.cpp</span></span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> MainWindow::changeValues(<span class="dt">bool</span> button_enabled, <span class="ex">QString</span> description_text)</span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb14-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb14-4" aria-hidden="true" tabindex="-1"></a>    ui-&gt;pushButton-&gt;setEnabled(button_enabled);</span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb14-5" aria-hidden="true" tabindex="-1"></a>    ui-&gt;descriptionLabel-&gt;setText(description_text);</span>
+<span id="cb14-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb14-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <ul>
+      <li>W slocie <code>MainWindow::open_settings()</code> po utworzeniu obiektu okna dialogowego, a przed jego
+        wykonaniem, dodaj <code>connect</code> łączący sygnał z <code>SettingsDialog</code> do nowoutworzonego slotu w
+        <code>MainWindow</code>:
+      </li>
+    </ul>
+    <div class="sourceCode" id="cb15">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> MainWindow::open_settings()</span>
+<span id="cb15-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb15-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    SettingsDialog dialog(ui-&gt;pushButton-&gt;isEnabled(), ui-&gt;descriptionLabel-&gt;text());</span>
+<span id="cb15-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">connect</span>(&amp;dialog, &amp;SettingsDialog::changesAccepted, <span class="kw">this</span>, &amp;MainWindow::changeValues);</span>
+<span id="cb15-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-7" aria-hidden="true" tabindex="-1"></a>    dialog.exec();</span>
+<span id="cb15-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2014%20-%20Qt%20-%20sygnaly%20i%20sloty.html#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <ul>
+      <li>Przetestuj mechanizm zmian ustawień swojego programu.</li>
+    </ul>
+    <hr>
+    <h2 id="qmenu-i-qaction">QMenu i QAction</h2>
+    <p>Do klas dziedziczących z <code>QMainWindow</code> (zazwyczaj opisujących główne okno programu) standardowo
+      przypisane jest menu użytkownika (<code>QMenu</code>), oraz pasek narzędzi. Strukturę menu oraz pasek narzędzi
+      można stworzyć z poziomu programu Qt Designer:</p>
+    <p><img class="black-and-white" src="img/05_menu_edit.PNG" alt="05_menu_edit"></p>
+    <hr>
+    <h4 id="-zadanie--8">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Dodaj do programu menu <strong>Tools</strong> z wpisem <strong>Settings</strong></li>
+    </ul>
+    <hr>
+    <p>Dodawanie poszczególnych wpisów w <code>QMenu</code> powoduje automatyczne tworzenie obiektów
+      <code>QAction</code> o automatycznie nadanych nazwach:
+    </p>
+    <p><img class="black-and-white" src="img/06_action_menu.PNG" alt="06_action_menu"></p>
+    <p>W łatwy sposób można przypisać ikonę do <code>QAction</code>. W tym celu zaznaczamy <code>QAction</code> do
+      edycji i modyfikujemy pole <em>icon</em> poprzez wybranie <em>Choose File...</em>. Należy pamiętać, że korzystając
+      z zewnętrznego pliku nie zostanie on dołączony do pliku binarnego <code>.exe</code>, dlatego plik musi się znaleźć
+      w folderze w którym wykonuje się nasz program. W przypadku Qt Creator jest to <strong>build</strong> folder dla
+      danego projektu. W razie wątpliwości poproś prowadzącego o pomoc.</p>
+    <p><img class="black-and-white" src="img/07_action_icon.PNG" alt="07_action_icon"></p>
+    <p>Istnieje także możliwość w łatwy sposób zdefiniowania skrótu klawiszowego, którego wciśnięcie spowoduje tę samą
+      akcję co kliknięcie danego wpisu w menu. W tym celu edytujemy pole <em>shortcut</em>.</p>
+    <p><img class="black-and-white" src="img/08_action_shortcut.PNG" alt="08_action_shortcut"></p>
+    <p>Kliknięcie wpisu w menu (a także wciśnięcie skrótu klawiszowego) powoduje wyemitowanie sygnału
+      <code>QAction::triggered</code>, który można połączyć ze slotem korzystając z <code>connect</code>.
+    </p>
+    <hr>
+    <h4 id="-zadanie--9">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Dla obiektu <code>acctionSettings</code>:</p>
+        <ul>
+          <li>dodaj ikonę: <a href="http://jug.put.poznan.pl/lab-psio/_resources/14/settings.png">settings.png</a>
+            (pamiętaj aby umieścić obrazem w folderze budowy programu),</li>
+          <li>dodaj skrót klawiszowy <em>Ctrl + S</em>.</li>
+        </ul>
+        <p><img class="black-and-white" src="img/09_settings_icon_shortcut.PNG" alt="09_settings_icon_shortcut"></p>
+      </li>
+      <li>
+        <p>W konstruktorze <code>MainWindow</code> wykonaj połączenie sygnału <code>QAction::triggered</code> z
+          <code>acctionSettings</code> do slotu <code>MainWindow::open_settings</code>.
+        </p>
+      </li>
+      <li>
+        <p>Przetestuj różne metody otwierania okienka z ustawieniami.</p>
+      </li>
+    </ul>
+    <hr>
+    <!---
+## Dynamiczne tworzenie okien
+
+Okna można tworzyć z użyciem programu Qt Creator jak i bezpośrednio w kodzie przydzielając dynamicznie pamięć dla wszystkich komponentów okna.
+
+Qt posiada własny mechanizm zarządzania pamięcią, w którym każdy obiekt dziedziczący z klasy `QObject` przechowuje adres rodzica (obiektu nadrzędnego). Jeśli w programie następuje zwolnienie pamięci dla rodzica automatycznie zwalniana jest również pamięć dla wszystkich obiektów podrzędnych.
+
+Więcej na ten temat można znaleźć w tutorialu pokazującym jak w Qt stworzyć wirtualną klawiaturę: http://youtu.be/UVg28aVpBXI oraz w prezentacji: https://drive.google.com/open?id=0B6pDGeM8qbzwbWJ4bzljVlpaMHc
+
+Dowiesz się tam jak:
+
+* tworzyć elementy okien z poziomu kodu programu,
+* wykorzystywać layouty.
+
+**Uwaga:** zignoruj informacje na temat łączenia sygnałów w starszy sposób oraz wykorzystanie klasy `QSignalMapper`, której użycie nie jest już zalecane. Można ją zastąpić na przykład przekazaniem do funkcji `connect` funkcji lambda. Przykład takiego wywołania pochodzący z [dokumentacji wspomnianej klasy](https://doc.qt.io/qt-5/qsignalmapper.html#details):
+
+```cpp
+ButtonWidget::ButtonWidget(const QStringList &texts, QWidget *parent)
+    : QWidget(parent) {
+    QGridLayout *gridLayout = new QGridLayout;
+    for (int i = 0; i < texts.size(); ++i) {
+        QString text = texts[i];
+        QPushButton *button = new QPushButton(text);
+        connect(button, &QPushButton::clicked, [=] { clicked(text); });
+        gridLayout->addWidget(button, i / 3, i % 3);
+    }
+    setLayout(gridLayout);
+}
+```
+
+W powyższym przykładzie slot `clicked` jest wywoływany z argumentem `text`.
+-->
+
+    <h2 id="zadanie-końcowe-">Zadanie końcowe 🛠🔥</h2>
+    <h4 id="edytor-tekstu">Edytor tekstu</h4>
+    <p>Wykorzystując Qt napisz prosty edytor tekstu.</p>
+    <p>Edytor powinien pozwalać na:</p>
+    <ul>
+      <li>utworzenie nowego dokumentu</li>
+      <li>otwarcie pliku</li>
+      <li>nadpisanie pliku</li>
+      <li>zapisanie pliku jako nowy</li>
+    </ul>
+    <p>Dodaj odpowiednie widgety do okienka i akcje do menu <em>File</em>.</p>
+    <p>Qt poza elementami interfejsu graficznego posiada także szereg obiektów/narzędzi które pozwalają na tworzenie
+      multi-platformowych programów. Przykładowo, Wykorzystanie Qt uniezależnia od systemu operacyjnego obsługę okien
+      otwierania/zapisywania plików, czy obsługę ścieżek systemu plików.</p>
+    <p>Do wskazania plików wykorzystaj klasę <a href="https://doc.qt.io/qt-5/qfiledialog.html">QFileDialog</a>.</p>
+    <p>Wczytaj całą zawartość otwartego pliku do okienka tekstowego (do operacji na plikach służy klasa <a
+        href="https://doc.qt.io/qt-5/qfile.html">QFile</a>).</p>
+    <p>Umożliw nadpisanie pliku (zapisanie pod tą samą ścieżką) lub zapisanie jako nowy plik.</p>
+    <p>Następnie dodaj do programu funkcjonalność <em>Find and replace</em>. Utwórz klasę okienka (<em>File</em> →
+      <em>New File or Project</em> → <em>Qt</em> → <em>Qt Designer Form Class</em> → <em>Widget</em>), w którym będziesz
+      mógł wprowadzić dwa ciągi znaków (źródłowy i docelowy) oraz dwa przyciski: <em>Replace</em> i <em>Replace
+        all</em>.
+    </p>
+    <p>Dodaj menu <em>Edit</em>, a w nim akcję <em>Find and replace</em>.</p>
+    <p>Połącz ich sygnały ze slotami w głównym okienku i zaimplementuj wymaganą funkcjonalność.</p>
+    <p>Możesz wspomagać się tutorialem <a
+        href="https://doc.qt.io/qt-5/qtwidgets-mainwindows-application-example.html">Application Example</a>.</p>
+    <hr>
+    <p>Autorzy: <em>Tomasz Mańkowski</em>, <em>Jakub Tomczyński</em>, <em>Dominik Pieczyński</em></p>
+  </main>
+
+
+</body>
+
+</html>

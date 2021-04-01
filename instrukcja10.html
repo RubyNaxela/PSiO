@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://jug.put.poznan.pl/lab-psio/Lab%2010%20-%20OpenGL.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 10 - OpenGL</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 10 - OpenGL</h1>
+    </header>
+    <h1 id="lab-10---opengl">Lab 10 - OpenGL</h1>
+    <h2 id="opengl-i-glu-w-sfml">OpenGL i GLU w SFML</h2>
+    <p>OpenGL jest otwartym, niskopoziomowym API pozwalającym na generowanie trójwymiarowej grafiki. Ponieważ biblioteka
+      SFML wykorzystuje wewnętrznie OpenGL do rysowania grafiki 2D, możemy ją wykorzystać jako bibliotekę pomocniczą
+      ułatwiającą np. utworzenie okna i obsługę zdarzeń (np. obsługę urządzeń wejścia jak myszka czy klawiatura).</p>
+    <p>OpenGL dostarcza m.in. funkcje rysujące pojedyncze wielokąty lub serie wielokątów oraz ich przekształcenia. Nieco
+      bardziej wysokopoziomowe funkcje są częścią biblioteki GLU (GL Utilility Library).</p>
+    <p>Ponieważ będziemy wykorzystywać bezpośrednio funkcje OpenGL oraz GLU, wymagane jest dołączenie ich do listy
+      bibliotek dla przekazanych w parametrach linkerowi. W przypadku środowiska Qt Creator, dodajemy do pliku
+      <code>.pro</code> poniższą linię:
+    </p>
+    <pre><code>LIBS += -lOpenGL32 -lglu32</code></pre>
+    <h2 id="pierwszy-program-opengl--sfml">Pierwszy program OpenGL + SFML</h2>
+    <p>Stwórz projekt do pracy z SFML oraz OpenGL. Umieść w projekcie plik <code>main.cpp</code> z zawartością pobraną z
+      odnośnika <a href="http://jug.put.poznan.pl/lab-psio/_resources/sfml_opengl.cpp">sfml_opengl.cpp</a>.</p>
+    <p>Uruchom program. Na ekranie powinien się pojawić obracający się kolorowy sześcian.</p>
+    <p>Struktura kodu programu jest analogiczna do poprzednich programów SFML - następuje inicjalizacja środowiska (w
+      tym parametrów OpenGL, takich jak np. model oświetlenia), a następnie, w głównej pętli, rysowane są klatki obrazu.
+    </p>
+    <p>W trójwymiarowej grafice komputerowej najczęściej wykorzystuje się reprezentację brył w postaci siatki wielokątów
+      - każdy obiekt zbudowany jest z płaskich wielokątów (najczęściej trójkątów lub czworokątów), które mają wspólne
+      wierzchołki i krawędzie. Pozwala to w łatwy sposób stworzyć proste bryły, a także przybliżyć skomplikowane obiekty
+      dostatecznie gęstą siatką.</p>
+    <p>Załączona funkcja rysująca sześcian rysuje każdą z jego ścian jako kwadrat, w różnych kolorach.</p>
+    <p>Aby zapewnić stałe proporcje wyświetlanego obrazu i zakres widoczności w pionie, po każdym <em>evencie</em> typu
+      <code>sf::Event::Resized</code> (zmiana rozmiaru okna), wywoływana jest funkcja <code>set_viewport</code>. Funkcja
+      ta wykorzystując informacje o nowym rozmiarze okna ustawia odpowiednio zakres widzianej sceny
+      (<code>glFrustrum</code>) oraz ustawia pozycję kamery (<code>gluLookAt</code>).
+    </p>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Przeanalizuj działanie przykładowego kodu. Sprawdź działanie funkcji <code>glTranslated</code>,
+      <code>glRotated</code> i <code>glColor3d</code> poprzez modyfikację ich parametrów. Spróbuj wywnioskować jak
+      ułożone są osie układu współrzędnych sceny.
+    </p>
+    <hr>
+    <h3 id="transformacje-geometryczne-w-opengl">Transformacje geometryczne w OpenGL</h3>
+    <p>Aplikacje OpenGL wykorzystują układ współrzędnych do lokalizacji obiektów na scenie. Aby uniknąć konieczności
+      ręcznego przeliczania położeń wierzchołków obiektów na scenie, układ ten można transformować (m.in. przesuwać i
+      obracać):</p>
+    <ul>
+      <li><code>glTranslated(double x, double y, double z)</code> - przesuwa układ współrzędnych o odległości podane
+        jako argumenty,</li>
+      <li><code>glRotated(double angle, double x, double y, double z)</code> - obraca układ współrzędnych o kąt
+        <code>angle</code> (w stopniach) wokół osi zdefiniowanej przez parametry <code>x</code>, <code>y</code>,
+        <code>z</code>.
+      </li>
+    </ul>
+    <p>Należy pamiętać, że kolejność ma istotne znaczenie. Rozważ poniższe przykłady:</p>
+    <ul>
+      <li>w pierwszej kolejności wykonano operację translacji (przesunięcia), a następnie rotacji (obrotu):</li>
+    </ul>
+    <p><img class="black-and-white" src="img/translation_rotation.png" alt="Translation then rotation"></p>
+    <ul>
+      <li>w drugim przykładzie zrealizowano te same transformacje, jednak w odwrotnej kolejności - najpierw rotację
+        (obrót), a następnie translację (przesunięcie).</li>
+    </ul>
+    <p><img class="black-and-white" src="img/rotation_translation.png" alt="Rotation then translation"></p>
+    <p>W efekcie wykonanie tych samych operacji (ale w innej kolejności) daje inny efekt - porównaj położenie oraz
+      orientację samolotu w obu przypadkach.</p>
+    <p>W celu ułatwienia powrotu do punktu wyjścia (np. po wykonaniu szeregu przekształceń) udostępniono następujące
+      funkcje:</p>
+    <ul>
+      <li><code>glPushMatrix()</code> - zapisuje aktualny stan (położenie oraz orientację) układu współrzędnych,</li>
+      <li><code>glPopMatrix()</code> - pobiera ostatnio zapisany stan (położenie oraz orientację) układu współrzędnych.
+        Należy pamiętać, że dla każdego wywołania <code>glPushMatrix()</code> obowiązkowo należy wywołać jedno
+        <code>glPopMatrix()</code>. Można traktować je jak klamry opasające fragment kodu, którego tyczą się
+        przekształcenia.
+      </li>
+    </ul>
+    <p>Rozważmy przykład przedstawiony na rysunku poniżej:</p>
+    <p><img class="black-and-white" src="img/push_pop.png" alt="Rotation then translation"></p>
+    <p>Planujemy narysować dwa samoloty - w punkcie <em>(4, 4)</em>, a następnie <em>(2, 1)</em>. Bez wykorzystania
+      funkcji <code>glPushMatrix()</code> / <code>glPopMatrix()</code> (operacje przedstawione nad obrazkiem) niezbędne
+      jest wyliczenie jak przesunąć się z punktu <em>(4, 4)</em> do <em>(2, 1)</em>. W zaprezentowanym przykładzie
+      wydaje się to łatwe, ale przekształceń może być więcej i mogą być wśród nich rotacje komplikujące zadanie. Z
+      wykorzystaniem funkcji <code>glPushMatrix()</code> / <code>glPopMatrix()</code> (operacje pod rysunkiem) zadanie
+      jest mniej skomplikowane - nie trzeba wykonywać żadnych transformacji odwrotnych - wystarczy na początku
+      zapamiętać aktualny stan, a później do niego powrócić.</p>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj do sceny dwa dodatkowe sześciany o różnych wielkościach. Każdy z nich rysuj w innym miejscu sceny i obracaj
+      wokół innej osi. Wykorzystaj funkcje <code>glPushMatrix()</code> / <code>glPopMatrix()</code>.</p>
+    <hr>
+    <p>Poza przesuwaniem i obracaniem układu można go również skalować (funkcja <code>glScaled()</code>).</p>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Korzystając z pętli zdarzeń dodaj do programu możliwość przesuwania kamery w poziomie klawiszami <em>WSAD</em>
+      oraz oddalania/przybliżania widoku kółkiem myszy (event <code>sf::Event::MouseWheelScrolled</code> oraz pole
+      <code>event.mouseWheelScroll.delta</code>).
+    </p>
+    <p><em>Podpowiedź</em>: zamiast przesuwać kamerę możesz zmodyfikować (przesuwać i skalować) układ współrzędnych, w
+      którym rysowane są wszystkie obiekty.</p>
+    <hr>
+    <h2 id="zadanie-końcowe-">Zadanie końcowe 🛠🔥</h2>
+    <h4 id="1-planetarium">1. Planetarium</h4>
+    <p>Napisz program obrazujący ruch planet w Układzie Słonecznym.</p>
+    <p>Napisz klasę <code>CelestialBody</code> reprezentującą ciało niebieskie - aby lepiej widzieć ruch obrotowy
+      planet, możesz reprezentować je jako sześciany.</p>
+    <p>Cechy ciała niebieskiego:</p>
+    <ul>
+      <li>średnica</li>
+      <li>odległość od słońca</li>
+      <li>okres ruchu obrotowego</li>
+      <li>okres ruchu obiegowego</li>
+      <li>kolor powierzchni</li>
+    </ul>
+    <p>Klasa powinna mieć metodę <code>step(float time)</code> (analogicznie do programów z poprzednich zajęć) oraz
+      <code>draw()</code> powodującą narysowanie planety.
+    </p>
+    <p>Zastanów się nad kolejnością transformacji potrzebnych do narysowania planety w odpowiednim miejscu i o
+      odpowiednim kącie obrotu (podpowiedź: nie potrzebujesz trygonometrii!).</p>
+    <p>Wczytaj zawartość pliku <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/solar_system.txt">solar_system.txt</a> i na jego podstawie
+      utwórz obiekty na scenie reprezentujące wszystkie planety i słońce. <strong>Uwaga:</strong> odległości i średnice
+      w pliku są zmodyfikowane tak, aby wizualizacja pozostała czytelna. Prawdziwe wartości można znaleźć w pliku <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/solar_system_real.txt">solar_system_real.txt</a></p>
+    <hr>
+    <p>Autorzy: <em>Tomasz Mańkowski</em>, <em>Jakub Tomczyński</em></p>
+  </main>
+
+
+</body>
+
+</html>

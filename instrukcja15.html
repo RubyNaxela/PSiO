@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 15 - Qt - wybrane elementy</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 15 - Qt - wybrane elementy</h1>
+    </header>
+    <h1 id="lab-15---qt---wybrane-elementy">Lab 15 - Qt - wybrane elementy</h1>
+    <h2 id="użyteczne-moduły-w-qt-framework">Użyteczne moduły w Qt Framework</h2>
+    <p>Cechą Qt Freamwork jest gotowa implementacja szeregu mechanizmów i udogodnień, które ułatwiają budowanie
+      aplikacji multi-platformowych (Linux, OS X, Windows). Pisząc dla specyficznego sytemu operacyjnego często zachodzi
+      konieczność wykorzystania bibliotek i rozwiązań dedykowanych dla konkretnego systemu operacyjnego. Qt Framwork w
+      wielu przypadkach pozwala zdjąć z programisty konieczność implementacji oddzielnego kodu dla różnych środowisk. Do
+      ciekawych elementów należą między innymi:</p>
+    <ul>
+      <li><a href="https://doc.qt.io/qt-5/qtnetwork-index.html"><em>QtNetwork</em></a> - API do obsługi funkcji
+        sieciowych, m.in. TCP/IP i zapytań HTTP,</li>
+      <li><a href="https://doc.qt.io/qt-5/qtmultimedia-index.html"><em>QtMultimedia</em></a> - implementuje obsługę
+        multimediów, plików audio-video, kamery itd.,</li>
+      <li><a href="https://doc.qt.io/qt-5/qtprintsupport-module.html"><em>QtPrintSupport</em></a> - obsługa kolejek
+        wydruku/drukowania,</li>
+      <li><a href="https://doc.qt.io/qt-5/qtserialport-module.html"><em>QSerialPort</em></a> - implementacja obsługi
+        portu szeregowego,</li>
+      <li><a href="https://doc.qt.io/qt-5/qtsql-module.html"><em>QSql</em></a> - pozwala na wykonywanie zapytań do baz
+        danych typu SQL,</li>
+      <li>i <a href="https://doc.qt.io/qt-5/modules-cpp.html">wiele, wiele</a> innych...</li>
+    </ul>
+    <h2 id="wykonanie-zapytania-http---przeglądarka-internetowa">Wykonanie zapytania HTTP - przeglądarka internetowa
+    </h2>
+    <p>HTTP (ang. <strong>H</strong>yper<strong>t</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol) to
+      protokół wykorzystywany przez przeglądarki internetowe do przesyłania treści dokumentów w sieci WWW. Qt pozwala na
+      wykonanie zapytania HTTP i odczytanie odpowiedzi wykorzystując do tego mechanizmy zawarte w module
+      <em>QtNetwork</em>.
+    </p>
+    <p>Aby skorzystać w aplikacji Qt z modułu <em>QtNetwork</em> należy wyedytować plik <code>.pro</code> i do listy
+      modułów dodać <code>network</code>:</p>
+    <pre class="plaintext"><code>QT += core gui network</code></pre>
+    <p>Następnie należy załączyć nagłówki, które pozwolą na wykorzystanie obiektów wykonujących i odbierających
+      zapytanie HTTP:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QNetworkAccessManager&gt;</span></span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QNetworkReply&gt;</span></span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Utwórz nowy projekt <em>Qt Widgets Application</em>,</li>
+      <li>Do pliku <code>.pro</code> dodaj moduł <code>network</code>,</li>
+      <li>Załącz w pliku <code>mainwindow.h</code> nagłówki <code>QNetworkAccessManager</code> oraz
+        <code>QNetworkReply</code>.
+      </li>
+      <li>Wyedytuj w Qt Designer główne okno programu. Projektowana aplikacja pozwalać będzie na wykonanie zapytania
+        HTTP na podany adres URL i wyświetlenie odpowiedzi zinterpretowanej jako HTML, będzie to bardzo uproszczona
+        przeglądarka internetowa. Przykład wyglądu głównego okna programu:</li>
+    </ul>
+    <p><img class="black-and-white" src="img/01_http_layout.PNG" alt="01_http_layout"></p>
+    <hr>
+    <p>Do wykonania zapytania konieczne jest dodanie do klasy okna głównego 2 obiektów:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span>:</span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QNetworkAccessManager</span> manager; <span class="co">// obiekt wysyłający i odbierający zapytanie</span></span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QNetworkRequest</span> request; <span class="co">//obiekt reprezentujący treść zapytania</span></span></code></pre>
+    </div>
+    <p>Konieczne jest także utworzenie slotu, który pozwoli na przechwycenie odpowiedzi (<code>QNetworkReply</code>):
+    </p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span>:</span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> requestFinished(<span class="ex">QNetworkReply</span> *reply);</span></code></pre>
+    </div>
+    <p>W celu przechwycenia odpowiedzi należy połączyć sygnał <code>QNetworkAccessManager::finished</code> z slotem
+      <code>MainWindow::requestFinished</code>:
+    </p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">connect</span>(&amp;manager, &amp;<span class="ex">QNetworkAccessManager::</span>finished, <span class="kw">this</span>, &amp;MainWindow::requestFinished);</span></code></pre>
+    </div>
+    <p>Samo wywołanie zapytania HTTP może wyglądać następująco:</p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb6-1" aria-hidden="true" tabindex="-1"></a>request.setUrl(<span class="ex">QUrl</span>(ui-&gt;requestUrlLineEdit-&gt;text()));</span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb6-2" aria-hidden="true" tabindex="-1"></a>manager.get(request);</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Dodaj deklarację i pustą na ten moment implementację slotu
+        <code>void requestFinished(QNetworkReply *reply)</code>.
+      </li>
+      <li>W konstruktorze <code>MainWindow</code> wykonaj połączenie sygnału
+        <code>QNetworkAccessManager::finished</code> z slotem <code>MainWindow::requestFinished</code>.
+      </li>
+      <li>Dodaj do programu slot, który pozwoli na obsłużenie sygnału <code>QPushButton::clicked</code> z przycisku
+        <code>requestButton</code>. Wewnątrz slotu umieść wywołanie zapytania HTTP.
+      </li>
+    </ul>
+    <hr>
+    <p>Na ten moment program potrafi wykonać zapytanie, ostatnim brakującym elementem jest wyświetlenie treści
+      odpowiedzi w obiekcie <code>responseTextEdit</code>. Obsługę odpowiedzi umieszczamy w slocie obsługującym sygnał
+      <code>QNetworkAccessManager::finished</code>. Widget <code>QTextEdit</code> posiada możliwość bezpośredniej,
+      uproszczonej, interpretacji kodu HTML, za pomocą metody <code>setHtml()</code>:
+    </p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(!reply-&gt;error())</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb7-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb7-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QByteArray</span> replyText = reply-&gt;readAll();</span>
+<span id="cb7-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    ui-&gt;responseTextEdit-&gt;setHtml(replyText);</span>
+<span id="cb7-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>Wewnątrz slotu <code>MainWindow::requestFinished</code> umieść obsługę odpowiedzi, wraz z wyświetlaniem
+        interpretowanego HTML.</li>
+      <li>Przykładowy wynik działania dla zapytania dla url: <a href="http://www.jug.put.poznan.pl/"></a><a
+          href="http://www.jug.put.poznan.pl/">http://www.jug.put.poznan.pl</a>:</li>
+    </ul>
+    <p><img class="black-and-white" src="img/02_jug_reply.png" alt="02_jug_reply"></p>
+    <hr>
+    <h2 id="obsługa-json">Obsługa JSON</h2>
+    <p>JSON (ang. <strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation) to
+      popularny tekstowy format wymiany danych bazujący na języku JavaScript. Format JSON jest słownikowy, każdemu
+      wpisowy (o dowolnej formie) towarzyszy klucz, który identyfikuje dane pole i pozwala na dostęp do danych.
+      Przykładowy JSON:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode json"><code class="sourceCode json"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"class_name"</span><span class="fu">:</span> <span class="st">"Techniki Informacyjne"</span><span class="fu">,</span></span>
+<span id="cb8-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"number_of_students"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb8-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"topics"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"LaTeX"</span><span class="ot">,</span> <span class="st">"Matlab"</span><span class="ot">,</span> <span class="st">"Python"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb8-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"student_grades"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb8-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Marek"</span><span class="fu">:</span> <span class="fl">2.0</span><span class="fu">,</span></span>
+<span id="cb8-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Zofia"</span><span class="fu">:</span> <span class="fl">5.0</span><span class="fu">,</span></span>
+<span id="cb8-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"Jan"</span><span class="fu">:</span> <span class="fl">4.5</span></span>
+<span id="cb8-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb8-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+    </div>
+    <p>JSON może być dostarczony jako plik tekstowy lub bardzo często jest formą w jakiej serwer zwraca odpowiedź na
+      zapytanie HTTP - taką formę zazwyczaj określa się jako REST API (ang. <strong>Re</strong>presentational
+      <strong>S</strong>tate <strong>T</strong>ransfer <strong>A</strong>pplication <strong>P</strong>rogramming
+      <strong>I</strong>nterface). Qt posiada wbudowaną obsługę formatu JSON, co pozwala na łatwe budowanie aplikacji
+      wykorzystujących REST API. Do tego celu wykorzystać można poznany wcześniej <em>QtNetwork</em> oraz biblioteki
+      reprezentujące obiekty JSON. W celu skorzystania z interpretera JSON konieczne jest załączenie nagłówków:
+    </p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QJsonDocument&gt;</span></span>
+<span id="cb9-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QJsonObject&gt;</span></span>
+<span id="cb9-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QJsonArray&gt;</span></span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--3">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dany jest REST API zwracający informacje o wypożyczalniach publicznych rowerów na całym świecie. API dostępne
+      jest pod adresem: <a href="http://api.citybik.es/v2/networks"></a><a
+        href="http://api.citybik.es/v2/networks">http://api.citybik.es/v2/networks</a>. Zadanie polegać będzie na
+      modyfikacji wcześniejszego programu, w taki sposób aby wyświetlał w formie tabelarycznej dane o sieciach rowerów
+      zawartych w odpowiedzi typu JSON.Otwórz URL w dowolnej przeglądarce internetowej, a także skorzystaj z programu
+      wykonanego w wcześniejszej części zajęć. Postaraj się przeanalizować strukturę JSON odpowiedzi:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"networks"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"company"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"ЗАО «СитиБайк»"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb10-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"href"</span><span class="fu">:</span> <span class="st">"/v2/networks/velobike-moscow"</span><span class="fu">,</span></span>
+<span id="cb10-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"velobike-moscow"</span><span class="fu">,</span></span>
+<span id="cb10-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb10-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"city"</span><span class="fu">:</span> <span class="st">"Moscow"</span><span class="fu">,</span></span>
+<span id="cb10-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"country"</span><span class="fu">:</span> <span class="st">"RU"</span><span class="fu">,</span></span>
+<span id="cb10-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"latitude"</span><span class="fu">:</span> <span class="fl">55.75</span><span class="fu">,</span></span>
+<span id="cb10-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"longitude"</span><span class="fu">:</span> <span class="fl">37.616667</span></span>
+<span id="cb10-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb10-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Velobike"</span></span>
+<span id="cb10-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb10-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb10-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"company"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Gobike A/S"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb10-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"href"</span><span class="fu">:</span> <span class="st">"/v2/networks/bycyklen"</span><span class="fu">,</span></span>
+<span id="cb10-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"bycyklen"</span><span class="fu">,</span></span>
+<span id="cb10-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"location"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb10-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"city"</span><span class="fu">:</span> <span class="st">"Copenhagen"</span><span class="fu">,</span></span>
+<span id="cb10-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"country"</span><span class="fu">:</span> <span class="st">"DK"</span><span class="fu">,</span></span>
+<span id="cb10-22"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"latitude"</span><span class="fu">:</span> <span class="fl">55.673582</span><span class="fu">,</span></span>
+<span id="cb10-23"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"longitude"</span><span class="fu">:</span> <span class="fl">12.564984</span></span>
+<span id="cb10-24"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-24" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb10-25"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Bycyklen"</span></span>
+<span id="cb10-26"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb10-27"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="er">....</span></span>
+<span id="cb10-29"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb10-31"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre>
+    </div>
+    <hr>
+    <p>Do reprezentacji danych odczytanych z JSON w programie okienkowym można wykorzystać widget <a
+        href="https://doc.qt.io/qt-5/qtablewidget.html"><code>QTableWidget</code></a>.</p>
+    <hr>
+    <h4 id="-zadanie--4">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Wyedytuj okno wcześniej utworzonego programu:</p>
+        <ul>
+          <li>Do <code>requestUtlLineEdit</code> wwpisz na stałe adres zapytania <a
+              href="http://api.citybik.es/v2/networks"></a><a
+              href="http://api.citybik.es/v2/networks">http://api.citybik.es/v2/networks</a>. Możesz także zmienić
+            parametr <code>enabled</code> pola, tak aby nie było możliwe jego edytowanie.</li>
+          <li>Dodaj widget <code>QTableWidget</code> o <code>objectName</code> równej <code>tableWidget</code>.</li>
+        </ul>
+        <p><img class="black-and-white" src="img/03_json_layout.PNG" alt="03_json_layout"></p>
+      </li>
+      <li>
+        <p>W konstruktorze <code>MainWindow</code> wykonaj wstępne formatowanie tabeli. Ustaw liczbę kolumn na 3 i listę
+          opisów nagłówka:</p>
+      </li>
+    </ul>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb11-1" aria-hidden="true" tabindex="-1"></a>ui-&gt;tableWidget-&gt;setColumnCount(<span class="dv">3</span>);</span>
+<span id="cb11-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb11-2" aria-hidden="true" tabindex="-1"></a>ui-&gt;tableWidget-&gt;setHorizontalHeaderLabels(<span class="ex">QStringList</span>({<span class="st">"Name"</span>, <span class="st">"City"</span>, <span class="st">"Country"</span>}));</span></code></pre>
+    </div>
+    <hr>
+    <p>W Qt dokument/odpowiedź JSON reprezentowana jest przez obiekty typu <code>QJsonDocument</code>. Każdy wpis
+      słownikowy, to <code>QJsonObject</code>. Lista elementów może być reprezentowana przez <code>QJsonArray</code>.
+    </p>
+    <hr>
+    <h4 id="-zadanie--5">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>W API <a href="http://api.citybik.es/v2/networks"></a><a
+        href="http://api.citybik.es/v2/networks">http://api.citybik.es/v2/networks</a> podstawowym wpisem jest słownik z
+      pojedynczym kluczem <em>netowrks</em>. Wpis <em>networks</em> zawiera listę słowników reprezentujących
+      poszczególne sieci rowerowe. Poniżej przedstawiono przykład przetwarzania odpowiedzi JSON z opisywanego API wraz z
+      procedurą wypełniania tabeli <code>QTableWidget</code>:</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(!reply-&gt;error())</span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QByteArray</span> reply_text = reply-&gt;readAll();</span>
+<span id="cb12-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-5" aria-hidden="true" tabindex="-1"></a>    ui-&gt;responseTextEdit-&gt;setHtml(reply_text);</span>
+<span id="cb12-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QJsonParseError</span> jerror;</span>
+<span id="cb12-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QJsonDocument</span> jdoc = <span class="ex">QJsonDocument::</span>fromJson(reply_text, &amp;jerror);</span>
+<span id="cb12-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(jerror.error == <span class="ex">QJsonParseError::</span>NoError)</span>
+<span id="cb12-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-11" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb12-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="ex">QJsonObject</span> jmainobject = jdoc.object();</span>
+<span id="cb12-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">QJsonArray</span> networks = jmainobject[<span class="st">"networks"</span>].toArray();</span>
+<span id="cb12-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-16" aria-hidden="true" tabindex="-1"></a>        ui-&gt;tableWidget-&gt;clearContents();</span>
+<span id="cb12-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-17" aria-hidden="true" tabindex="-1"></a>        ui-&gt;tableWidget-&gt;setRowCount(<span class="dv">0</span>);</span>
+<span id="cb12-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span>(<span class="kw">auto</span> item: networks)</span>
+<span id="cb12-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-20" aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb12-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-21" aria-hidden="true" tabindex="-1"></a>            <span class="ex">QJsonObject</span> network = item.toObject();</span>
+<span id="cb12-22"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-23"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-23" aria-hidden="true" tabindex="-1"></a>            ui-&gt;tableWidget-&gt;insertRow(ui-&gt;tableWidget-&gt;rowCount());</span>
+<span id="cb12-24"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-25" aria-hidden="true" tabindex="-1"></a>            <span class="ex">QString</span> name = network[<span class="st">"name"</span>].toString();</span>
+<span id="cb12-26"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-26" aria-hidden="true" tabindex="-1"></a>            ui-&gt;tableWidget-&gt;setItem(ui-&gt;tableWidget-&gt;rowCount() - <span class="dv">1</span>, <span class="dv">0</span>, <span class="kw">new</span> <span class="ex">QTableWidgetItem</span>(name));</span>
+<span id="cb12-27"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-28" aria-hidden="true" tabindex="-1"></a>            <span class="ex">QJsonObject</span> location = network[<span class="st">"location"</span>].toObject();</span>
+<span id="cb12-29"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-30"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-30" aria-hidden="true" tabindex="-1"></a>            <span class="ex">QString</span> city = location[<span class="st">"city"</span>].toString();</span>
+<span id="cb12-31"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-31" aria-hidden="true" tabindex="-1"></a>            ui-&gt;tableWidget-&gt;setItem(ui-&gt;tableWidget-&gt;rowCount() - <span class="dv">1</span>, <span class="dv">1</span>, <span class="kw">new</span> <span class="ex">QTableWidgetItem</span>(city));</span>
+<span id="cb12-32"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-32" aria-hidden="true" tabindex="-1"></a>            <span class="ex">QString</span> country = location[<span class="st">"country"</span>].toString();</span>
+<span id="cb12-33"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-33" aria-hidden="true" tabindex="-1"></a>            ui-&gt;tableWidget-&gt;setItem(ui-&gt;tableWidget-&gt;rowCount() - <span class="dv">1</span>, <span class="dv">2</span>, <span class="kw">new</span> <span class="ex">QTableWidgetItem</span>(country));</span>
+<span id="cb12-34"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-34" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb12-35"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-35" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-36"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb12-36" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <ul>
+      <li>Umieść powyższą obsługę wewnątrz slotu <code>MainWindow::requestFinished</code>. Przetestuj działanie
+        programu.</li>
+      <li>Zmodyfikuj program tak aby poza informacjami nazwie, mieście i kraju każdej sieci rowerów wyświetlana była
+        także informacja o: długości i szerokości geograficznej, a także firmach świadczących usługi (zwróć uwagę ze
+        pole <em>company</em> jest listą, w danej miejscowości usługi może świadczyć więcej niż jedna firma).</li>
+    </ul>
+    <hr>
+    <h2 id="zadanie-końcowe-">Zadanie końcowe 🛠🔥</h2>
+    <h4 id="odtwarzacz-plików-mp3">Odtwarzacz plików MP3</h4>
+    <p>Wykorzystując Qt napisz prosty odtwarzacz plików audio. Program powinien:</p>
+    <ul>
+      <li>Odtwarzać pliki MP3,</li>
+      <li>Umożliwiać wskazanie pliku za pomocą <a href="https://doc.qt.io/qt-5/qfiledialog.html">QFileDialog</a>,</li>
+      <li>Posiadać 3 przyciski: PLAY, PAUSE, STOP</li>
+      <li>Posiadać pasek postępu prezentujący postęp odtwarzania pliku. Wykorzystaj <a
+          href="https://doc.qt.io/qt-5/qprogressbar.html">QProgressBar</a>.</li>
+    </ul>
+    <p>Jako odtwarzacz plików wykorzystaj klasę <a href="https://doc.qt.io/qt-5/qmediaplayer.html">QMediaPlayer</a>. W
+      celu wykorzystania modułu w pliku <code>.pro</code> należy dodać <code>multimedia</code>:</p>
+    <pre class="plaintext"><code>QT += core gui multimedia</code></pre>
+    <p>oraz załączyć nagłówek:</p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2015%20-%20Qt%20-%20wybrane%20elementy.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QMediaPlayer&gt;</span></span></code></pre>
+    </div>
+    <p>W celu realizacji zadania zapoznaj się z następującymi slotami, sygnałami i metodami:</p>
+    <ul>
+      <li>
+        <p><code>QMediaPlayer::setMedia()</code></p>
+      </li>
+      <li>
+        <p><code>QMediaPlayer::setVolume()</code></p>
+      </li>
+      <li>
+        <p><code>QMediaPlayer::play()</code></p>
+      </li>
+      <li>
+        <p><code>QMediaPlayer::pause()</code></p>
+      </li>
+      <li>
+        <p><code>QMediaPlayer::stop()</code></p>
+      </li>
+      <li>
+        <p><code>QProgressBar::setValue()</code></p>
+      </li>
+    </ul>
+    <hr>
+    <p>Autorzy: <em>Tomasz Mańkowski</em></p>
+  </main>
+
+
+</body>
+
+</html>

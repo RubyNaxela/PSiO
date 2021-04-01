@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<!-- saved from url=(0120)http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Alt. Lab 03 - klasy, operatory</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon"
+    href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Alt. Lab 03 - klasy, operatory</h1>
+    </header>
+    <h1 id="alt-lab-03---klasy-operatory">Alt. Lab 03 - klasy, operatory</h1>
+    <h2 id="klasa-rational">Klasa Rational</h2>
+    <p>Zaprojektujmy klasę <code>Rational</code> służącą do operacji na ułamkach zwykłych. Zaprogramowanie takiej klasy
+      możemy podzielić na trzy etapy:</p>
+    <h3 id="ustalenie-wymagań-dotyczących-klasy">Ustalenie wymagań dotyczących klasy</h3>
+    <ul>
+      <li>ma przechowywać ułamki zwykłe (całkowity licznik (<em>numerator</em>) i mianownik (<em>denominator</em>))</li>
+      <li>ma oferować operacje takie jak dodawanie i odejmowanie</li>
+      <li>ma wyświetlać ułamek jak zwykłą liczbę jeżeli mianownik jest równy 1, w przeciwnym przypadku w notacji „#/#”
+      </li>
+    </ul>
+    <h3 id="ustalenie-interfejsu">Ustalenie <em>interfejsu</em></h3>
+    <p>Klasa powinna zawierać metody pozwalające na:</p>
+    <ul>
+      <li>ustawienie licznika i mianownika ułamka</li>
+      <li>pobranie wartości licznika i mianownika ułamka</li>
+      <li>osobnego ustawiania licznika i mianownika ułamka</li>
+      <li>wykonania przewidzianych operacji matematycznych</li>
+      <li>wypisywania wartości ułamka</li>
+    </ul>
+    <h3 id="implementacja">Implementacja</h3>
+    <p>Rozbijmy kod na plik nagłówkowy oraz źródłowy. Jeśli implementacja metody znajduje się poza definicją klasy,
+      należy jej nazwę poprzedzić ciągiem <code>NazwaKlasy::</code>, aby wskazać kompilatorowi, że jest to metoda
+      należąca do klasy, a nie wolna funkcja. Dodatkowo, metody które nie powodują zmian w obiekcie, na którym są
+      wywoływane (np. gettery, funkcja drukująca) warto oznaczyć modyfikatorem <code>const</code> występującym po liście
+      argumentów - dzięki temu będzie możliwe ich wywołanie w kontekście, do którego <em>obiekt</em> danej klasy został
+      przekazany jako <em>const</em>. Poniżej przedstawiono przykładową implementację klasy:</p>
+    <p><code>Rational.h</code>:</p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Rational {</span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb1-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    Rational(<span class="dt">int</span> num = <span class="dv">0</span>, <span class="dt">int</span> den = <span class="dv">1</span>); <span class="co">// default constructor</span></span>
+<span id="cb1-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> set(<span class="dt">int</span> num, <span class="dt">int</span> den); <span class="co">// sets numerator and denominator</span></span>
+<span id="cb1-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> num() <span class="at">const</span>; <span class="co">// gets numerator</span></span>
+<span id="cb1-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> den() <span class="at">const</span>; <span class="co">// gets denominator</span></span>
+<span id="cb1-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> set_num(<span class="dt">int</span> num); <span class="co">// sets numerator</span></span>
+<span id="cb1-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> set_den(<span class="dt">int</span> den); <span class="co">// sets denominator</span></span>
+<span id="cb1-10"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-10" aria-hidden="true" tabindex="-1"></a>    Rational add(<span class="at">const</span> Rational &amp;other) <span class="at">const</span>; <span class="co">// adds second rational number, returns result</span></span>
+<span id="cb1-11"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-11" aria-hidden="true" tabindex="-1"></a>    Rational subtract(<span class="at">const</span> Rational &amp;other) <span class="at">const</span>; <span class="co">// subtracts second rational number, returns result</span></span>
+<span id="cb1-12"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> print() <span class="at">const</span>; <span class="co">// prints number to console</span></span>
+<span id="cb1-13"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span>:</span>
+<span id="cb1-14"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">num_</span>, <span class="va">den_</span>;</span>
+<span id="cb1-15"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb1-15" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p><code>Rational.cpp</code>:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-1" aria-hidden="true" tabindex="-1"></a>Rational::Rational(<span class="dt">int</span> num, <span class="dt">int</span> den) : <span class="va">num_</span>(num) { <span class="co">// inicjalizuje pole num_ wartoscia num</span></span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (den) {</span>
+<span id="cb2-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">den_</span> = den;</span>
+<span id="cb2-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb2-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-5" aria-hidden="true" tabindex="-1"></a>        den = <span class="dv">1</span>;</span>
+<span id="cb2-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Rational::set(<span class="dt">int</span> num, <span class="dt">int</span> den) {</span>
+<span id="cb2-10"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">num_</span> = num;</span>
+<span id="cb2-11"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (den) {</span>
+<span id="cb2-12"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">den_</span> = den;</span>
+<span id="cb2-13"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-14"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-15"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> Rational::num() <span class="at">const</span> {</span>
+<span id="cb2-17"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">num_</span>;</span>
+<span id="cb2-18"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-19"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> Rational::den() <span class="at">const</span> {</span>
+<span id="cb2-21"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">den_</span>;</span>
+<span id="cb2-22"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-23"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Rational::set_num(<span class="dt">int</span> num) {</span>
+<span id="cb2-25"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">num_</span> = num;</span>
+<span id="cb2-26"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-27"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Rational::set_den(<span class="dt">int</span> den) {</span>
+<span id="cb2-29"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (den) {</span>
+<span id="cb2-30"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="va">den_</span> = den;</span>
+<span id="cb2-31"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-31" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-32"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-32" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-33"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-34" aria-hidden="true" tabindex="-1"></a>Rational Rational::add(<span class="at">const</span> Rational &amp;other) <span class="at">const</span> {</span>
+<span id="cb2-35"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Rational(<span class="va">num_</span> * other.<span class="va">den_</span> + other.<span class="va">num_</span> * <span class="va">den_</span>,</span>
+<span id="cb2-36"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-36" aria-hidden="true" tabindex="-1"></a>                    <span class="va">den_</span> * other.<span class="va">den_</span>);</span>
+<span id="cb2-37"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-37" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-38"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-39" aria-hidden="true" tabindex="-1"></a>Rational Rational::subtract(<span class="at">const</span> Rational &amp;other) <span class="at">const</span> {</span>
+<span id="cb2-40"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Rational(<span class="va">num_</span> * other.<span class="va">den_</span> - other.<span class="va">num_</span> * <span class="va">den_</span>,</span>
+<span id="cb2-41"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-41" aria-hidden="true" tabindex="-1"></a>                    <span class="va">den_</span> * other.<span class="va">den_</span>);</span>
+<span id="cb2-42"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-43"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Rational::print() <span class="at">const</span> {</span>
+<span id="cb2-45"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="va">den_</span> == <span class="dv">1</span>) {</span>
+<span id="cb2-46"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>cout &lt;&lt; <span class="va">num_</span>;</span>
+<span id="cb2-47"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-47" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb2-48"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-48" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>cout &lt;&lt; <span class="va">num_</span> &lt;&lt; <span class="st">"/"</span> &lt;&lt; <span class="va">den_</span>;</span>
+<span id="cb2-49"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-49" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-50"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb2-50" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Przetestuj działanie klasy uruchamiając poniższy kod.</p>
+    <hr>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-1" aria-hidden="true" tabindex="-1"></a>Rational quarter(<span class="dv">1</span>, <span class="dv">4</span>);</span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-2" aria-hidden="true" tabindex="-1"></a>Rational one_third(<span class="dv">1</span>, <span class="dv">3</span>);</span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-4" aria-hidden="true" tabindex="-1"></a>Rational add_result, sub_result;</span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-5" aria-hidden="true" tabindex="-1"></a>add_result = one_third.add(quarter);</span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-6" aria-hidden="true" tabindex="-1"></a>sub_result = one_third.subtract(quarter);</span>
+<span id="cb3-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-8" aria-hidden="true" tabindex="-1"></a>one_third.print(); cout &lt;&lt; <span class="st">" + "</span>; quarter.print(); cout &lt;&lt; <span class="st">" = "</span>; add_result.print(); cout &lt;&lt; endl;</span>
+<span id="cb3-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb3-9" aria-hidden="true" tabindex="-1"></a>one_third.print(); cout &lt;&lt; <span class="st">" - "</span>; quarter.print(); cout &lt;&lt; <span class="st">" = "</span>; sub_result.print(); cout &lt;&lt; endl;</span></code></pre>
+    </div>
+    <h2 id="przeciążanie-operatorów">Przeciążanie operatorów</h2>
+    <p>Napisana w poprzednim podpunkcie klasa pozwala na operacje na ułamkach, ciągle jednak nie jest tak intuicyjna w
+      użyciu jak typy wbudowane:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> a = <span class="dv">1</span>, b = <span class="dv">2</span>;</span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> c = a + b;</span></code></pre>
+    </div>
+    <p>Język C++ umożliwia jednak zdefiniowanie (przeciążenie) operatorów we własnych klasach, tak aby realizowały
+      dowolną zaimplementowaną przez nas funkcjonalność. Funkcje przeciążające operatory, mogą przyjmować tyle
+      argumentów, ile przyjmują w przypadku typów wbudowanych. Zamianie nie ulegają również priorytety operatorów, w
+      związku z czym kolejność wykonania wyrażenia <code>d = a+b*c</code> będzie zawsze <code>a+(b*c)</code>,
+      niezależnie od tego czy <code>a</code>, <code>b</code>, <code>c</code> i <code>d</code> to typy wbudowane, czy
+      definiowane przez użytkownika i jaką tak naprawdę operację realizują poszczególne operatory. Chociaż każdy
+      operator to tylko symbol graficzny i może realizować dowolną funkcjonalność, zalecane jest aby przeciążone
+      operatory pełniły funkcje zbliżone lub analogiczne do oryginałów, tak aby zachować czytelność kodu i intuicyjność
+      ich użycia.</p>
+    <p>Deklaracja operatora wygląda podobnie jak deklaracja metody:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb5-1" aria-hidden="true" tabindex="-1"></a>typ_zwracany <span class="kw">operator</span><span class="er">#(lista argumentow)</span></span></code></pre>
+    </div>
+    <p>gdzie <code>#</code> to przeciążany operator</p>
+    <p>Przykładowe operatory dodawania i odejmowania dla klasy <code>Rational</code> mogą wyglądać następująco
+      (analogicznie do metod <code>add</code> i <code>subtract</code>):</p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb6-1" aria-hidden="true" tabindex="-1"></a>Rational <span class="kw">operator</span>+(<span class="at">const</span> Rational &amp;rhs) <span class="at">const</span>; <span class="co">// rhs - Right Hand Side - prawy operand</span></span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb6-2" aria-hidden="true" tabindex="-1"></a>Rational <span class="kw">operator</span>-(<span class="at">const</span> Rational &amp;rhs) <span class="at">const</span>;</span></code></pre>
+    </div>
+    <p>Zwróć uwagę, że powyższe operatory przyjmują tylko jeden argument - prawy operand. Operator, tak jak metody
+      <code>add</code> i <code>subtract</code> jest wykonywany <em>na obiekcie</em> będącym lewym operandem:</p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-1" aria-hidden="true" tabindex="-1"></a>Rational Rational::<span class="kw">operator</span>+(<span class="at">const</span> Rational &amp;rhs) <span class="at">const</span> {</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Rational(<span class="va">num_</span> * rhs.<span class="va">den_</span> + rhs.<span class="va">num_</span> * <span class="va">den_</span>,</span>
+<span id="cb7-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-3" aria-hidden="true" tabindex="-1"></a>                    <span class="va">den_</span> * rhs.<span class="va">den_</span>);</span>
+<span id="cb7-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-6" aria-hidden="true" tabindex="-1"></a>Rational Rational::<span class="kw">operator</span>-(<span class="at">const</span> Rational &amp;rhs) <span class="at">const</span> {</span>
+<span id="cb7-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Rational(<span class="va">num_</span> * rhs.<span class="va">den_</span> - rhs.<span class="va">num_</span> * <span class="va">den_</span>,</span>
+<span id="cb7-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-8" aria-hidden="true" tabindex="-1"></a>                    <span class="va">den_</span> * rhs.<span class="va">den_</span>);</span>
+<span id="cb7-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Kod wykonujący obliczenia może mieć w tym momencie postać:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb8-1" aria-hidden="true" tabindex="-1"></a>add_result = one_third + quarter;</span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb8-2" aria-hidden="true" tabindex="-1"></a>sub_result = one_third - quarter;</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj do klasy <code>Rational</code> powyższe operatory. Samodzielnie zaimplementuj operator mnożenia
+      <code>*</code>. Przetestuj jego działanie.</p>
+    <hr>
+    <h3 id="klasy-zaprzyjaźnione-operator-strumieniowy">Klasy zaprzyjaźnione, operator strumieniowy</h3>
+    <p>Nie zawsze działanie operatorów jest tożsame z ich pierwotnym przeznaczeniem. Przykładowo, operatory
+      <code>&lt;&lt;</code> oraz <code>&gt;&gt;</code>, oryginalnie służyły do przesunięć bitowych na liczbach, jednak
+      ze względu na intuicyjność graficzną (kształt strzałki) w C++ znalazły zastosowanie w strumieniach.</p>
+    <p>Wyświetlanie wartości ułamka przy użyciu metody <code>print()</code> nie jest wygodne, nie umożliwia też np.
+      zapisu do pliku tekstowego. Wygodniejsza byłaby forma:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb9-1" aria-hidden="true" tabindex="-1"></a>cout &lt;&lt; one_third &lt;&lt; <span class="st">" - "</span> &lt;&lt; quarter &lt;&lt; <span class="st">" = "</span> &lt;&lt; sub_result &lt;&lt; endl;</span></code></pre>
+    </div>
+    <p>W przypadku operatora <code>&lt;&lt;</code> lewym operandem jest <em>strumień</em>, a prawym - element do dodania
+      do strumienia. Na przykładzie operatorów <code>+</code> i <code>-</code> widzieliśmy jednak, że lewy operand jest
+      niejako narzucony - jest to obiekt klasy, w której piszemy metodę. Nie możemy również zmodyfikować klasy
+      strumienia - jest ona częścią systemu.</p>
+    <p>Możemy w takim wypadku napisać wolną funkcję, która przyjmie <em>strumień</em> i nasz ułamek, i zwróci
+      zmodyfikowany strumień:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>ostream &amp;<span class="kw">operator</span>&lt;&lt;(<span class="bu">std::</span>ostream &amp;str, <span class="at">const</span> Rational &amp;rhs){</span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (rhs.<span class="va">den_</span> == <span class="dv">1</span>) {</span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-3" aria-hidden="true" tabindex="-1"></a>        str &lt;&lt; rhs.<span class="va">num_</span>;</span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-4" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb10-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-5" aria-hidden="true" tabindex="-1"></a>        str &lt;&lt; rhs.<span class="va">num_</span> &lt;&lt; <span class="st">"/"</span> &lt;&lt; rhs.<span class="va">den_</span>;</span>
+<span id="cb10-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> str;</span>
+<span id="cb10-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb10-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Dodaj powyższy kod do pliku <code>Rational.cpp</code></p>
+    <p>Wolne funkcje nie mają jednak dostępu do pól prywatnych klasy, w związku z czym musimy zadeklarować przyjaźń
+      klasy z funkcją. Wewnątrz definicji klasy <code>Rational</code> dodaj:</p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">friend</span> <span class="bu">std::</span>ostream &amp;<span class="kw">operator</span>&lt;&lt;(<span class="bu">std::</span>ostream &amp;str, <span class="at">const</span> Rational &amp;rhs);</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj do klasy <code>Rational</code> operator <code>&gt;&gt;</code>, dzięki któremu będzie można pobrać ze
+      strumenia typu <code>istream</code> (np. z konsoli poprzez <code>cin</code>) ułamek. Dopuść dwa możliwe formaty
+      wejścia:</p>
+    <ul>
+      <li>liczba całkowita, np: <code>5</code></li>
+      <li>ułamek, np: <code>7/22</code></li>
+    </ul>
+    <p>Do realizacji zadania najlepiej wykorzystać z <code>string::find</code> i <code>string::substring</code>
+      opisanych poniżej.</p>
+    <h3 id="stringfind"><code>string::find(...)</code></h3>
+    <p>Metoda <code>find</code> pozwala znaleźć w <code>string</code>-u pierwsze wystąpienie znaku lub ciągu znaków (w
+      zależności od tego, czy przekażemy jako argument pojedynczy znak - <code>char</code> lub ciąg znaków -
+      <code>std::string</code>). Do przechowywania indeksu położenia znaku będziemy posługiwali się typem
+      <code>size_t</code> - typem całkowitym, bez znaku, zwracanym standardowo przez metody typu <code>find</code>,
+      <code>size()</code>, <code>length()</code> itp. Przykładowo:</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text = <span class="st">"Ala ma kota"</span>;</span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="dt">size_t</span> position = text.find(<span class="ch">'a'</span>);</span>
+<span id="cb12-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Pierwsze wystąpienie litery a znajduje się na pozycji "</span> &lt;&lt; position &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p>Opcjonalny drugi argument pozwala podać pozycję, od której rozpocznie się przeszukiwanie. Rozbudowując powyższy
+      przykład, możemy rozpocząć przeszukiwanie od znaku następującego po poprzednim trafieniu, szukając tym samym
+      kolejnego wystąpienia.</p>
+    <div class="sourceCode" id="cb13">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb13-1" aria-hidden="true" tabindex="-1"></a>position = text.find(<span class="ch">'a'</span>, position + <span class="dv">1</span>);</span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Kolejne: "</span> &lt;&lt; position &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p>W przypadku nie znalezienia żądanego znaku/ciągu, <code>string::find()</code> zwraca
+      wartość&nbsp;<code>std::string::npos</code>. Sprawdzając zwróconą wartość możemy łatwo zapętlić wyszukiwanie w
+      celu znalezienia wszystkich wystąpień:</p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-1" aria-hidden="true" tabindex="-1"></a>position = <span class="dv">0</span>; <span class="co">// zaczynamy wyszukiwanie od początku</span></span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">// zapisujemy wynik wyszukiwania w zmiennej position, rozpoczynamy wyszukiwanie od znaku</span></span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">// następującego po poprzedniej wartości position</span></span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> ((position = text.find(<span class="ch">'a'</span>, position + <span class="dv">1</span>)) != <span class="bu">std::</span>string<span class="bu">::</span>npos) {</span>
+<span id="cb14-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// wyszukujemy tak długo, jak find() zwraca wartości różne od npos</span></span>
+<span id="cb14-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Trafienie: "</span> &lt;&lt; position &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb14-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb14-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <h3 id="stringsubstr"><code>string::substr(...)</code></h3>
+    <p>Metoda <code>susbstr</code> zwraca fragment oryginalnego napisu, zgodnie z przekazanymi wartościami - indeksem
+      początku fragmentu, oraz, opcjonalnie - jego długością.</p>
+    <p>Przykładowo:</p>
+    <div class="sourceCode" id="cb15">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text = <span class="st">"Ala ma kota"</span>;</span>
+<span id="cb15-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text2 = text.substr(<span class="dv">7</span>); <span class="co">// "kota" - od pozycji 7 do końca</span></span>
+<span id="cb15-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text3 = text.substr(<span class="dv">7</span>, <span class="dv">3</span>); <span class="co">// "kot" - od pozycji 7, 3 znaki</span></span>
+<span id="cb15-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="dt">size_t</span> position_of_ma = text.find(<span class="st">"ma"</span>); <span class="co">// 4</span></span>
+<span id="cb15-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>string text4 = text.substr(position_of_ma); <span class="co">// od początku wyrazu "ma" do końca</span></span></code></pre>
+    </div>
+    <hr>
+    <h2 id="konwersje">Konwersje</h2>
+    <p>W wielu przypadkach kompilator, jeśli nie znajdzie funkcji, która przyjmuje zestaw parametrów typu który jej
+      przekazaliśmy, wykona <em>niejawną konwersję</em> do pasującego typu. Dzięki temu możliwe jest wykonanie kodu:</p>
+    <div class="sourceCode" id="cb16">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb16-1" aria-hidden="true" tabindex="-1"></a>Rational p = quarter + <span class="dv">1</span>;</span></code></pre>
+    </div>
+    <p>Kompilator będzie się starał wykonać działanie na zmiennej typu <code>Rational</code>, bo taki jest pierwszy
+      operand. Zaimplementowaliśmy operację <code>Rational + Rational</code>, zatem potrzebna jest jedynie konwersja
+      liczby całkowitej do <code>Rational</code> - którą też zaimplementowaliśmy, jako efekt uboczny konstruktora
+      <code>Rational(int num, int den)</code>. Powyższy kod sprowadzi się zatem <em>niejawnie</em> (bez naszej
+      wiedzy/ingerencji) do:</p>
+    <div class="sourceCode" id="cb17">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb17-1" aria-hidden="true" tabindex="-1"></a>Rational p = quarter + Rational(<span class="dv">1</span>);</span></code></pre>
+    </div>
+    <p>Operacja odwrotna (<code>1 + quarter</code>) nie powiedzie się jednak, ponieważ kompilator będzie "szukał"
+      operatora działającego na typie <code>int</code>.</p>
+    <p>Możemy również sami deklarować funkcje konwertujące <em>z</em> innego typu do naszej klasy w postaci
+      konstruktora:</p>
+    <div class="sourceCode" id="cb18">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb18-1" aria-hidden="true" tabindex="-1"></a>Rational(<span class="dt">double</span> r); <span class="co">// konstruktor konwertujacy z double</span></span></code></pre>
+    </div>
+    <div class="sourceCode" id="cb19">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-1" aria-hidden="true" tabindex="-1"></a>Rational::Rational(<span class="dt">double</span> r) {</span>
+<span id="cb19-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> den = <span class="dv">1</span>;</span>
+<span id="cb19-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> it = <span class="dv">0</span>;</span>
+<span id="cb19-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> ((r != (<span class="dt">int</span>)r)&amp;&amp;(it&lt;<span class="dv">9</span>)){</span>
+<span id="cb19-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-5" aria-hidden="true" tabindex="-1"></a>        den *= <span class="dv">10</span>;</span>
+<span id="cb19-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-6" aria-hidden="true" tabindex="-1"></a>        r *= <span class="dv">10</span>;</span>
+<span id="cb19-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-7" aria-hidden="true" tabindex="-1"></a>        it++;</span>
+<span id="cb19-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">num_</span> = r;</span>
+<span id="cb19-10"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">den_</span> = den;</span>
+<span id="cb19-11"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb19-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>oraz <em>na</em> inny typ w postaci operatora o symbolu typu, na który konwertujemy:</p>
+    <div class="sourceCode" id="cb20">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">operator</span> <span class="dt">double</span>() <span class="at">const</span>; <span class="co">// operator konwertujacy na double</span></span></code></pre>
+    </div>
+    <div class="sourceCode" id="cb21">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb21-1" aria-hidden="true" tabindex="-1"></a>Rational::<span class="kw">operator</span> <span class="dt">double</span>() <span class="at">const</span>{</span>
+<span id="cb21-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">std::</span>static_cast&lt;<span class="dt">double</span>&gt;(<span class="va">num_</span>) / <span class="va">den_</span>;</span>
+<span id="cb21-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb21-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Po dodaniu powyższych konwersji, możliwe jest nawet wykonanie poniższego kodu, mimo że nie zdefiniowaliśmy
+      operatora <code>/</code> dla klasy <code>Rational</code>.</p>
+    <div class="sourceCode" id="cb22">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb22-1" aria-hidden="true" tabindex="-1"></a>Rational p = one_third / quarter;</span></code></pre>
+    </div>
+    <p>Dlaczego powyższy kod działa? Czy wynik jest dokładnie taki jak powinien być?</p>
+    <h2 id="zadania-końcowe-">Zadania końcowe 🛠🔥</h2>
+    <h4 id="1-klasa-time">1. Klasa <code>Time</code></h4>
+    <p>Zaprojektuj i zaimplementuj klasę pozwalającą na przechowywanie czasu i podstawowe operacje (dodawanie i
+      odejmowanie, mnożenie przez skalar).</p>
+    <p>Klasa powinna umożliwiać wyświetlenie wartości czasu w konsoli, w formacie czytelnym dla użytkownika, a także
+      pobieranie czasu od użytkownika oraz konwersję z/na liczbę całkowitą sekund.</p>
+    <p>Przykładowe użycie:</p>
+    <div class="sourceCode" id="cb23">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-1" aria-hidden="true" tabindex="-1"></a>Time t1(<span class="dv">200</span>);</span>
+<span id="cb23-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-2" aria-hidden="true" tabindex="-1"></a>cout &lt;&lt; t1 &lt;&lt; endl; <span class="co">// wyswietli 03m:20s</span></span>
+<span id="cb23-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-3" aria-hidden="true" tabindex="-1"></a>Time t2;</span>
+<span id="cb23-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-4" aria-hidden="true" tabindex="-1"></a>cin &gt;&gt; t2; <span class="co">// uzytkownik wprowadza 10h:12m:01s</span></span>
+<span id="cb23-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-6" aria-hidden="true" tabindex="-1"></a>Time t3 = t2 - t1; <span class="co">// 10h:8m:41s</span></span>
+<span id="cb23-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> t3s = t3; <span class="co">// 36521</span></span></code></pre>
+    </div>
+    <h4 id="2-program-superfaktura">2. Program <em>SuperFaktura</em></h4>
+    <p>Napisz program umożliwiający generowanie faktur w konsoli. Rozbij funkcjonalność na klasy:</p>
+    <p><code>Invoice</code> - klasa opisująca fakturę, posiadająca następujące atrybuty:</p>
+    <ul>
+      <li>NIP wystawcy/odbiorcy</li>
+      <li>zbiór pozycji na fakturze</li>
+    </ul>
+    <p>Faktura w najprostszej wersji powinna mieć możliwość dodawania elementów i "wydruku" całości informacji.</p>
+    <p><code>Item</code> - klasa opisująca pojedynczą pozycję na fakturze, z poniższymi atrybutami:</p>
+    <ul>
+      <li>nazwa</li>
+      <li>cena jednostkowa netto</li>
+      <li>typ stawki VAT (A – 23%, B – 8%, C – 0%)</li>
+      <li>sprzedana ilość</li>
+    </ul>
+    <p>Przykładowa faktura po "wydruku" może wyglądać następująco:</p>
+    <pre><code>------------------FAKTURA VAT------------------
+===============================================
+Sprzedawca: 7770003699      Nabywca: 0123456789
+
+                  c.j. VAT   il.  netto  brutto
+1. Sruba M3     | 0.37  A | 100 | 37.00 | 45.51
+2. Wiertlo 2 mm | 2.54  B |   2 |  5.08 |  5.49
+
+------------------------------------ RAZEM ----
+                                  42.08 | 51.00</code></pre>
+    <p>Zastanów się jaką funkcjonalność i jaki interfejs musi mieć każda z klas. Drukowanie zrealizuj przez operator
+      strumieniowy, zarówno w klasie <code>Item</code> jak i <code>Invoice</code>.</p>
+    <p>Ostatecznie klasy powinny umożliwić wykonanie kodu podobnego do poniższego:</p>
+    <div class="sourceCode" id="cb25">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb25-1" aria-hidden="true" tabindex="-1"></a>Invoice inv(<span class="dv">7770003699</span>, <span class="bn">01234567</span><span class="er">89</span>);</span>
+<span id="cb25-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb25-2" aria-hidden="true" tabindex="-1"></a>inv.add_item(Item(<span class="st">"Sruba M3"</span>, <span class="fl">0.37</span>, <span class="ch">'A'</span>, <span class="dv">100</span>));</span>
+<span id="cb25-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb25-3" aria-hidden="true" tabindex="-1"></a>inv.add_item(Item(<span class="st">"Wiertlo 2 mm"</span>, <span class="fl">2.54</span>, <span class="ch">'B'</span>, <span class="dv">2</span>));</span>
+<span id="cb25-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2003%20-%20klasy,%20operatory.html#cb25-4" aria-hidden="true" tabindex="-1"></a>cout &lt;&lt; inv &lt;&lt; endl;</span></code></pre>
+    </div>
+    <p><strong>Bonus:</strong></p>
+    <p>Zaimplementuj operator dodawania faktur (sprawdź zgodność NIP-ów, pozycje występujące na obu fakturach złącz w
+      jedną). Zastanów się jak możesz przechowywać pozycje wewnątrz faktury, aby łatwo znaleźć dopasowania.</p>
+    <hr>
+    <p>Autorzy: <em>Jakub Tomczyński</em>, <em>Michał Fularz</em>, <em>Rafał Kabaciński</em>, <em>Piotr Kaczmarek</em>,
+      <em>Michał Nowicki</em>, <em>Jan Wietrzykowski</em></p>
+  </main>
+
+
+</body>
+
+</html>

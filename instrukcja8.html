@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 08 - dziedziczenie, obsluga zdarzen w SFML</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 08 - dziedziczenie, obsluga zdarzen w SFML</h1>
+    </header>
+    <h1 id="lab-08---dziedziczenie-i-obsługa-zdarzeń-w-sfml">Lab 08 - Dziedziczenie i obsługa zdarzeń w SFML</h1>
+    <h2 id="dziedziczenie">Dziedziczenie</h2>
+    <p>W ramach kursu stworzyliśmy przykładowe klasy mogące reprezentować byty z rzeczywistego świata (np. klasa
+      <code>Student</code>). Wiele typów rzeczywistych obiektów może współdzielić pewne cechy bądź należeć do wspólnej,
+      większej grupy. Przykładowo <em>samochody</em>, <em>motocykle</em>, <em>hulajnogi</em> i <em>rowery</em> są
+      rodzajami <em>pojazdów</em>. Oznacza to, że będą współdzieliły pewne cechy. Przekładając to na język programowania
+      obiektowego, możemy powiedzieć, że klasy <code>Car</code>, <code>Motorcycle</code>, <code>Scooter</code> i
+      <code>Bike</code> dziedziczą właściwości klasy <code>Vehicle</code>. Mechanizm ten nazywa się
+      <em>dziedziczeniem</em> (ang. <em>inheritance</em>) i pozwala nam nie tylko na ustalenie pewnej hierarchicznej
+      zależności pomiędzy tymi klasami, ale przede wszystkim ustalenie wspólnego <em>interfejsu</em>, który powinien być
+      zaimplementowany we wszystkich <em>klasach potomnych</em>, jednocześnie unikając niepotrzebnego powielania kodu.
+    </p>
+    <p>Przykład klasy <em>bazowej</em> (ang. <em>base</em>):</p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Vehicle {</span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb1-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string name() { <span class="cf">return</span> <span class="va">name_</span>; }</span>
+<span id="cb1-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> number_of_wheels() { <span class="cf">return</span> <span class="va">number_of_wheels_</span>; }</span>
+<span id="cb1-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string <span class="dt">propulsion_type</span>() { <span class="cf">return</span> <span class="va">propulsion_type_</span>; }</span>
+<span id="cb1-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> max_speed() { <span class="cf">return</span> <span class="va">max_speed_</span>; }</span>
+<span id="cb1-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">protected</span>:</span>
+<span id="cb1-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-9" aria-hidden="true" tabindex="-1"></a>    Vehicle(<span class="at">const</span> <span class="bu">std::</span>string &amp;name, <span class="dt">int</span> number_of_wheels,</span>
+<span id="cb1-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">const</span> <span class="bu">std::</span>string &amp;<span class="dt">propulsion_type</span>, <span class="dt">double</span> max_speed)</span>
+<span id="cb1-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-11" aria-hidden="true" tabindex="-1"></a>        : <span class="va">name_</span>(name), <span class="va">number_of_wheels_</span>(number_of_wheels),</span>
+<span id="cb1-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-12" aria-hidden="true" tabindex="-1"></a>          <span class="va">propulsion_type_</span>(<span class="dt">propulsion_type</span>), <span class="va">max_speed_</span>(max_speed) {}</span>
+<span id="cb1-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string <span class="va">name_</span>;</span>
+<span id="cb1-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">number_of_wheels_</span>;</span>
+<span id="cb1-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string <span class="va">propulsion_type_</span>;</span>
+<span id="cb1-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">double</span> <span class="va">max_speed_</span>;</span>
+<span id="cb1-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb1-18" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>W powyższym przykładzie została użyta <strong>lista inicjalizacyjna</strong>, dzięki której możliwe jest
+      zaincjalizowanie pól klasy <em>w momencie ich tworzenia</em> - w przeciwieństwie do inicjalizacji w samym ciele
+      konstruktora, gdzie najpierw zostałoby utworzone pole z domyślną wartością, a następnie przypisana nowa wartość.
+    </p>
+    <h3 id="modyfikator-dostępu-protected">Modyfikator dostępu <code>protected</code></h3>
+    <p>Główna zmiana w stosunku do klas, które implementowaliśmy poprzednio, to nowy modyfikator dostępu
+      <code>protected</code> użyty w klasie <code>Vehicle</code>. Zachowuje się on podobnie do modyfikatora
+      <code>private</code> (uniemożliwia dostęp z poza klasy), ale w przeciwieństwie do niego umożliwia dostęp do
+      pól/metod z poziomu klas, które dziedziczą z wyżej opisanej klasy. Działanie wszystkich trzech modyfikatorów
+      opisuje poniższa tabela:
+    </p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th style="text-align: center;">Dostęp z poziomu</th>
+          <th style="text-align: center;"><code>public</code></th>
+          <th style="text-align: center;"><code>protected</code></th>
+          <th style="text-align: center;"><code>private</code></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td style="text-align: center;">członków tej samej klasy</td>
+          <td style="text-align: center;">tak</td>
+          <td style="text-align: center;">tak</td>
+          <td style="text-align: center;">tak</td>
+        </tr>
+        <tr class="even">
+          <td style="text-align: center;">członków klasy potomnej</td>
+          <td style="text-align: center;">tak</td>
+          <td style="text-align: center;">tak</td>
+          <td style="text-align: center;">nie</td>
+        </tr>
+        <tr class="odd">
+          <td style="text-align: center;">spoza klasy</td>
+          <td style="text-align: center;">tak</td>
+          <td style="text-align: center;">nie</td>
+          <td style="text-align: center;">nie</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Możesz zauważyć, że konstruktor klasy <code>Vehicle</code> oznaczony jest jako <em>protected</em> (chroniony). Ma
+      to miejsce, ponieważ nie chcemy umożliwiać stworzenia instancji obiektu klasy <code>Vehicle</code> bezpośrednio.
+      Użyjemy jej jako "szablonu" dla poszczególnych klas potomnych.</p>
+    <p>Przykładową klasą dziedziczącą z klasy <code>Vehicle</code> jest klasa <code>Bike</code>:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Bike : <span class="kw">public</span> Vehicle {</span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb2-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    Bike() : Vehicle(<span class="st">"Bike"</span>, <span class="dv">2</span>, <span class="st">"Muscles"</span>, <span class="dv">30</span>) {}</span>
+<span id="cb2-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb2-4" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Klasy bazowe podajemy po dwukropku przy deklaracji klasy potomnej. Widzimy, że klasa <code>Bike</code> dziedziczy
+      z klasy <code>Vehicle</code> z modyfikatorem <em>public</em>. Podczas dziedziczenia modyfikatory mają następujący
+      efekt:</p>
+    <ul>
+      <li><code>public</code>: wszystkie pola z klasy bazowej zachowują swój poziom dostępu,</li>
+      <li><code>protected</code>: publiczne pola i metody klasy bazowej stają się chronione w klasie potomnej,</li>
+      <li><code>private</code>: chronione i publiczne pola klasy bazowej stają się prywatne w klasie potomnej.</li>
+    </ul>
+    <p>Klasa <code>Bike</code> definiuje konstruktor, który z pomocą <strong>listy inicjalizacyjnej</strong> wywołuje
+      konstruktor klasy bazowej z pewnymi stałymi parametrami. Dokonujemy pewnych założeń co do rowerów: nie mają
+      specjalnych nazw, mają zawsze dwa koła, używają tylko siły mięśni jako źródła napędu i mają prędkość maksymalną
+      równą 30. Klasa <code>Bike</code> nie dodaje żadnej funkcjonalności do klasy bazowej, ale możliwe jest już
+      utworzenie jej instancji. Możemy np. odwoływać się do <em>getterów</em> klasy bazowej:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb3-1" aria-hidden="true" tabindex="-1"></a>Bike bike;</span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; bike.max_speed() &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// Will print 30</span></span></code></pre>
+    </div>
+    <p>Możemy zdefiniować kolejną klasę potomną - <code>Car</code>:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Car : <span class="kw">public</span> Vehicle {</span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb4-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    Car(<span class="at">const</span> <span class="bu">std::</span>string &amp;name, <span class="at">const</span> <span class="bu">std::</span>string &amp;<span class="dt">propulsion_type</span>,</span>
+<span id="cb4-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">double</span> max_speed, <span class="dt">bool</span> has_abs)</span>
+<span id="cb4-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-5" aria-hidden="true" tabindex="-1"></a>        : Vehicle(name, <span class="dv">4</span>, <span class="dt">propulsion_type</span>, max_speed),</span>
+<span id="cb4-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-6" aria-hidden="true" tabindex="-1"></a>          <span class="va">has_abs_</span>(has_abs) {}</span>
+<span id="cb4-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> has_abs() { <span class="cf">return</span> <span class="va">has_abs_</span>; }</span>
+<span id="cb4-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span>:</span>
+<span id="cb4-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> <span class="va">has_abs_</span>;</span>
+<span id="cb4-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb4-12" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Klasa <code>Car</code> jest nieco bardziej skomplikowana: ma konstruktor, który przyjmuje argumenty i przekazuje
+      je do konstruktora klasy bazowej, zakładając jedynie stałą wartość liczby kół równą 4. Dodatkowo klasa definiuje
+      właściwość <code>has_abs_</code> wraz z getterem, która również jest inicjalizowana w konstruktorze. Jest to
+      właściwość specyficzna dla samochodów, nie współdzielona z innymi typami pojazdów.</p>
+    <p>Po utworzeniu instancji obiektu klasy <code>Car</code> możemy się odwoływać do metod i pól zarówno klasy bazowej,
+      jak i dodanych w klasie potomnej:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb5-1" aria-hidden="true" tabindex="-1"></a>Car passat(<span class="st">"Volkswagen Passat"</span>, <span class="st">"Diesel"</span>, <span class="dv">200</span>, <span class="kw">true</span>);</span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Name: "</span> &lt;&lt; passat.name() &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Has ABS: "</span> &lt;&lt; passat.has_abs() &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <h4 id="wielodziedziczenie">Wielodziedziczenie</h4>
+    <p>Klasy mogą również dziedziczyć z wielu klas bazowych, otrzymując zbiór wszystkich właściwości i metod klas
+      bazowych. Nazywa się to wielodziedziczeniem i może zostać zapisane w następujący sposób:
+      <code>class Car : public Object, public Vehicle</code>.
+    </p>
+    <p>Oczywiście poruszyliśmy jedynie fragment zagadnienia, jakim jest dziedziczenie. Dziedziczenie daje wiele
+      możliwości, np. tworzenie kontenerów polimorficznych - przechowujących wskaźniki do różnych klas, które mają
+      wspólną klasę bazową.</p>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Zdefiniuj kilka dodatkowych klas, które dziedziczą z klasy <code>Vehicle</code>. Dla każdej klasy zdefiniuj
+      konstruktor i dodaj pola specyficzne dla danego typu pojazdu. Stwórz instancje obiektów nowo zdefiniowanych klas.
+      Przykładowe typy pojazdów, które możesz opisać to:</p>
+    <ul>
+      <li>traktor,</li>
+      <li>motocykl,</li>
+      <li>samolot,</li>
+      <li>helikopter.</li>
+    </ul>
+    <p>Możesz również stworzyć dodatkową "pośrednią" klasę bazową dziedziczącą po <code>Vehicle</code>. Przykładowo,
+      klasa opisująca <em>statek powietrzny</em> może dziedziczyć po <code>Vehicle</code>, ale jednocześnie być klasą
+      bazową dla kolejnych klas opisujących obiekty takie jak samolot czy helikopter.</p>
+    <hr>
+    <h2 id="dziedziczenie-w-sfml">Dziedziczenie w SFML</h2>
+    <p>Ponieważ SFML jest biblioteką obiektową, możemy wykorzystać mechanizm dziedziczenia, aby rozszerzyć możliwości
+      wbudowanych klas zgodnie ze swoimi potrzebami, unikając jednocześnie powielania już istniejącego kodu czy
+      implementacji funkcjonalności, która jest już dostępna.</p>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Bazując na powyższym opisie i przykładach dziedziczenia, stwórz klasę <code>CustomRectangleShape</code>
+      dziedzicząc z klasy <code>sf::RectangleShape</code>. Docelowo Twój <code>CustomRectangleShape</code> poza
+      standardowymi cechami prostokąta, ma przechowywać w sobie informacje o swojej prędkości liniowej (w poziomie i w
+      pionie), prędkości obrotowej, a także umożliwiać wygodną animację z możliwością odbijania od krawędzi ekranu.</p>
+    <ol type="1">
+      <li>Zdefiniuj klasę tak, aby możliwe było utworzenie jej obiektu w następujący sposób:</li>
+    </ol>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb6-1" aria-hidden="true" tabindex="-1"></a>sf::Vector2f size(<span class="fl">120.0</span>, <span class="fl">60.0</span>);</span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb6-2" aria-hidden="true" tabindex="-1"></a>sf::Vector2f position(<span class="fl">120.0</span>, <span class="fl">60.0</span>);</span>
+<span id="cb6-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb6-3" aria-hidden="true" tabindex="-1"></a>CustomRectangleShape my_rectangle(size, position);</span></code></pre>
+    </div>
+    <p><strong>Podpowiedź:</strong> pamiętaj, że skoro <code>CustomRectangleShape</code> dziedziczy po
+      <code>sf::RectangleShape</code>, to wewnątrz jego metod możesz odwoływać się bezpośrednio do metod klasy bazowej,
+      np. <code>setPosition</code>. Pamiętaj, aby wywołać w swoim konstruktorze , w liście inicjalizacyjnej, konstruktor
+      klasy bazowej z odpowiednimi parametrami.
+    </p>
+    <p><strong>Podpowiedź:</strong> jeśli wykonasz dziedziczenie z modyfikatorem <code>public</code>, wszystkie pola i
+      metody klasy bazowej pozostaną niezmiennie dostępne:</p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb7-1" aria-hidden="true" tabindex="-1"></a>my_rectangle.setFillColor(sf::Color(<span class="dv">100</span>, <span class="dv">50</span>, <span class="dv">250</span>));</span></code></pre>
+    </div>
+    <ol start="2" type="1">
+      <li>Dodaj do swojej klasy pola prywatne opisujące poszczególne składowe prędkości, z domyślną wartością równą 0.
+        Dodaj metodę publiczną pozwalającą na ich ustawienie:</li>
+    </ol>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb8-1" aria-hidden="true" tabindex="-1"></a>my_rectangle.setSpeed(<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">10</span>); <span class="co">// predkosc x, y, obrotowa</span></span></code></pre>
+    </div>
+    <p><strong>Podpowiedź:</strong> pola w klasach mogą mieć domyślną wartość przypisaną przy deklaracji pola:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span>:</span>
+<span id="cb9-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">speed_x_</span> = <span class="dv">0</span>;</span></code></pre>
+    </div>
+    <ol start="3" type="1">
+      <li>Dodaj do swojej klasy metodę publiczną <code>void animate(const sf::Time &amp;elapsed)</code>. Metoda powinna
+        przyjąć czas, jaki upłynął od narysowania ostatniej klatki obrazu. Zaimplementuj metodę tak, aby odpowiednio
+        aktualizowała położenie i rotację obiektu. Główna pętla programu powinna wywoływać metodę <code>animate</code>,
+        przekazując jej zmierzony czas:</li>
+    </ol>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* ... */</span></span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-2" aria-hidden="true" tabindex="-1"></a>window.clear(sf::Color::Black);</span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-4" aria-hidden="true" tabindex="-1"></a>sf::Time elapsed = clock.restart();</span>
+<span id="cb10-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-6" aria-hidden="true" tabindex="-1"></a>my_rectangle.animate(elapsed);</span>
+<span id="cb10-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-8" aria-hidden="true" tabindex="-1"></a>window.draw(rectangle);</span>
+<span id="cb10-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-9" aria-hidden="true" tabindex="-1"></a>window.display();</span>
+<span id="cb10-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">/* ... */</span></span></code></pre>
+    </div>
+    <ol start="4" type="1">
+      <li>Aby umożliwić odbijanie prostokąta wewnątrz określonego obszaru (np. granic okna), klasa musi znać granice
+        tego obszaru. Dodaj odpowiednie pola prywatne i dwie metody pozwalające na ustawienie granic:</li>
+    </ol>
+    <p>a) poprzez podanie lewej, prawej, górnej i dolnej granicy:</p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb11-1" aria-hidden="true" tabindex="-1"></a>my_rectangle.setBounds(<span class="dv">0</span>, window.getSize().x, <span class="dv">0</span>, window.getSize().y);</span></code></pre>
+    </div>
+    <p>b) poprzez podanie obiektu typu <code>sf::IntRect</code> zawierającego prostokąt opisujący granice obszaru:</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb12-1" aria-hidden="true" tabindex="-1"></a>sf::IntRect rect1(<span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">200</span>, <span class="dv">100</span>); <span class="co">// prostokat o poczatku w punkcie 10,10, szerokosci 200 i wysokosci 100</span></span>
+<span id="cb12-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb12-2" aria-hidden="true" tabindex="-1"></a>my_rectangle.setBounds(rect1);</span></code></pre>
+    </div>
+    <ol start="5" type="1">
+      <li>Dodaj metodę prywatną <code>void bounce()</code>, która będzie zmieniać zwrot odpowiednich prędkości liniowych
+        prostokąta po przecięciu krawędzi obszaru granicznego. Wywołuj metodę <code>bounce</code> z wnętrza metody
+        <code>animate</code>.
+      </li>
+    </ol>
+    <p><strong>Podpowiedź:</strong> aby uniknąć utknięcia obiektu "w granicy" wyznaczaj nową prędkość korzystając z
+      wartości bezwzględnej i nadając jej odpowiedni znak, w zależności od tego, z którą krawędzią obszaru granicznego
+      nastąpił kontakt.</p>
+    <ol start="6" type="1">
+      <li>Dodaj do sceny kilka instancji <code>CustomRectangleShape</code>, o różnych rozmiarach i prędkościach, uruchom
+        animację.</li>
+    </ol>
+    <hr>
+    <h2 id="obsługa-zdarzeń-oraz-urządzeń-wejścia-w-sfml">Obsługa zdarzeń oraz urządzeń wejścia w SFML</h2>
+    <p>Większość gier komputerowych musi reagować na zewnętrzne sygnały wejścia zadawane przez użytkownika - generowane
+      przez np. klawiaturę lub mysz. W SFML mamy dwie możliwości przechwytywania tych sygnałów - system <em>zdarzeń</em>
+      z kolejką oraz ręczne sprawdzanie stanu. Każdy z nich ma swoje zastosowanie w innych przypadkach, w zależności od
+      żądanego efektu.</p>
+    <h3 id="system-zdarzeń">System zdarzeń</h3>
+    <p>Naciśnięcie klawisza na klawiaturze lub przesunięcie myszy - to <em>zdarzenia</em> (ang. <em>event</em>), które
+      system operacyjny przekazuje aplikacji. Biblioteka SFML obsługuje <a
+        href="https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Event.php">różne typy zdarzeń</a> przez dedykowane
+      klasy. Należy pamiętać, że zdarzenia mają charakter jednorazowy - naciśnięcie i przytrzymanie przycisku myszy
+      przez kilka sekund wygeneruje zdarzenia tylko w dwóch momentach - naciskania oraz puszczania przycisku. Zdarzenia
+      są zatem wygodne przy wprowadzaniu tekstu, wykrywaniu kliknięć czy pojedynczych naciśnięć klawiszy. Wewnątrz pętli
+      głównej programu wykorzystującego SFML znajduje się zazwyczaj dodatkowa pętla <code>while</code> przeglądająca
+      wszystkie zdarzenia, jakie zostały zakolejkowane od ostatniej klatki obrazu.</p>
+    <div class="sourceCode" id="cb13">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sf::Event event;</span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (window.pollEvent(event)) {</span>
+<span id="cb13-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// "close requested" event: we close the window</span></span>
+<span id="cb13-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (event.type == sf::Event::Closed) {</span>
+<span id="cb13-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Closing Window"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb13-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-6" aria-hidden="true" tabindex="-1"></a>        window.close();</span>
+<span id="cb13-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (event.type == sf::Event::KeyReleased) {</span>
+<span id="cb13-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (event.key.code == sf::Keyboard::Space) {</span>
+<span id="cb13-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-11" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Space released"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb13-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-12" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb13-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (event.type == sf::Event::MouseButtonPressed) {</span>
+<span id="cb13-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(event.mouseButton.button == sf::Mouse::Left) {</span>
+<span id="cb13-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-17" aria-hidden="true" tabindex="-1"></a>            sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);</span>
+<span id="cb13-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-18" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Mouse clicked: "</span> &lt;&lt; mouse_pos.x &lt;&lt; <span class="st">", "</span> &lt;&lt; mouse_pos.y &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb13-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-19" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb13-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb13-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <h3 id="polling-sprawdzanie-stanu">Polling (sprawdzanie stanu)</h3>
+    <p>Aby uzyskać informację o bieżącym stanie urządzenia wejścia, niezależnie od systemu zdarzeń, SFML oferuje klasy
+      <a href="https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Keyboard.php">sf::Keyboard</a> oraz <a
+        href="https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Mouse.php">sf::Mouse</a>. Są to klasy statyczne,
+      co oznacza, że nie możemy utworzyć ich instancji - w programie istnieje jedna, globalna instancja każdej z tych
+      klas i możemy odwoływać się do jej metod z dowolnego miejsca w programie. Wynika to ze specyfiki urządzeń wejścia
+      - nawet, jeśli podłączymy do komputera kilka myszy lub klawiatur, z punktu widzenia aplikacji są widoczne jako
+      jedno źródło wejścia.
+    </p>
+    <p>W przypadku gier często nie reagujemy na <em>zdarzenia</em> (np. kliknięcie czy wprowadzanie tekstu), tylko
+      chcemy sprawdzić w danym momencie <em>stan</em> przycisku (np. przytrzymanie klawisza na klawiaturze powoduje
+      ciągły ruch postaci w danym kierunku). Możemy to zrobić w następujący sposób, z dowolnego miejsca w programie:</p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {</span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Up key is pressed"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(sf::Mouse::isButtonPressed(sf::Mouse::Middle)) {</span>
+<span id="cb14-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Middle mouse button is pressed"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb14-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb14-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p><strong>Uwaga!</strong> Po zmianie rozmiaru okna, współrzędne "widoku", w którym poruszają się elementy pozostają
+      niezmienione - mają zakresy takie, jak w momencie tworzenia okna. Współrzędne, które będziemy otrzymywali w
+      zdarzeniach od myszy są jednak wyrażone w pikselach, w aktualnych współrzędnych okna, zatem może istnieć
+      konieczność <em>przemapowania</em> ich na aktualne współrzędne sceny:</p>
+    <pre><code>sf::Vector2f mouse_position = window.mapPixelToCoords(sf::Mouse::getPosition(window));</code></pre>
+    <hr>
+    <h2 id="zadanie-końcowe-">Zadanie końcowe 🛠🔥</h2>
+    <h4 id="poruszanie-prostokątem-klawiszami">Poruszanie prostokątem klawiszami</h4>
+    <p>Dodaj do prostokąta prywatną właściwość logiczną (pole) <code>is_selected</code> o domyślnej wartości
+      <code>false</code>, która będzie zmieniała zachowanie prostokąta. Dodaj odpowiednie metody <code>select()</code> i
+      <code>unselect()</code> pozwalające na ustawienie wybranego stanu. Zmodyfikuj metodę <code>animate</code>, tak aby
+      działała różnie w zależności od aktualnego stanu <code>is_selected</code>:
+    </p>
+    <ul>
+      <li>
+        <p>dla <code>is_selected == false</code> prostokąt porusza się tak jak w poprzednim zadaniu, odbijając od ścian
+        </p>
+      </li>
+      <li>
+        <p>dla <code>is_selected == true</code> prostokąt nie porusza się samoczynnie, reaguje natomiast na naciśnięcia
+          klawiszy strzałek na klawiaturze, przesuwając się płynnie w wybranym kierunku; pamiętaj aby prędkość była
+          stała niezależnie od liczby wyświetlanych klatek na sekundę oraz zabezpiecz prostokąt przed opuszczeniem okna.
+        </p>
+      </li>
+    </ul>
+    <p>Dodaj do sceny kilka prostokątów, jednemu z nich ustaw <code>is_selected</code> na <code>true</code>. Przetestuj
+      działanie programu.</p>
+    <h5 id="wybór-przesuwanego-prostokątaprostokątów">Wybór przesuwanego prostokąta/prostokątów</h5>
+    <p>Dodaj do sceny 10 prostokątów w losowych pozycjach (w obrębie okna), umieść je w kontenerze.</p>
+    <p>W głównej pętli zdarzeń przechwytuj kliknięcia i sprawdzaj czy znajdują się w obrębie któregoś z prostokątów:</p>
+    <ul>
+      <li>kliknięcie lewym przyciskiem "wybiera" prostokąt i ustawia jego kolor na losowy</li>
+      <li>kliknięcie prawy przyciskiem usuwa wybór z prostokąta i przywraca domyślny kolor</li>
+    </ul>
+    <p>Przykładowy fragment kodu, który możesz wykorzystać:</p>
+    <div class="sourceCode" id="cb16">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;CustomRectangleShape&gt; rectangles;</span>
+<span id="cb16-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">10</span>; i++) {</span>
+<span id="cb16-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    sf::Vector2f size(<span class="fl">120.0</span>, <span class="fl">60.0</span>);</span>
+<span id="cb16-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    sf::Vector2f position(<span class="bu">std::</span>rand() % (window.getSize().x - <span class="dv">120</span>), <span class="bu">std::</span>rand() % (window.getSize().y - <span class="dv">60</span>));</span>
+<span id="cb16-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-6" aria-hidden="true" tabindex="-1"></a>    rectangles.emplace_back(CustomRectangleShape(size, position));</span>
+<span id="cb16-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="kw">auto</span> &amp;rec : rectangles) {</span>
+<span id="cb16-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    rec.setFillColor(sf::Color(<span class="dv">0</span>, <span class="dv">255</span>, <span class="dv">0</span>));</span>
+<span id="cb16-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-11" aria-hidden="true" tabindex="-1"></a>    rec.setBounds(<span class="dv">0</span>, window.getSize().x, <span class="dv">0</span>, window.getSize().y);</span>
+<span id="cb16-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-12" aria-hidden="true" tabindex="-1"></a>    rec.setSpeed(<span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">10</span>);</span>
+<span id="cb16-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (window.isOpen()) {</span>
+<span id="cb16-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb16-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(<span class="at">const</span> <span class="kw">auto</span> &amp;rec : rectangles) {</span>
+<span id="cb16-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-20" aria-hidden="true" tabindex="-1"></a>        window.draw(rec);</span>
+<span id="cb16-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb16-22"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-23" aria-hidden="true" tabindex="-1"></a>    window.display();</span>
+<span id="cb16-24"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2008%20-%20dziedziczenie,%20obsluga%20zdarzen%20w%20SFML.html#cb16-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p><img src="img/cool_rectangles_scaled.gif" alt="Cool rectangles"></p>
+    <hr>
+    <p>Autorzy: <em>Dominik Pieczyński</em>, <em>Jakub Tomczyński</em>, <em>Tomasz Mańkowski</em></p>
+  </main>
+
+
+</body>
+
+</html>

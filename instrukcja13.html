@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 13 - Qt - wstep do GUI</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 13 - Qt - wstep do GUI</h1>
+    </header>
+    <h1 id="lab-13---qt---wstęp-do-gui">Lab 13 - Qt - wstęp do GUI</h1>
+    <h2 id="graficzny-interfejs-użytkownika-gui">Graficzny interfejs użytkownika (GUI)</h2>
+    <p>Graficzny interfejs użytkownika (ang. Graphical User Interface, GUI) jest jednym ze sposobów przekazywania
+      użytkownikowi komputera informacji i równocześnie sposobem na pobieranie od niego informacji zwrotnej. Każdy
+      system system operacyjny oferuje swój własny menadżer interfejsu graficznego. Aktualnie najpopularniejsze to:</p>
+    <ul>
+      <li>
+        <p>Windows:</p>
+        <ul>
+          <li>Luna (XP),</li>
+          <li>Aero (Vista, 7, 8, 8.1, 10),</li>
+          <li>Modern UI (8, 8.1, 10).</li>
+        </ul>
+      </li>
+      <li>
+        <p>Linux:</p>
+        <ul>
+          <li>Unity (Ubuntu),</li>
+          <li>KDE,</li>
+          <li>GNOME.</li>
+        </ul>
+      </li>
+      <li>
+        <p>macOS:</p>
+        <ul>
+          <li>Aqua.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Większość współczesnych GUI opiera się o tzw. widżety (ang. <em>widget</em>), inaczej nazywane kontrolkami.
+      Widżet jest pojedynczym elementem GUI, może nim być: okno, przycisk, suwak, pole do wpisywania tekstu itd. Widżet
+      nie koniecznie musi być elementem widocznym, może być na przykład kontenerem rozmieszczającym pozostałe widżety
+      wewnątrz okna. Współcześnie większość dostępnych widżetów ma strukturę obiektową. Każdy widżet na wejście
+      otrzymuje zdarzenia generowanie przez użytkownika (kliknięcie myszką, przycisk klawiatury), a także zdarzenia
+      generowanie przez system (w tym menadżera interfejsu graficznego). W odpowiedzi widżet rysuje swoją reprezentację
+      graficzną w wyznaczonej mu przestrzeni ekranu i/lub przekazuje informacje od użytkownika do programu i odwrotnie.
+    </p>
+    <h2 id="biblioteka-interfejsu-graficznego">Biblioteka interfejsu graficznego</h2>
+    <p>Aby możliwe było korzystanie z interfejsu graficznego konieczne jest wykorzystanie biblioteki interfejsu
+      graficznego zwanej także biblioteką widżetów. Każdy program działający pod kontrolą danego systemu operacyjnego (i
+      menadżera GUI) może korzystać z innego zestawu widżetów/kontrolek.</p>
+    <ul>
+      <li>Dla systemów Windows, firma Microsoft dostarcza dedykowane biblioteki kontrolek pod postacią WinForm i WPF,
+        które są składową .NET Framework.</li>
+      <li>Dla systemów macOS aktualnie obowiązującą, natywnie obsługiwaną biblioteką jest Cocoa.</li>
+      <li>Rozwiązania wywodzące się z systemów typu Linux, dzięki założeniu open-source, aktualnie zdobywają dużą
+        popularność, głównie ze względu na swoją wieloplatformowość. Wiele z nich posiada wersje zarówno na systemy
+        Linux, jak i Windows i OS X, dzięki czemu raz przygotowana aplikacja może zostać uruchomiona na wszystkich tych
+        platformach. Są to m.in. GTK+ (opracowane na potrzeby programu GIMP) i Qt (natywna biblioteka dla środowiska
+        KDE).</li>
+    </ul>
+    <h2 id="qt-framework">Qt framework</h2>
+    <p>Qt (wym. od ang. słowa cute - uroczy), poza biblioteką widżetów, od wersji Qt4.0 dostarcza także wieloplatformowy
+      framework programistyczny dla języka C++. Qt ujednolica obsługę wielu elementów pomiędzy różnymi platformami,
+      które dotychczas wymagały oddzielnego traktowania w różnych systemach. Jest to m.in. obsługa sieci, multimediów,
+      XML i wielu, wielu innych. Dzięki wykorzystaniu Qt wysiłek włożony w przeniesienie programu napisanego np. pod
+      Windowsem na Linuxa jest minimalny. Qt kompatybilne jest także z Mac OS X i Androidem.</p>
+    <p>Qt jest mocno obiektowo zorientowaną biblioteką wykorzystującą język C++. W czasie wykorzystywania Qt możliwe
+      jest korzystanie z wszystkich funkcjonalności języka C++ a także z biblioteki STL. Jednakże biblioteka Qt
+      implementuje własne struktury danych i obiekty, często o dodatkowej, specyficznej dla biblioteki Qt,
+      funkcjonalności niż te dostępne w STL. W celu zachowania 100% kompatybilności i przejrzystości kodu sugeruje się
+      wykorzystywanie tych dostarczanych przez Qt.</p>
+    <p>Poniżej przedstawiono prosty konsolowy program napisany z wykorzystaniem STL:</p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb1-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb1-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[]) {</span>
+<span id="cb1-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">"Hello World!"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb1-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>string&gt; sentence;</span>
+<span id="cb1-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">4</span>; i++) {</span>
+<span id="cb1-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>string word;</span>
+<span id="cb1-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>cin &gt;&gt; word;</span>
+<span id="cb1-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-13" aria-hidden="true" tabindex="-1"></a>        sentence.push_back(word);</span>
+<span id="cb1-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb1-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>oraz Qt:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QCoreApplication&gt;</span></span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QTextStream&gt;</span></span>
+<span id="cb2-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QVector&gt;</span></span>
+<span id="cb2-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QString&gt;</span></span>
+<span id="cb2-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[]) {</span>
+<span id="cb2-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QCoreApplication</span> a(argc, argv);</span>
+<span id="cb2-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextStream</span> qout(stdout);</span>
+<span id="cb2-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextStream</span> qin(stdin);</span>
+<span id="cb2-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-12" aria-hidden="true" tabindex="-1"></a>    qout &lt;&lt; <span class="st">"Hello World!"</span> &lt;&lt; endl;</span>
+<span id="cb2-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QVector</span>&lt;<span class="ex">QString</span>&gt; sentence;</span>
+<span id="cb2-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(<span class="dt">int</span> i =<span class="dv">0</span>; i &lt; <span class="dv">4</span>; i++) {</span>
+<span id="cb2-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="ex">QString</span> word;</span>
+<span id="cb2-18"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-18" aria-hidden="true" tabindex="-1"></a>        qin &gt;&gt; word;</span>
+<span id="cb2-19"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-19" aria-hidden="true" tabindex="-1"></a>        sentence.push_back(word);</span>
+<span id="cb2-20"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-20" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-21"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a.exec();</span>
+<span id="cb2-22"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb2-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <h2 id="tworzenie-projektu-aplikacji-okienkowej-w-qt">Tworzenie projektu aplikacji okienkowej w Qt</h2>
+    <p>Otwórz Qt Creator, następnie wybierz menu <em>File</em> → <em>New File or Project…</em>. W liście
+      <em>Projects</em> wybierz kategorię <em>Application</em>, następnie <em>Qt Widgets Application</em>. Zatwierdź
+      wybór przyciskiem <em>Choose…</em>.
+    </p>
+    <p>Nadaj nazwę swojemu projektowi i wybierz lokalizację, naciśnij <em>Next</em>.</p>
+    <p>Kolejne okno pozwala na zdefiniowanie nazwy klasy, która będzie bazą naszej aplikacji okienkowej. Zwyczajowo taką
+      klasą bazową jest widżet <em>MainWindow</em> (pamiętasz, że okno też jest widżetem?) będący głównym oknem
+      aplikacji. Nazwę głównego okna można oczywiście zmienić. Ważne aby nasza klasa dziedziczyła po
+      <em>QMainWindow</em> (patrz: <em>Base class</em>). Upewnij się że zaznaczono <em>Generate form</em>, dzięki temu
+      automatycznie stworzony plik opisujący wygląd głównego okna. Naciśnij <em>Next</em>. W kolejnym oknie możliwe do
+      wybrania są opcje tłumaczenia językowego aplikacji, tę część pomijamy i wciskamy <em>Next</em>. Następne okno
+      pozwala na wybranie odpowiedniego zestawu narzędzi, wykonujemy czynności tak samo jak w przypadku tworzenia
+      aplikacji C++, opisanej w instrukcji <a
+        href="http://jug.put.poznan.pl/lab-psio/Lab%2000%20-%20Tworzenie%20nowego%20projektu.html">Lab 00</a>. Na końcu
+      klikamy <em>Finish</em>.
+    </p>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Utwórz projekt korzystając z szablonu <em>Qt Widgets Application</em>.</p>
+    <hr>
+    <h3 id="szkielet-programu-okienkowego-w-qt">Szkielet programu okienkowego w Qt</h3>
+    <p>Utworzenie projektu z szablonu aplikacji okienkowej spowoduje dodanie do projektu dodatkowych plików opisujących
+      główne okno: <code>mainwindow.h</code> i <code>mainwindow.cpp</code> opisujące klasę okna od strony kodu oraz plik
+      <code>mainwindow.ui</code> zawierający opis układu (wyglądu) okna.
+    </p>
+    <p>Punktem wejściowym dla programu jest plik <code>main.cpp</code>, zawierający funkcję <code>main</code>:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"mainwindow.h"</span></span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QApplication&gt;</span></span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span> *argv[]) {</span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QApplication</span> a(argc, argv); <span class="co">// creates "application" object</span></span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    MainWindow w; <span class="co">// creates main window object</span></span>
+<span id="cb3-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-7" aria-hidden="true" tabindex="-1"></a>    w.show(); <span class="co">// shows main window</span></span>
+<span id="cb3-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a.exec(); <span class="co">// starts application event loop</span></span>
+<span id="cb3-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb3-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Widać, że powyższa struktura jest bliźniaczo podobna do konsolowego przykładu ze wstępu.
+      <code>QApplication a(argc, argv)</code> tworzy obiekt będący pętlą główną Qt obsługującą zdarzenia. Następnie
+      tworzona jest instancja obiektu <code>MainWindow</code>. Ostatecznie <code>a.exec()</code>; uruchamia pętlę
+      zdarzeń Qt.
+    </p>
+    <p>W bibliotece Qt wszystkie obiekty ostatecznie dziedziczą po klasie <code>QObject</code>, nie inaczej jest w
+      przypadku klasy głównego okna stworzonej automatycznie przez Qt Creator. W tym przypadku kolejność dziedziczenia
+      jest następująca <code>QObject</code> → <code>QWidget</code> → <code>QMainWindow</code> → <code>MainWindow</code>.
+      Deklaracja klasy głównego okna prezentuje się następująco:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QMainWindow&gt;</span></span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-3" aria-hidden="true" tabindex="-1"></a>QT_BEGIN_NAMESPACE</span>
+<span id="cb4-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> Ui { <span class="kw">class</span> MainWindow; }</span>
+<span id="cb4-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-5" aria-hidden="true" tabindex="-1"></a>QT_END_NAMESPACE</span>
+<span id="cb4-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MainWindow : <span class="kw">public</span> <span class="ex">QMainWindow</span></span>
+<span id="cb4-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-8" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb4-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span> <span class="co">// macro required for Qt meta-object functionality</span></span>
+<span id="cb4-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb4-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-12" aria-hidden="true" tabindex="-1"></a>    MainWindow(<span class="ex">QWidget</span> *parent = <span class="kw">nullptr</span>);</span>
+<span id="cb4-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-13" aria-hidden="true" tabindex="-1"></a>    ~MainWindow();</span>
+<span id="cb4-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span>:</span>
+<span id="cb4-16"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-16" aria-hidden="true" tabindex="-1"></a>    Ui::MainWindow *ui; <span class="co">// pointer to GUI elements of the window</span></span>
+<span id="cb4-17"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb4-17" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Konieczna jest oczywiście implementacja poszczególnych elementów klasy okna głównego. Qt Creator wykonał to za
+      nas automatycznie i prezentuje się ona następująco:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"mainwindow.h"</span></span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ui_mainwindow.h"</span></span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-4" aria-hidden="true" tabindex="-1"></a>MainWindow::MainWindow(<span class="ex">QWidget</span> *parent)</span>
+<span id="cb5-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    : <span class="ex">QMainWindow</span>(parent) <span class="co">// calls base class constructor</span></span>
+<span id="cb5-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    , ui(<span class="kw">new</span> Ui::MainWindow) <span class="co">// allocates memory for GUI object and calls its constructor</span></span>
+<span id="cb5-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-7" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    ui-&gt;setupUi(<span class="kw">this</span>); <span class="co">// initialises GUI</span></span>
+<span id="cb5-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-10"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-11" aria-hidden="true" tabindex="-1"></a>MainWindow::~MainWindow()</span>
+<span id="cb5-12"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-12" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb5-13"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">delete</span> ui; <span class="co">// deletes GUI object</span></span>
+<span id="cb5-14"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Na tym etapie konstruktor jedynie konfiguruje GUI, natomiast destruktor, wywoływany przy zamknięciu aplikacji,
+      usuwa informacje o GUI z pamięci.</p>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Uruchom program utworzony z szablonu.</p>
+    <hr>
+    <h3 id="obsługa-qt-designer">Obsługa Qt Designer</h3>
+    <p>Klikając dwukrotnie na dowolny plik z rozszerzeniem <code>.ui</code> (w naszym przypadku
+      <code>mainwindow.ui</code>) edytor programu zamienia się na Qt Designer. Jest to tryb w którym za pomocą metody
+      przeciągnij-i-upuść możemy przygotować wygląd GUI.
+    </p>
+    <p>Po lewej stronie dostępny jest pionowy pasek zawierający listę standardowych widżetów Qt. Widżety pogrupowane są
+      w zależności od podstawowych funkcjonalności. Na górze znajduje się także pasek Filter pozwalający na
+      przeszukiwanie listy:</p>
+    <p><img class="black-and-white" src="img/qt_widgets_list.png"></p>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Zapoznaj się z listą widżetów. Czy wszystkie ich nazwy, opatrzone rysunkami, są wystarczająco klarowne i
+          objaśniają ich działanie? W razie potrzeby wesprzyj się wyszukiwarką Google.</p>
+      </li>
+      <li>
+        <p>Za pomocą metody przeciągnij-i-upuść umieść na projekcie okna jeden QPushButton, jeden QLabel i dwa
+          QLineEdit. Spróbuj zmienić ich położenie oraz rozmiar.</p>
+      </li>
+      <li>
+        <p>Uruchom program i zaobserwuj zachowanie widżetów umieszczonych na oknie.</p>
+      </li>
+    </ul>
+    <hr>
+    <p>Po prawej stronie Qt Designera znajduje się <em>Property Editor</em>, jest to zbiór pól pozwalających na edycję
+      własności poszczególnych widżetów. Wyświetlane są informacje o widżecie, na którym zatrzymany jest aktualnie focus
+      (ostatnio zaznaczony widżet). Należy pamiętać, że samo okno także jest widżetem i posiada swoje własności, które
+      można edytować w Property Editorzer. Każdy rodzaj widżetu będzie posiadał własne, unikalny dla swojego typu zestaw
+      własności.</p>
+    <p>Każdy widżet musi posiadać unikalną w obrębie danego okna nazwę. Nazwę nadajemy przez edycję własności
+      <em>objectName</em>:
+    </p>
+    <p><img class="black-and-white" src="img/qt_object_name.png"></p>
+    <hr>
+    <h4 id="-zadanie--3">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Zmień <em>objectName</em> dla poszczególnych widżetów umieszczonych na oknie (np: <code>QPushButton</code>:
+          <em>addButton</em>; <code>QLineEdit</code>: <em>inputValue1</em>, <em>inputValue2</em>; <code>QLabel</code>:
+          <em>result</em>).
+        </p>
+      </li>
+      <li>
+        <p>Widżety posiadają także szereg innych funkcjonalności, dotyczących głównie ich wyglądu:</p>
+        <ul>
+          <li>Zmień treść wyświetlaną na <code>QPushButton</code>.</li>
+          <li>Zmień tytuł wyświetlany na pasku okna <code>MainWindow</code>.</li>
+          <li>Zmień czcionkę wyświetlaną przez <code>QLabel</code>.</li>
+          <li>Zapoznaj się z własnością enable.</li>
+          <li>Przejrzyj pozostałe własności poszczególnych widżetów.</li>
+        </ul>
+      </li>
+    </ul>
+    <hr>
+    <h3 id="layout">Layout</h3>
+    <p>Widżety umieszczone na oknie nie są w żaden sposób powiązane z rozmiarem okna. Zawsze, niezależnie od rozmiaru
+      okna, będą zakotwiczone się w jednej, odgórnie zdefiniowanej, pozycji i będą posiadać stały rozmiar:</p>
+    <hr>
+    <h4 id="-zadanie--4">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Uruchom program i spróbuj zmienić rozmiar okna. Czy umieszczone w nim widżety są zawsze widoczne?</p>
+    <hr>
+    <p>Qt posiada system automatycznego dopasowywania położenia widżetów i ich rozmiaru, zależnie od aktualnego wyglądu
+      okna, w którym się znajdują, nazywany <em>Layout</em>. <em>Layout</em> jest widżetem wewnątrz którego można
+      umieścić inne elementy GUI.</p>
+    <hr>
+    <h4 id="-zadanie--5">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Podstawową metodą rozmieszczenia elementów na oknie za pomocą <em>Layout</em> jest mechanizm wbudowany w każde
+      okno:</p>
+    <ul>
+      <li>
+        <p>Kliknij prawym klawiszem na oknie i z menu kontekstowego wybierz <em>Lay Out</em>, a następnie <em>Lay Out in
+            a Grid</em>. Elementy Powinny zostać automatycznie rozmieszczone na oknie. Uruchom program i sprawdź
+          zachowanie widżetów w czasie zmiany rozmiaru okna.</p>
+      </li>
+      <li>
+        <p>Istnieje możliwość reorganizacji elementów okna metodą drag-and-drop, spróbuj zmienić umieszczenie widżetów
+          layoucie. Uruchom program dla różnych konfiguracji i sprawdź zachowanie.</p>
+      </li>
+    </ul>
+    <p>Możliwe jest zagnieżdżanie jednego layoutu wewnątrz drugiego:</p>
+    <ul>
+      <li>
+        <p>Z biblioteki widżetów wybierz <em>Horizontal Layout</em> i umieść go na oknie.</p>
+      </li>
+      <li>
+        <p>Spróbuj rozmieścić elementy na oknie tak aby uzyskać następujący efekt:</p>
+      </li>
+    </ul>
+    <p><img class="black-and-white" src="img/qt_layout_nested.png"></p>
+    <ul>
+      <li>Przetestuj działanie programu.</li>
+    </ul>
+    <hr>
+    <p>Czasami istnieje konieczność zadania minimalnego i maksymalnego wymiaru każdego z widżetów. Dlatego dla każdego
+      widżetu można znaleźć własności <em>minimumSize</em> i <em>maximumSize</em>.</p>
+    <p>Istotnym widżetem, budującym layout okna, są także <em>Spacers</em>, czyli wypełniacze. Nie pełnią one żadnej
+      roli poza nadawaniem wyglądu okna.</p>
+    <hr>
+    <h4 id="-zadanie--6">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Przetestuj zachowanie programu w momencie zmiany <em>minimumSize</em> i <em>maximumSize</em> poszczególnych
+          widżetów.</p>
+      </li>
+      <li>
+        <p>Spróbuj wykorzystać <em>Horizontal Spacer</em> i <em>Vertical Spacer</em> (one także mają minimalny i
+          maksymalny wymiar).</p>
+      </li>
+      <li>
+        <p>Wykorzystaj <em>Horizontal Layout</em> i <em>Horizontal Spacer</em> do przesunięcia wyniku
+          (<code>QLabel</code>) do prawej krawędzi okna:</p>
+      </li>
+    </ul>
+    <p><img class="black-and-white" src="img/qt_spacer.png"></p>
+    <hr>
+    <h2 id="sygnały-i-sloty">Sygnały i Sloty</h2>
+    <p>Qt implementuje mechanizm sygnałów i slotów, jest to narzędzie pozwalające na zarządzanie asynchronicznymi
+      zdarzeniami pochodzącymi zarówno z programu, jak i od użytkownika lub systemu operacyjnego. Wykorzystanie sygnałów
+      (ang. <em>signals</em>) i slotów (ang. <em>slots</em>) jest bardzo proste. Każdy klasa dziedzicząca po
+      <em>QObject</em> w Qt może implementować sygnały, czyli funkcje emitujące jakieś zdarzenie, równocześnie każda
+      klasa może implementować sloty, czyli funkcje przechwytujące i przetwarzające powyższe sygnały. Na przykład klasa
+      <code>QPushButton</code> posiada sygnał <code>clicked()</code>, który jest emitowany w momencie naciśnięcia przez
+      użytkownika przycisku.
+    </p>
+    <p>Istnieje możliwość automatycznego tworzenia połączeń pomiędzy elementami GUI a klasą okna głównego z poziomu Qt
+      Designera. Qt Creator automatycznie tworzy slot i połączenie pomiędzy sygnałem widżetu, a tym slotem:</p>
+    <hr>
+    <h4 id="-zadanie--7">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Prawym klawiszem wybierz widżet <em>addButton</em> (<code>QPushButton</code>) i z menu kontekstowego wybierz
+      <em>Go to Slot…</em>, następnie wybierz sygnał <code>clicked()</code> i zatwierdź przyciskiem OK.
+    </p>
+    <hr>
+    <p>Qt Creator przenosi użytkownika do trybu edycji programu, w miejsce klasy <code>MainWindow</code>, w którym
+      stworzono metodę, wywoływaną w momencie wciśnięcia przycisku:</p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> MainWindow::on_addButton_clicked()</span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb6-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb6-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Równocześnie Qt Creator automatycznie tworzy deklarację slotu w klasie <code>MainWindow</code> (w pliku
+      <code>mainwindow.h</code>):
+    </p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MainWindow : <span class="kw">public</span> <span class="ex">QMainWindow</span> {</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb7-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span>:</span>
+<span id="cb7-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> on_pushButton_clicked();</span>
+<span id="cb7-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb7-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb7-6" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--8">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Ustaw breakpoint wewnątrz metody obsługi slotu (<code>void MainWindow::on_AddButton_clicked()</code>), uruchom
+      program w trybie Debug, zweryfikuj poprawność działania slotu.</p>
+    <hr>
+    <h2 id="dostęp-do-elementów-gui">Dostęp do elementów GUI</h2>
+    <p>Wszystkie elementy GUI stają się polami w obiekcie <code>ui</code>, dlatego dostęp do nich jest zawsze
+      następujący: <code>ui-&gt;objectName</code>, gdzie <code>objectName</code> jest nazwą widżetu nadaną w Property
+      Editorze.</p>
+    <p>Jak w każdej obiektowo zorientowanej bibliotece wszystkie obiekty GUI posiadają metody pozwalające na modyfikację
+      ich zachowania i wyglądu. Np. w celu zmiany tekstu wyświetlanego przez <code>QLabel</code> należy wykonać:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb8-1" aria-hidden="true" tabindex="-1"></a>ui-&gt;objectName-&gt;setText(<span class="st">"Hello! This is my first Qt application"</span>);</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--9">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Umieść powyższą linię w metodzie obsługującej kliknięcie przyciskiem. <code>objectName</code> zmień na
+          właściwą nazwę obiektu typu <code>QLabel</code> którą została ustawiona w Qt Designer (na przykład
+          <code>result</code>).
+        </p>
+      </li>
+      <li>
+        <p>Uruchom program i sprawdź jego poprawność zachowania. Treść <code>QLabel</code> powinna ulec zmianie po
+          kliknięciu przyciskiem.</p>
+      </li>
+    </ul>
+    <hr>
+    <p>Odczytanie wartości z QLineEdit odbywa się w następujący sposób:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">QString</span> text = ui-&gt;objectName-&gt;text();</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--10">🛠🔥 Zadanie 🛠🔥</h4>
+    <ul>
+      <li>
+        <p>Zmodyfikuj program tak, aby każde naciśnięcie przycisku powodowało przepisane zawartości jednego z
+          <code>QLineEdit</code> do <code>QLabel</code>.
+        </p>
+      </li>
+      <li>
+        <p>Następnie zmodyfikuj program tak aby po naciśnięciu przycisku wartość wpisana w polach <code>QLineEdit</code>
+          była dodawana i wyświetlana w <code>QLabel</code>.</p>
+      </li>
+    </ul>
+    <p>Do zamiany <code>QString</code> na liczbę całkowitą wykorzystaj metodę <code>QString::toInt( )</code>:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">QString</span> text = ui-&gt;objectName-&gt;text();</span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> value = text.toInt();</span></code></pre>
+    </div>
+    <p>Do konwersji z liczby na <code>QString</code> wykorzystaj statyczną metodę <code>QString::number(value)</code>:
+    </p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> value = <span class="dv">15</span>;</span>
+<span id="cb11-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2013%20-%20Qt%20-%20wstep%20do%20GUI.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">QString</span> text = <span class="ex">QString::</span>number(value);</span></code></pre>
+    </div>
+    <hr>
+    <p>Informacje o tym jakie metody oferuje dany widżet czy obiekt danej klasy najłatwiej uzyskać na stronie z
+      dokumentacją Qt, np: <a href="http://doc.qt.io/qt-5/qlabel.html">http://doc.qt.io/qt-5/qlabel.html</a></p>
+    <h2 id="zadanie-końcowe-">Zadanie końcowe 🛠🔥</h2>
+    <h4 id="1-kalkulator">1. Kalkulator</h4>
+    <p>Zadaniem jest stworzenie prostego graficznego kalkulatora. Kalkulator powinien posiadać</p>
+    <ul>
+      <li>2 aktywne pola QLineEdit, do których użytkownik będzie mógł wpisać wartości, dla których będzie wykonywane
+        działanie.</li>
+      <li>Nieaktywne (enabled = false) pole QLineEdit, do którego będzie trafiać wynik</li>
+      <li>Przycisk "Oblicz"</li>
+      <li>Cztery <code>QRadioButton</code>, reprezentujące które działanie jest wykorzystywane (dodawanie, odejmowanie,
+        mnożenie, dzielenie). <code>QRadioButton</code> można grupować za pomocą <code>QGroupBox</code>.</li>
+      <li>Przycisk CE kasujący zarówno zawartość pola wejściowego jak i wyjściowego.</li>
+      <li>Dwa <code>QLabel</code> na których zostanie wyświetlony wynik w notacji binarnej i heksadecymalnej.</li>
+    </ul>
+    <!--Jeden przycisk QPushButton przepisujący wartość z pola wyniku do pierwszego pola wejściowego. Na przycisku zamiast opisu umieść grafikę strzałki symbolizującą opisaną operację. Wykorzystaj QPushButton::SetIcon( );  (poszukaj w Internecie jak wykonać).-->
+
+    <h4 id="2-zaawansowany-kalkulator">2. Zaawansowany kalkulator</h4>
+    <p>Stwórz kalkulator podobny do tego dostępnego w systemie Windows. Okno powinno posiadać pole, do którego można
+      wpisać ręcznie wartość za pomocą klawiatury, lub za pomocą przycisków od 0 do 9 umieszczonych poniżej. Do
+      formatowania wartości wejściowej QLineEdit wykorzystaj jego własność inputMask. Każde wciśnięcie przycisku
+      numerycznego dopisuje odpowiednią wartość na końcu okna wpisywania. Spróbuj wykorzystać QButtonGroup. Stwórz drugą
+      grupę przycisków odpowiedzialnych za wybór rodzaju działania i za wyświetlenie wyniku.</p>
+    <h4 id="3-edytor-bazy-danych">3. Edytor bazy danych</h4>
+    <p>Stwórz program będący interfejsem bazy danych studentów. Użytkownik powinien mieć możliwość dodania nowego wpisu
+      z użyciem pól: Imię, Nazwisko, E-mail, Nr Indeksu, Mężczyzna/Kobieta (QRadioButton), Kierunku studiów (lista
+      rozwijana - QComboBox), Czy ukończył studia (QCheckBox), Notatka (QPlainTextEdit). Stwórz klasę studenta
+      zawierającą powyższe informacje, dodawaj nowe wpisy do QVector. Lista dostępnych wpisów powinna być wyświetlana na
+      liście QListView. Dodaj możliwość podglądu wybranego wpisu oraz usuwania wybranego wpisu.</p>
+    <hr>
+    <p>Autorzy: <em>Tomasz Mańkowski</em>, <em>Jakub Tomczyński</em></p>
+  </main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Lab 09 - alokacja pamieci, polimorfizm, tekstury</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Lab 09 - alokacja pamieci, polimorfizm, tekstury</h1>
+    </header>
+    <h1 id="lab-09---alokacja-pamięci-polimorfizm-tekstury-w-sfml">Lab 09 - Alokacja pamięci, polimorfizm, tekstury w
+      SFML</h1>
+    <h2 id="c17-standard">C++17 standard</h2>
+    <p>Wykorzystywane na tych i następnych zajęciach elementy języka C++ zostały wprowadzone do standardu jako
+      <em>C++17</em>. Domyślnie <em>QT Creator</em> generuje projekt zgodny ze stndardem <em>C++11</em>, co oznacza, że
+      niezbędna jest zmiana ustawień projektu. Otwórz plik <em>*.pro</em> i zmień linijkę:
+    </p>
+    <pre><code>CONFIG += console c++11</code></pre>
+    <p>na</p>
+    <pre><code>CONFIG += console c++17</code></pre>
+    <p>Pamiętaj o wywołaniu polecenie <em>Run qmake</em> na pliku <em>*.pro</em>.</p>
+    <h2 id="wskaźniki">Wskaźniki</h2>
+    <p>Zmienne, które tworzyliśmy do tej pory w programach poprzez prostą deklarację zmiennej miały swój <em>czas
+        życia</em> ograniczony do jednego zakresu (<em>scope</em>) - fragmentu kodu, najczęściej wydzielonego klamrami,
+      np. ciała funkcji, czy wnętrza pętli. Zmienne te były tworzone w sekcji pamięci operacyjnej zwanej
+      <em>stosem</em>. Zmienne i obiekty takie są automatycznie usuwane w momencie wyjścia poza <em>scope</em>, w którym
+      zostały zaalokowane, np. opuszczenia funkcji. W większości przypadków jest to działanie pożądane i zwalnia
+      programistę z konieczności ręcznego zarządzania pamięcią.
+    </p>
+    <p>Istnieją jednak przypadki, w których wskazane jest oddzielenie czasu życia obiektu od zakresu w którym został on
+      utworzony. W tym celu używamy alokacji na <em>stercie</em>.</p>
+    <p>W celu alokacji zmiennych na stercie klasycznie używano operatora <code>new</code>. Tak utworzoną zmienną
+      należało następnie usunąć za pomocą operatora <code>delete</code>. Jako że o operacji dealokacji łatwo zapomnieć,
+      wiele programów do dziś przejawia problem nazywany <strong>wyciekiem pamięci</strong>.</p>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Wykonaj poniższy kod obserwując użycie pamięci w <em>Menedżerze zadań</em> (Ctrl + Alt + Delete):</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> number_of_elements = <span class="dv">100000000</span>;</span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; number_of_elements; i++) {</span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> *number = <span class="kw">new</span> <span class="dt">int</span>;</span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Utworzono "</span> &lt;&lt; number_of_elements &lt;&lt; <span class="st">" wskaznikow na wartosc typu int. Nacisnij jakis klawisz aby kontynuowac."</span> &lt;&lt; <span class="bu">std::</span>endl; </span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>getchar();</span></code></pre>
+    </div>
+    <hr>
+    <p>W celu unikania wycieków pamięci, w C++11 wprowadzono nowe typy tzw. inteligentnych wskaźników (ang. <em>smart
+        pointer</em>), w tym <code>std::unique_ptr</code> oraz <code>std::shared_ptr</code>. W tej instrukcji pominiemy
+      <code>std::shared_ptr</code>, ponieważ służy on do przechowywania obiektów, które mają wielu właścicieli (na
+      przykład znajdują się jednocześnie w więcej niż jednym wektorze). <code>std::unique_ptr</code> nie może być
+      kopiowany - obiekt na który wskazuje ma tylko jednego właściciela. W celu wykorzystania inteligentnych wskaźników
+      zaimportować <code>#include &lt;memory&gt;</code>.
+    </p>
+    <p><code>std::unique_ptr</code> to klasa, która w uproszczeniu, przejmuje odpowiedzialność nad <em>czasem życia</em>
+      wskaźnika. W konstruktorze wykonuje alokację obiektu przy pomocy <code>new</code>, a w destruktorze niszczy go za
+      pomocą <code>delete</code>. Zastępując wykorzystywanie zwykłych wskaźników w stylu języka C użyciem
+      <code>std::unique_ptr</code> można łatwo zapobiec wyciekom pamięci. Zmienna typu <code>std::unique_ptr</code>
+      automatycznie wywoła <code>delete</code> na przechowywanym wskaźniku kiedy wyjdzie poza zakresu, w którym została
+      zadeklarowana.
+    </p>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Zmień poprzedni kod tak, aby zamiast operatora <code>new</code> wykorzystywał typ <code>std::unique_ptr</code>.
+      Do stworzenia <code>std::unique_ptr</code> wykorzystaj funkcję <a
+        href="https://en.cppreference.com/w/cpp/memory/unique_ptr/make_unique"><code>std::make_unique</code></a>.
+      Obserwuj użycie pamięci.</p>
+    <p><strong>Wskazówka:</strong> jako, że do funkcji <code>std::make_unique</code> przekazujemy typ zmiennej, którą
+      chcemy utworzyć na stercie możemy <strong>opcjonalnie</strong> użyć słowa kluczowego <code>auto</code> w celu
+      ominięcia deklarowania obiektu o długiej nazwie typu: <code>std::unique_ptr&lt;int&gt;</code>. Nie spowoduje to
+      utraty czytelności kodu.</p>
+    <hr>
+    <p>Po przeczytaniu powyższego opisu i wykonaniu zadania można odnieść wrażenie, że alokacja na stosie oraz alokacja
+      na stercie z użyciem <code>std::unique_ptr</code> są funkcjonalnie identyczne. W obu przypadkach obiekt niszczony
+      jest po wyjściu z zakresu w którym został zadeklarowany. Po co więc używać <code>std::unique_ptr</code>?</p>
+    <p>W C++11, obok typu <code>std::unique_ptr</code> wprowadzono również <em>move semantics</em> - możliwość
+      "przeniesienia" własności obiektu do innego zakresu (<em>scope</em>) lub kontenera. O ile w przypadku obiektów
+      zadeklarowanych na stosie owo przeniesienie w wielu przypadkach spowoduje konieczność wykonania kopii przynajmniej
+      części pól przenoszonego obiektu, to w przypadku <code>std::unique_ptr</code> przeniesienie nie spowoduje
+      kopiowania obiektu na stercie.</p>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Spróbuj skompilować poniższy kod:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>unique_ptr&lt;<span class="dt">int</span>&gt;&gt; some_pointers;</span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> number_of_elements = <span class="dv">100000000</span>;</span>
+<span id="cb4-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; number_of_elements; i++) {</span>
+<span id="cb4-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">auto</span> number = <span class="bu">std::</span>make_unique&lt;<span class="dt">int</span>&gt;();</span>
+<span id="cb4-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-5" aria-hidden="true" tabindex="-1"></a>    some_pointers.emplace_back(number);</span>
+<span id="cb4-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Umieszczono "</span> &lt;&lt; number_of_elements &lt;&lt; <span class="st">" elementow w std::vector&lt;std::unique_ptr&lt;int&gt;&gt;. Nacisnij jakis klawisz aby kontynuowac."</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb4-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>getchar();</span></code></pre>
+    </div>
+    <p>Zastanów się dlaczego tak napisany program nie działa.</p>
+    <p>Pamiętając, że obiekt na który wskazuje <code>std::unique_ptr</code> może mieć tylko jednego właściciela, przekaż
+      "prawo własności" wektorowi wywołując na zmiennej <code>number</code> funkcję <a
+        href="https://en.cppreference.com/w/cpp/utility/move"><code>std::move</code></a>.</p>
+    <hr>
+    <h2 id="polimorfizm">Polimorfizm</h2>
+    <p>Użycie wskaźników na obiekty ze sterty zamiast obiektów na stosie pozwala na łatwe zinterpretowanie wskaźnika na
+      obiekt klasy pochodnej jako wskaźnika na obiekt klasy bazowej.</p>
+    <hr>
+    <h4 id="-zadanie--3">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Wykorzystując przykładowe klasy z poprzedniej instrukcji spróbuj skompilować poniższy kod. Pokazuje on w jaki
+      sposób możliwe jest przechowywanie elementu klasy pochodnej (<code>Car</code>) we wskaźniku na klasę bazową
+      (<code>Vehicle</code>).</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>unique_ptr&lt;Vehicle&gt; skoda_superb_as_vehicle = <span class="bu">std::</span>make_unique&lt;Car&gt;(</span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Skoda Superb"</span>, <span class="st">"Gasoline"</span>, <span class="dv">200</span>, <span class="kw">true</span>);</span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Name: "</span> &lt;&lt; skoda_superb_as_vehicle-&gt;name() &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb5-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Has ABS: "</span> &lt;&lt; skoda_superb_as_vehicle-&gt;has_abs() &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <p>Wiedząc, że traktujemy nasz samochód jako obiekt klasy <code>Vehicle</code> oraz analizując metody które są w tej
+      klasie zaimplementowane zastanów się dlaczego tak napisany program nie działa. Usuń linijkę powodującą błąd
+      kompilacji.</p>
+    <p>Zwróć uwagę, na różnicę w odwoływaniu się do pól obiektu (<code>-&gt;</code> zamiast <code>.</code>). Z czego ona
+      wynika?</p>
+    <hr>
+    <p>Aby klasa bazowa była polimorficzna musi posiadać przynajmniej jedną metodę wirtualną (przydomek
+      <code>virtual</code>). Metody wirtualne pozwalają na ich przeciążanie w klasie pochodnej w taki sposób, że gdy
+      wywołamy je poprzez wskaźnik do klasy bazowej zostanie wywołana właściwa implementacja z klasy pochodnej. Gdyby
+      funkcja nie miała przydomka <code>virtual</code> to jej wywołanie poprzez wskaźnik do klasy bazowej wywołałoby
+      implementację z klasy bazowej, nie zważając na to, że w klasie pochodnej znajduje się przeciążona wersja funkcji.
+    </p>
+    <p>Niezwykle istotne jest aby <strong>każda bazowa klasa polimorficzna</strong> zawierała deklarację
+      <strong>wirtualnego destruktora</strong>. Jeśli taka deklaracja nie znajdzie się w klasie bazowej to usuwanie
+      obiektu klasy pochodnej poprzez wskaźnik do klasy bazowej jest <strong>niezdefiniowanym zachowaniem</strong> i
+      może prowadzić do wycieku pamięci, gdyż wywołany zostanie <strong>tylko</strong> destruktor klasy bazowej.
+      Najprostsza deklaracja wirtualnego destruktora wygląda następująco:
+    </p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">virtual</span> ~ClassName() = <span class="cf">default</span>;</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--4">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Do klasy <code>Vehicle</code> dodaj wirtualny destruktor (jako <code>public</code>).</p>
+    <hr>
+    <p>Rozwiązana została kwestia poprawnego wywoływania destruktora. Jednak nadal nie jest możliwe wywołanie metody
+      <code>has_abs</code> dla obiektu <code>skoda_superb_as_vehicle</code>, a przecież obiekt ten został utworzony z
+      wykorzystaniem konstuktora klasy <code>Car</code>.
+    </p>
+    <p>W celu ponownego zinterpretowania wskaźnika do klasy bazowej jako wskaźnika lub referencji do klasy pochodnej
+      należy użyć wyłuskania wskaźnika ("wyciągnięcia" obiektu na który wskaźnik wskazuje) oraz specjalnej funkcji
+      <code>dynamic_cast</code>. Poniższy przykład pozwala wywołać metodę <code>has_abs</code>.
+    </p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb7-1" aria-hidden="true" tabindex="-1"></a>Car *skoda_superb_as_as_car = <span class="kw">dynamic_cast</span>&lt;Car *&gt;(skoda_superb_as_vehicle.get());</span>
+<span id="cb7-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; <span class="st">"Has ABS: "</span> &lt;&lt; skoda_superb_as_as_car-&gt;has_abs() &lt;&lt; <span class="bu">std::</span>endl;</span></code></pre>
+    </div>
+    <h4 id="-zadanie--5">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj definicję klasy <code>Bike</code> z poprzednich zajęć, przeanalizuj oraz wykonaj następujący kod:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>unique_ptr&lt;Vehicle&gt;&gt; vehicles;</span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-2" aria-hidden="true" tabindex="-1"></a>vehicles.emplace_back(<span class="bu">std::</span>make_unique&lt;Car&gt;(<span class="st">"Skoda Superb"</span>, <span class="st">"Gasoline"</span>, <span class="dv">200</span>, <span class="kw">true</span>));</span>
+<span id="cb8-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-3" aria-hidden="true" tabindex="-1"></a>vehicles.emplace_back(<span class="bu">std::</span>make_unique&lt;Bike&gt;());</span>
+<span id="cb8-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; vehicles.size(); i++) {</span>
+<span id="cb8-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-6" aria-hidden="true" tabindex="-1"></a>    Car &amp;some_car = <span class="kw">dynamic_cast</span>&lt;Car &amp;&gt;(*vehicles[i]);</span>
+<span id="cb8-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb8-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Dlaczego zwracany jest wyjątek?</p>
+    <p>Możemy rozwiązać ten problem przechwytując wyjątek klauzulą <code>try...catch</code> lub rzutować wskaźnik i
+      sprawdzać czy wartość po rzutowaniu jest niezerowa:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; vehicles.size(); i++) {</span>
+<span id="cb9-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-2" aria-hidden="true" tabindex="-1"></a>    Car *some_car = <span class="kw">dynamic_cast</span>&lt;Car *&gt;(vehicles[i].get());</span>
+<span id="cb9-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (some_car != <span class="kw">nullptr</span>) { <span class="co">// cast successful</span></span>
+<span id="cb9-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>cout &lt;&lt; i &lt;&lt; <span class="st">": abs="</span> &lt;&lt; some_car-&gt;has_abs() &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb9-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-5" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> { <span class="co">// nope</span></span>
+<span id="cb9-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>cout &lt;&lt; i &lt;&lt; <span class="st">": not a Car"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb9-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p><strong>Uwaga:</strong> zauważ, że w tym przypadku, z uwagi na bezpośrednie przekazanie wyniku działania funkcji
+      <code>std::make_unique</code> do metody <code>emplace_back</code> (bez użycia zmiennej do której przypisujemy
+      wartość zwracaną przez <code>std::make_unique</code>), nie było konieczności używania <code>std::move</code>.
+    </p>
+    <hr>
+    <h2 id="polimorfizm-a-sfml">Polimorfizm a SFML</h2>
+    <p>Wszystkie "rysowalne" klasy z biblioteki SFML dziedziczą po klasie polimorficznej <code>sf::Drawable</code>.
+      Oznacza to, że możemy przechowywać wszystkie obiekty sceny w jednym kontenerze jako
+      <code>std::unique_ptr&lt;sf::Drawable&gt;</code>. Oznacza to, że np. w naszej grze, nie ma konieczności posiadania
+      osobnych kontenerów dla drzew, krzewów, kwiatów czy innych obiektów. Wszystkie podobne do siebie elementy
+      zgrupujemy możemy zgrupwać razem co upraszcza kod i zmniejsza liczbę powtórzeń.
+    </p>
+    <hr>
+    <h4 id="-zadanie--6">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Korzystając z teorii zamieszczonej powyżej utwórz w projekcie SFML wspólny wektor kilku obiektów o różnych
+      kształtach i kolorach.</p>
+    <p>W pętli głównej programu wywołuj metodę draw na wyłuskanych ze wskaźnika obiektach <code>sf::Drawable</code>.</p>
+    <p>Wykorzystaj kod z instrukcji [<a
+        href="http://jug.put.poznan.pl/lab-psio/Lab%2007%20-%20Wprowadzenie%20do%20SFML.html#tworzenie-projektu-wykorzystuj%C4%85cego-sfml">Lab
+        07 - Wprowadzenie do SFML</a>] i umieść utworzone koło, prostokąt i trójkąt w wektorze:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>vector&lt;<span class="bu">std::</span>unique_ptr&lt;sf::Drawable&gt;&gt; shapes;</span></code></pre>
+    </div>
+    <p>Zamiast osobno wywoływać rysowanie dla poszczególnych figur wykorzystaj:</p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(<span class="at">const</span> <span class="kw">auto</span> &amp;s : shapes) {</span>
+<span id="cb11-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    window.draw(*s);</span>
+<span id="cb11-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Następnie utwórz funkcję, w której zamieścisz cały kod do generacji figur. Funkcja powinna zwracać utworzony
+      kontener.</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> create_shapes(<span class="bu">std::</span>vector&lt;<span class="bu">std::</span>unique_ptr&lt;sf::Drawable&gt;&gt;  &amp;shapes)</span></code></pre>
+    </div>
+    <hr>
+    <h2 id="teksturyspritey-w-sfml">Tekstury/sprite'y w SFML</h2>
+    <p>Teksturowanie to nanoszenie na kształty geometryczne płaskiego, dwuwymiarowego obrazu, tak aby nadać
+      odzworowywanemu przedmiotowi wygląd bliższy prawdziwemu.</p>
+    <p>W przypadku grafiki dwuwymiarowej używa się pojęcia sprite'u - płaskiej bitmapy, która w całości lub fragmencie
+      renderowana jest w określonym miejscu na ekranie.</p>
+    <h3 id="skąd-wziąć-tekstury">Skąd wziąć tekstury?</h3>
+    <p>Istnieje wiele witryn internetowych z darmowymi zasobami multimedialnymi, takimi jak tekstury, sprite'y czy
+      dźwięki - w szczególności do zastosowań niekomercyjnych. Bazy mają zazwyczaj dobrze zorganizowany katalog, co
+      ułatwia znalezienie odpowiedniego zasobu.</p>
+    <p><strong>Pamiętaj</strong> - jeśli korzystasz z grafiki pobranej z Internetu, sprawdź na jakiej licencji zostały
+      udostępnione zasoby. Często autorzy oczekują jedynie tzw. <em>uznania autorstwa</em> (ang. <em>attribution</em>) -
+      wzmianki w informacjach o programie, skąd pochodzą zasoby i kto jest ich autorem.</p>
+    <p>Poniżej umieszczono odnośniki do kilku tekstur, od których możesz rozpocząć: <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/grass.png">grass</a>, <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/wall.png">wall</a>, <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/guy.png">guy</a>.</p>
+    <h3 id="użycie-tekstur">Użycie tekstur</h3>
+    <p>W SFML <em>teksturą</em> nazywamy obraz, który przechowywany jest w pamięci, natomiast <em>sprite</em> to
+      kształt, który będzie wyświetlony na ekranie, i który może być powiązany z daną teksturą.</p>
+    <p>Dodatkowy opis wykorzystania sprite'ów można znaleźć <a
+        href="https://www.sfml-dev.org/tutorials/2.5/graphics-sprite.php">tutaj</a></p>
+    <p>Najprostsze użycie tekstury polega na wczytaniu bitmapy z pliku do obiektu <code>sf::Texture</code>, a następnie
+      utworzeniu obiektu <code>sf::Sprite</code> i powiązaniu z załadowaną teksturą.</p>
+    <div class="sourceCode" id="cb13">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-1" aria-hidden="true" tabindex="-1"></a>sf::Texture texture;</span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (!texture.loadFromFile(<span class="st">"grass.png"</span>)) {</span>
+<span id="cb13-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cerr &lt;&lt; <span class="st">"Could not load texture"</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb13-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span>;</span>
+<span id="cb13-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-7" aria-hidden="true" tabindex="-1"></a>sf::Sprite sprite;</span>
+<span id="cb13-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb13-8" aria-hidden="true" tabindex="-1"></a>sprite.setTexture(texture);</span></code></pre>
+    </div>
+    <p>Klasa <code>sf::Sprite</code> dziedziczy z klas <code>sf::Drawable</code> oraz <code>sf::Transformable</code>,
+      zatem ma dostępne metody, które pozwalają na transformacje geometryczne (przesuwanie, obracanie, skalowanie).
+      Ponadto, dzięki polimorfizmowi sprite'y mogą być przechowywane w jednym kontenerze wraz z kształtami takimi jak
+      <code>sf::RectangleShape</code>.
+    </p>
+    <hr>
+    <h4 id="-zadanie--7">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Wczytaj do programu dostarczone tekstury.</p>
+    <p>Utwórz po jednym sprite dla każdej z nich, wyświetl je na ekranie w różnych miejscach i w różnej skali
+      (<code>sf::Transformable::setScale</code>).</p>
+    <hr>
+    <p>Jeśli chcemy, aby dany sprite wyświetlał jedynie fragment powiązanej z nim tekstury, możemy użyć na nim metody
+      <code>setTextureRect(sf::Rect)</code>, która pozwoli nam wskazać wybrany obszar. Wykorzystaj tę metodę do
+      wyświetlenia tylko twarzy wczytanej postaci.
+    </p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb14-1" aria-hidden="true" tabindex="-1"></a>sf::Texture texture_guy;</span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(!texture_guy.loadFromFile(<span class="st">"guy.png"</span>)) { <span class="cf">return</span> <span class="dv">1</span>; }</span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb14-4" aria-hidden="true" tabindex="-1"></a>sf::Sprite guy;</span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb14-5" aria-hidden="true" tabindex="-1"></a>guy.setTexture(texture_guy);</span>
+<span id="cb14-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb14-6" aria-hidden="true" tabindex="-1"></a>guy.setTextureRect(sf::IntRect(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">15</span>)); <span class="co">//left, top, width, height</span></span></code></pre>
+    </div>
+    <p><img src="img/head.png" alt="head"></p>
+    <p>Jeśli wybierzemy do wyświetlenia obszar większy niż rozmiar tekstury, a dodatkowo przestawimy teksturę w tryb
+      <em>Repeated</em> (metoda <code>sf::Texture::setRepeated(bool)</code>, uzyskamy <em>kafelkowanie</em> (ang.
+      <em>tiling</em>), czyli tekstura będzie powielana sąsiadująco tak aby wypełnić cały obszar. Przeanalizuj:
+    </p>
+    <div class="sourceCode" id="cb15">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-1" aria-hidden="true" tabindex="-1"></a>sf::Texture texture_wall;</span>
+<span id="cb15-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(!texture_wall.loadFromFile(<span class="st">"wall.png"</span>)) { <span class="cf">return</span> <span class="dv">1</span>; }</span>
+<span id="cb15-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-3" aria-hidden="true" tabindex="-1"></a>texture_wall.setRepeated(<span class="kw">true</span>);</span>
+<span id="cb15-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-5" aria-hidden="true" tabindex="-1"></a>sf::Sprite wall;</span>
+<span id="cb15-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-6" aria-hidden="true" tabindex="-1"></a>wall.setTexture(texture_wall);</span>
+<span id="cb15-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-7" aria-hidden="true" tabindex="-1"></a>wall.setScale(<span class="fl">0.3</span>, <span class="fl">0.3</span>);</span>
+<span id="cb15-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb15-8" aria-hidden="true" tabindex="-1"></a>wall.setTextureRect(sf::IntRect(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">500</span>, <span class="dv">500</span>));</span></code></pre>
+    </div>
+    <p><img src="img/wall_repeated.png" alt="wall_repeated"></p>
+    <hr>
+    <h4 id="-zadanie--8">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Wykorzystaj kafelkowanie i teksturę <em>grass</em>, aby utworzyć tło w programie. Ustal odpowiedni
+      <code>TextureRect</code> dla sprite'a reprezentującego tło tak, aby obejmował cały rozmiar okna.
+    </p>
+    <hr>
+    <p><strong>Ważne:</strong> dowiązanie tekstury do sprite'a nie powoduje skopiowania jej zawartości - jeśli obiekt
+      <code>sf::Texture</code> zostanie usunięty i spróbujemy wyświetlić sprite, z którym był powiązany, w miejsce
+      tekstury pojawi się białe wypełnienie.
+    </p>
+    <p>Warto też ograniczyć liczbę tekstur i operacji na nich do minimum - na przykład używać tej samej tekstury dla
+      wielu obiektów. W przypadku prostych gier, które nie mają wiele zasobów, najlepiej wczytać wszystkie niezbędne
+      tekstury na początku uruchamiania programu i utrzymywać w pamięci aż do jego zakończenia.</p>
+    <hr>
+    <h2 id="animacje">Animacje</h2>
+    <p>Animacje w grach zbudowanych na sprite'ach opierają się na zestawie następujących po sobie klatek animacji,
+      przełączanych w odpowiednich momentach.</p>
+    <p>Często kolejne klatki animacji umieszczone są w jednej teksturze, a wybór danej klatki odbywa się poprzez
+      wskazanie odpowiedniego fragmentu tekstury (przypomnienie: metoda <code>setTextureRect(sf::Rect)</code>. Dzięki
+      temu cała animacja może być przechowywana w pamięci układu graficznego, a przejście do kolejnej klatki animacji
+      nie jest kosztowne obliczeniowo.</p>
+    <hr>
+    <h4 id="-zadanie--9">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Napisz klasę <code>AnimatedSprite</code> dziedziczącą po <code>sf::Sprite</code>.</p>
+    <p>Klasa powinna mieć interfejs, który pozwoli na wskazanie fragmentów tekstury będących kolejnymi klatkami
+      animacji:</p>
+    <div class="sourceCode" id="cb16">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> animation_fps = <span class="dv">7</span>;</span>
+<span id="cb16-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-2" aria-hidden="true" tabindex="-1"></a>AnimatedSprite hero(animation_fps);</span>
+<span id="cb16-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">/* add texture, set parameters, etc. */</span></span>
+<span id="cb16-5"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-6" aria-hidden="true" tabindex="-1"></a>hero.add_animation_frame(sf::IntRect(<span class="dv">200</span>, <span class="dv">0</span>, <span class="dv">37</span>, <span class="dv">37</span>)); <span class="co">// 1 frame of animation</span></span>
+<span id="cb16-7"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-7" aria-hidden="true" tabindex="-1"></a>hero.add_animation_frame(sf::IntRect(<span class="dv">250</span>, <span class="dv">0</span>, <span class="dv">37</span>, <span class="dv">37</span>)); <span class="co">// 2 frame</span></span>
+<span id="cb16-8"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-8" aria-hidden="true" tabindex="-1"></a>hero.add_animation_frame(sf::IntRect(<span class="dv">300</span>, <span class="dv">0</span>, <span class="dv">37</span>, <span class="dv">37</span>)); <span class="co">// 3 frame</span></span>
+<span id="cb16-9"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2009%20-%20alokacja%20pamieci,%20polimorfizm,%20tekstury.html#cb16-9" aria-hidden="true" tabindex="-1"></a>hero.add_animation_frame(sf::IntRect(<span class="dv">350</span>, <span class="dv">0</span>, <span class="dv">37</span>, <span class="dv">37</span>)); <span class="co">// 4 frame</span></span></code></pre>
+    </div>
+    <p>Klasa powinna mieć metodę <code>step</code>, dzięki której będzie możliwe informowanie obiektu o czasie jaki
+      upłynął. Klasa na podstawie tego czasu oraz wewnętrznego parametru opisującego liczbę klatek na sekundę, powinna
+      decydować, czy ma nastąpić przełączenie na kolejną klatkę animacji.</p>
+    <p>Stwórz na scenie obiekt klasy <code>AnimatedSprite</code>, wykorzystaj teksturę postaci z <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/sprites.zip">załączonego zestawu tekstur</a>.</p>
+    <hr>
+    <h2 id="grawitacja">Grawitacja</h2>
+    <p>Grawitacja to stałe przyspieszenie działające w pionowym kierunku. Tak samo, jak w każdym <em>kwancie czasu</em>
+      bieżąca <em>prędkość</em> wpływa na położenie obiektu, tak bieżące <em>przyspieszenie</em> wpływa na
+      <em>prędkość</em>.
+    </p>
+    <hr>
+    <h4 id="-zadanie--10">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj do klasy <code>AnimatedSprite</code> informację o prędkości obiektu, analogicznie do klasy
+      <code>CustomRectangleShape</code>. Dodaj kolejną pochodną położenia - przyspieszenie i dodaj odpowiednie
+      oblicznenia w metodzie <code>step</code>. Ustaw pionową składową przyspieszenia tak, aby obiekt "spadał". Dodaj
+      odpowiednie parametry i warunki opisujące prędkość graniczną.
+    </p>
+    <hr>
+    <h2 id="zadania-końcowe-">Zadania końcowe 🛠🔥</h2>
+    <h4 id="labirynt">Labirynt</h4>
+    <p>Wykorzystując dostarczone tekstury zbuduj grę <em>Labirynt</em></p>
+    <ul>
+      <li>ustaw tło gry</li>
+      <li>dodaj do sceny kilka obiektów - ścian z odpowiednią teksturą</li>
+      <li>dodaj postać, którą będziesz mógł poruszać klawiszami kursora</li>
+      <li>dodaj detekcję kolizji tak, aby niemożliwe było przechodzenie przez ściany</li>
+    </ul>
+    <p>Ostateczny efekt powinien być podobny do tego na <a
+        href="http://jug.put.poznan.pl/lab-psio/_resources/labyrinth.mov">filmie</a>.</p>
+    <h4 id="platformer">Platformer</h4>
+    <p>Bazując na kodzie służącym do wykrywania kolizji w zadaniu z poprzednich zajęć, napisz prosty silnik gry
+      platformowej:</p>
+    <ul>
+      <li>dodaj do sceny kilka obiektów - platform z odpowiednią teksturą</li>
+      <li>dodaj postać - <code>AnimatedSprite</code>, którą będziesz mógł poruszać klawiszami kursora w lewo i w prawo,
+        ustal dla niej grawitację</li>
+      <li>dodaj kod wykrywający kolizje pomiędzy postacią a którąkolwiek z platform, tak aby postać mogła stać na
+        platformach</li>
+      <li>dodaj skakanie - jeśli postać dotyka podłoża, nadaj jej prędkość początkową w górę</li>
+    </ul>
+    <hr>
+    <p>Autorzy: <em>Michał Fularz</em>, <em>Tomasz Mańkowski</em>, <em>Dominik Pieczyński</em>, <em>Jakub
+        Tomczyński</em></p>
+  </main>
+
+
+</body>
+
+</html>

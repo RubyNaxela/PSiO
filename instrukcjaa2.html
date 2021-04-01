@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Alt. Lab 02 - Wstep do klas</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    pre>code.sourceCode {
+      white-space: pre;
+      position: relative;
+    }
+
+    pre>code.sourceCode>span {
+      display: inline-block;
+      line-height: 1.25;
+    }
+
+    pre>code.sourceCode>span:empty {
+      height: 1.2em;
+    }
+
+    .sourceCode {
+      overflow: visible;
+    }
+
+    code.sourceCode>span {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    div.sourceCode {
+      margin: 1em 0;
+    }
+
+    pre.sourceCode {
+      margin: 0;
+    }
+
+    @media screen {
+      div.sourceCode {
+        overflow: auto;
+      }
+    }
+
+    @media print {
+      pre>code.sourceCode {
+        white-space: pre-wrap;
+      }
+
+      pre>code.sourceCode>span {
+        text-indent: -5em;
+        padding-left: 5em;
+      }
+    }
+
+    pre.numberSource code {
+      counter-reset: source-line 0;
+    }
+
+    pre.numberSource code>span {
+      position: relative;
+      left: -4em;
+      counter-increment: source-line;
+    }
+
+    pre.numberSource code>span>a:first-child::before {
+      content: counter(source-line);
+      position: relative;
+      left: -1em;
+      text-align: right;
+      vertical-align: baseline;
+      border: none;
+      display: inline-block;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      padding: 0 4px;
+      width: 4em;
+      color: #aaaaaa;
+    }
+
+    pre.numberSource {
+      margin-left: 3em;
+      border-left: 1px solid #aaaaaa;
+      padding-left: 4px;
+    }
+
+    div.sourceCode {}
+
+    @media screen {
+      pre>code.sourceCode>span>a:first-child::before {
+        text-decoration: underline;
+      }
+    }
+
+    code span.al {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Alert */
+    code span.an {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Annotation */
+    code span.at {
+      color: #7d9029;
+    }
+
+    /* Attribute */
+    code span.bn {
+      color: #40a070;
+    }
+
+    /* BaseN */
+    code span.bu {}
+
+    /* BuiltIn */
+    code span.cf {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* ControlFlow */
+    code span.ch {
+      color: #4070a0;
+    }
+
+    /* Char */
+    code span.cn {
+      color: #880000;
+    }
+
+    /* Constant */
+    code span.co {
+      color: #60a0b0;
+      font-style: italic;
+    }
+
+    /* Comment */
+    code span.cv {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* CommentVar */
+    code span.do {
+      color: #ba2121;
+      font-style: italic;
+    }
+
+    /* Documentation */
+    code span.dt {
+      color: #902000;
+    }
+
+    /* DataType */
+    code span.dv {
+      color: #40a070;
+    }
+
+    /* DecVal */
+    code span.er {
+      color: #ff0000;
+      font-weight: bold;
+    }
+
+    /* Error */
+    code span.ex {}
+
+    /* Extension */
+    code span.fl {
+      color: #40a070;
+    }
+
+    /* Float */
+    code span.fu {
+      color: #06287e;
+    }
+
+    /* Function */
+    code span.im {}
+
+    /* Import */
+    code span.in {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Information */
+    code span.kw {
+      color: #007020;
+      font-weight: bold;
+    }
+
+    /* Keyword */
+    code span.op {
+      color: #666666;
+    }
+
+    /* Operator */
+    code span.ot {
+      color: #007020;
+    }
+
+    /* Other */
+    code span.pp {
+      color: #bc7a00;
+    }
+
+    /* Preprocessor */
+    code span.sc {
+      color: #4070a0;
+    }
+
+    /* SpecialChar */
+    code span.ss {
+      color: #bb6688;
+    }
+
+    /* SpecialString */
+    code span.st {
+      color: #4070a0;
+    }
+
+    /* String */
+    code span.va {
+      color: #19177c;
+    }
+
+    /* Variable */
+    code span.vs {
+      color: #4070a0;
+    }
+
+    /* VerbatimString */
+    code span.wa {
+      color: #60a0b0;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon"
+    href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Alt. Lab 02 - Wstep do klas</h1>
+    </header>
+    <h1 id="alt-lab-02---wstęp-do-klas">Alt. Lab 02 - Wstęp do klas</h1>
+    <h2 id="proste-struktury-i-funkcje-w-stylu-języka-c">Proste struktury i funkcje w stylu języka C</h2>
+    <p>Do tej pory tworzone na zajęciach struktury zawierały jedynie pola będące zmiennymi różnych typów. Jako przykład
+      można potraktować strukturę <code>Student</code>:</p>
+    <div class="sourceCode" id="cb1">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Student {</span>
+<span id="cb1-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string name;</span>
+<span id="cb1-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string surname;</span>
+<span id="cb1-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt; grades;</span>
+<span id="cb1-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb1-5" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Zakładając, że chcemy wyliczyć średnią ocen należy napisać odpowiednią funkcję, które wykona tę operację dla
+      danego obiektu struktury <code>Student</code>:</p>
+    <div class="sourceCode" id="cb2">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">float</span> calculate_grade(<span class="at">const</span> Student &amp;student) {</span>
+<span id="cb2-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> sum = <span class="bu">std::</span>accumulate(student.grades.begin(), student.grades.end(), <span class="fl">0.0</span><span class="bu">f</span>);</span>
+<span id="cb2-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> sum / student.grades.size();</span>
+<span id="cb2-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Takie podejście niesie ze sobą pewne konsekwencje: szczególnie w większych projektach powstaje dużo wolnych (nie
+      należących do żadnej klasy), globalnie dostępnych funkcji o różnych nazwach, które nie są hierarchicznie ułożone.
+    </p>
+    <h2 id="proste-struktury-w-stylu-języka-c">Proste struktury w stylu języka C++</h2>
+    <h3 id="podstawowe-informacje">Podstawowe informacje</h3>
+    <p>Funkcje powiązane z daną strukturą można zadeklarować wewnątrz jej deklaracji. Taka funkcja jest wtedy nazywaną
+      <strong>metodą</strong> i ma dostęp do wszystkich aktualnych wartości przechowywanych w obiekcie danej struktury.
+    </p>
+    <p>Zmodyfikowana deklaracja struktury <code>Student</code> może wyglądać następująco:</p>
+    <div class="sourceCode" id="cb3">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Student {</span>
+<span id="cb3-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string name;</span>
+<span id="cb3-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string surname;</span>
+<span id="cb3-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt; grades;</span>
+<span id="cb3-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">float</span> calculate_grade() {</span>
+<span id="cb3-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> sum = <span class="bu">std::</span>accumulate(grades.begin(), grades.end(), <span class="fl">0.0</span><span class="bu">f</span>);</span>
+<span id="cb3-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> sum / grades.size();</span>
+<span id="cb3-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-10"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb3-10" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Tym razem metoda <code>calculate_grade</code> jest zdefiniowana wewnątrz struktury <code>Student</code> i nie
+      przyjmuje żadnych parametrów. Ma ona jednak dostęp do wartości wszystkich pól obiektu <code>Student</code>.</p>
+    <p>Odwoływanie się do metod zadeklarowanych w strukturach odbywa się na analogicznej zasadzie do odwoływania się do
+      pól obiektu:</p>
+    <div class="sourceCode" id="cb4">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb4-1" aria-hidden="true" tabindex="-1"></a>Student student{<span class="st">"Some"</span>, <span class="st">"Student"</span>, {<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>}}; <span class="co">// This creates object of Student type</span></span>
+<span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">std::</span>cout &lt;&lt; student.calculate_grade() &lt;&lt; <span class="bu">std::</span>endl; <span class="co">// This calls calculate_grade function and prints the result</span></span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie-">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj metodę <code>print</code> wewnątrz struktury <code>Student</code>, która wydrukuje imię i nazwisko studenta
+      oraz wszystkie jego oceny:</p>
+    <blockquote>
+      <p>Jan Kowalski: 3.0 4.5 5.0 3.5</p>
+    </blockquote>
+    <hr>
+    <h3 id="weryfikacja-poprawności-wprowadzanych-danych">Weryfikacja poprawności wprowadzanych danych</h3>
+    <p>Napisany program w chwili obecnej nie dokonuje żadnego sprawdzania wprowadzanych danych. Studentowi można
+      przypisywać oceny, które będą dowolnymi liczbami.</p>
+    <p>Przykładowa metoda (wewnątrz struktury <code>Student</code>), która umożliwia dodanie nowej oceny wraz z
+      weryfikacją jej poprawności może wyglądać następująco:</p>
+    <div class="sourceCode" id="cb5">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> add_grade(<span class="dt">float</span> grade) {</span>
+<span id="cb5-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (grade &gt;= <span class="fl">2.0</span> &amp;&amp; grade &lt;= <span class="fl">5.0</span>) {</span>
+<span id="cb5-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// The grade is valid; let's add it and return true</span></span>
+<span id="cb5-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-4" aria-hidden="true" tabindex="-1"></a>        grades.push_back(grade);</span>
+<span id="cb5-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">true</span>;</span>
+<span id="cb5-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// The grade is invalid; let's return false</span></span>
+<span id="cb5-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">false</span>;</span>
+<span id="cb5-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Powyższe rozwiązanie nie rozwiązuje jednak wszystkich problemów. Do obiektu struktury <code>Student</code> nadal
+      można dodać ocenę pomijając wywołanie <code>add_grade</code>:</p>
+    <div class="sourceCode" id="cb6">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb6-1" aria-hidden="true" tabindex="-1"></a>Student student;</span>
+<span id="cb6-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb6-2" aria-hidden="true" tabindex="-1"></a>student.grades.push_back(<span class="fl">8.0</span>);</span></code></pre>
+    </div>
+    <p>Dodatkowo zmienna typu <code>Student</code> może być zainicjalizowana ocenami z błędnego przedziału:</p>
+    <div class="sourceCode" id="cb7">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb7-1" aria-hidden="true" tabindex="-1"></a>Student student{<span class="st">"Jan"</span>, <span class="st">"Kowalski"</span>, {<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>}};</span></code></pre>
+    </div>
+    <p>Korzystanie z tak przygotowanego interfejsu wymaga dużej samodyscypliny oraz przygotowania dokumentacji
+      informującej osobę mającą używać takiego kodu o konieczności dodawania ocen tylko z użyciem metody
+      <code>add_grade</code>.</p>
+    <h2 id="klasy-jako-alternatywa-struktur">Klasy jako alternatywa struktur</h2>
+    <p>Problemy opisane powyżej mogą być rozwiązane przy użyciu klas. Koncepcyjnie klasy przypominają struktury: również
+      posiadają pola i metody. Pozwalają jednak osobie projektującej klasę ograniczyć sposoby, w jaki możliwy będzie
+      dostęp do nich „z zewnątrz“.</p>
+    <hr>
+    <h4 id="-zadanie--1">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Zmień deklarację struktury <code>struct Student</code> na <code>class Student</code>. Spróbuj skompilować kod
+      odwołujący się do pól lub metod klasy <code>Student</code>.</p>
+    <hr>
+    <p>Istnieją trzy modyfikatory dostępu do pól i metod struktury lub klasy: <em>public</em>, <em>protected</em> i
+      <em>private</em>. Początkowo pominiemy wykorzystanie modyfikatora <em>protected</em>.</p>
+    <ul>
+      <li>Modyfikator <em>public</em> oznacza, że do pól i metod oznaczonych tym modyfikatorem można odwoływać się z
+        kodu znajdującego się poza strukturą lub klasą. <strong>Wszystkie pola i metody struktur są domyślnie
+          publiczne</strong>.</li>
+      <li>Modyfikator <em>private</em> oznacza, że do pól i metod oznaczonych tym modyfikatorem można odwoływać się
+        tylko z kodu znajdującego się wewnątrz metod struktury lub klasy. <strong>Wszystkie pola i metody klas są
+          domyślnie prywatne</strong>.</li>
+    </ul>
+    <p>Jedyną różnicą między klasami i strukturami w języku C++ jest domyślny modyfikator dostępu. W praktyce deklaracja
+      następującej struktury:</p>
+    <div class="sourceCode" id="cb8">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Student {</span>
+<span id="cb8-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string name;</span>
+<span id="cb8-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string surname;</span>
+<span id="cb8-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb8-4" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>jest równoznaczna następującej deklaracji klasy:</p>
+    <div class="sourceCode" id="cb9">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student {</span>
+<span id="cb9-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb9-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string name;</span>
+<span id="cb9-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>string surname;</span>
+<span id="cb9-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb9-5" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <p>Modyfikator obowiązuje dla wszystkich pól i metod zadeklarowanych pod nim, aż do pojawienia się kolejnego
+      modyfikatora.</p>
+    <p>Dodatkową korzyścią wynikającą z chronienia pól i umożliwienia do nich dostępu jedynie przez metody publiczne
+      jest fakt, że osoba korzystająca z klasy nie musi przejmować się tym, w jaki sposób przechowywane są informacje
+      wewnątrz klasy. Sposób ten może również ulec zmianie wraz z kolejnymi wersjami klasy - dla użycia klasy ważny jest
+      jedynie jej <strong>interfejs</strong>, czyli funkcje i pola dostępne dla użytkownika klasy. Z tych względów
+      preferowane jest deklarowanie wszystkich pól jako prywatnych, a od tej pory w instrukcjach będą się pojawiały
+      wyłącznie przykłady wykorzystujące klasy.</p>
+    <hr>
+    <h4 id="-zadanie--2">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj modyfikator <em>public</em> do poprzednio utworzonej klasy <code>Student</code>. Od tego momentu program
+      powinien działać tak samo jak przed zamianą struktury na klasę.</p>
+    <p>Zmień modyfikator dostępu do pola <code>grades</code> tak, aby zapobiec jego bezpośredniej modyfikacji.</p>
+    <hr>
+    <h2 id="konstruktor-i-destruktor">Konstruktor i destruktor</h2>
+    <p>Konstruktor i destruktor to specjalne metody, które - jak wskazują ich nazwy - są wywoływane w momencie
+      odpowiednio tworzenia i usuwania obiektu w pamięci. Mogą one służyć do inicjalizacji pól, alokacji pamięci czy jej
+      zwalniania. Konstruktor ma nazwę taką samą jak nazwa klasy/struktury, a destruktor tę samą nazwę poprzedzoną tyldą
+      (<code>~</code>). Domyślnie tworzone są pusty domyślny konstruktor i destruktor.</p>
+    <p>Konstruktor może mieć dodatkowo argumenty, którymi można na przykład zainicjalizować wartości:</p>
+    <div class="sourceCode" id="cb10">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student {</span>
+<span id="cb10-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb10-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-3" aria-hidden="true" tabindex="-1"></a>    Student(<span class="bu">std::</span>string n) {</span>
+<span id="cb10-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-4" aria-hidden="true" tabindex="-1"></a>        name = n;</span>
+<span id="cb10-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... */</span></span>
+<span id="cb10-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre>
+    </div>
+    <p>Zmienną można w tym momencie stworzyć w następujący sposób:</p>
+    <div class="sourceCode" id="cb11">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb11-1" aria-hidden="true" tabindex="-1"></a>Student s1(<span class="st">"Jan"</span>);</span></code></pre>
+    </div>
+    <hr>
+    <h4 id="-zadanie--3">🛠🔥 Zadanie 🛠🔥</h4>
+    <p>Dodaj do swojej klasy <code>Student</code> konstruktor, który umożliwi stworzenie zmiennej typu
+      <code>Student</code> i jednoczesne przypisanie mu imienia i nazwiska.</p>
+    <p>Co się stanie, kiedy spróbujesz utworzyć obiekt nie podając wartości parametrów konstruktora?</p>
+    <div class="sourceCode" id="cb12">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb12-1" aria-hidden="true" tabindex="-1"></a>Student s1;</span></code></pre>
+    </div>
+    <p>Napraw ten problem dodając domyślną wartość argumentów do konstruktora.</p>
+    <hr>
+    <h2 id="settery-gettery-nazwy-pól-i-metod">Settery, gettery, nazwy pól i metod</h2>
+    <p>W wielu przypadkach stworzona przez nas klasa będzie miała właściwość (pole), do którego chcemy umożliwić dostęp
+      zarówno do modyfikacji, jak i odczytu. W tym przypadku konieczne będzie stworzenie pary metod, nazywanych często
+      odpowiednio <em>setterem</em> i <em>getterem</em>. Warto przyjąć konwencję nazw, która pozwoli w czytelny sposób
+      zasugerować do czego służy dana metoda i do których pól się odwołuje, jednocześnie unikając kolizji nazw pól,
+      metod i argumentów do metod. Często można spotkać się z dodawaniem do nazw pól prefixu <code>m_</code> bądź
+      suffixu <code>_</code>. Nie ma narzuconego standardu, ważne jednak, aby w obrębie własnego kodu trzymać się jednej
+      konwencji. Poniżej przedstawiono prosty przykład klasy z właściwością <code>index</code> i najprostszą parą
+      <em>settera</em> i <em>gettera</em>.</p>
+    <div class="sourceCode" id="cb13">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Student {</span>
+<span id="cb13-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span>:</span>
+<span id="cb13-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> set_index(<span class="dt">int</span> index) { <span class="co">// setter</span></span>
+<span id="cb13-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">index_</span> = index;</span>
+<span id="cb13-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> index() { <span class="co">// getter</span></span>
+<span id="cb13-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">index_</span>;</span>
+<span id="cb13-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-9"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span>:</span>
+<span id="cb13-10"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> <span class="va">index_</span>;</span>
+<span id="cb13-11"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb13-11" aria-hidden="true" tabindex="-1"></a>};</span></code></pre>
+    </div>
+    <h2 id="zadania-końcowe-">Zadania końcowe 🛠🔥</h2>
+    <h4 id="1-student">1. Student</h4>
+    <p>Rozbuduj klasę <code>Student</code>, uwzględniając daną funkcjonalność:</p>
+    <ul>
+      <li>przechowywanie danych osobowych (imię, nazwisko, numer indeksu)</li>
+      <li>przechowywanie zbioru ocen</li>
+    </ul>
+    <p>Publiczny interfejs powinien obejmować:</p>
+    <ul>
+      <li>ustawienie imienia i nazwiska</li>
+      <li>ustawienie indeksu</li>
+      <li>wyświetlenie podsumowania informacji o studencie (wraz z ocenami)</li>
+      <li>dodawanie oceny</li>
+      <li>wyznaczenie średniej</li>
+      <li>określenie czy student zdał (maksymalnie 1 ocena 2.0)</li>
+    </ul>
+    <p>Pamiętaj, że oceny mogą przyjąć tylko określone wartości, a dopuszczalne numery indeksów mają od 5 do 6 cyfr.
+      Uniemożliw wpisanie niepoprawnych wartości. Wszystkie pola oznacz jako prywatne.</p>
+    <h4 id="2-liczby-zespolone">2. Liczby zespolone</h4>
+    <p>Zaprojektuj klasę <code>Complex</code>, która przechowa liczbę zespoloną. Powinna ona mieć konstruktor, który
+      pozwoli na zainicjalizowanie wartości liczby.</p>
+    <p>Dodaj do niej metody, które pozwolą na:</p>
+    <ul>
+      <li>odczyt i modyfikację części rzeczywistej oraz urojonej (niezależnie)</li>
+      <li>wyświetlenie liczby w czytelnej postaci</li>
+      <li>dodanie do jednej liczby drugiej liczby zespolonej oraz rzeczywistej</li>
+    </ul>
+    <p>Poprawnie zaprojektowana klasa powinna pozwolić na uruchomienie poniższego kodu:</p>
+    <div class="sourceCode" id="cb14">
+      <pre
+        class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-1" aria-hidden="true" tabindex="-1"></a>Complex a(<span class="fl">1.0</span>, -<span class="fl">2.0</span>); <span class="co">// creates 1-2i</span></span>
+<span id="cb14-2"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-2" aria-hidden="true" tabindex="-1"></a>Complex b(<span class="fl">3.14</span>); <span class="co">// creates 3.14</span></span>
+<span id="cb14-3"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-4" aria-hidden="true" tabindex="-1"></a>b.set_im(-<span class="dv">5</span>);</span>
+<span id="cb14-5"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-6" aria-hidden="true" tabindex="-1"></a>Complex c = a.add(b);</span>
+<span id="cb14-7"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="http://jug.put.poznan.pl/lab-psio/Wstep%20do%20programowania%20obiektowego/Alt.%20Lab%2002%20-%20Wstep%20do%20klas.html#cb14-8" aria-hidden="true" tabindex="-1"></a>c.print(); <span class="co">// prints 4.14-7i</span></span></code></pre>
+    </div>
+    <hr>
+    <p>Autorzy: <em>Dominik Pieczyński</em>, <em>Jakub Tomczyński</em></p>
+  </main>
+
+
+</body>
+
+</html>

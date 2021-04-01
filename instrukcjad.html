@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- saved from url=(0082)http://jug.put.poznan.pl/lab-psio/Przygotowanie%20aplikacji%20.exe%20(Deploy).html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Przygotowanie aplikacji .exe (Deploy)</title>
+  <style>
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    span.underline {
+      text-decoration: underline;
+    }
+
+    div.column {
+      display: inline-block;
+      vertical-align: top;
+      width: 50%;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+  </style>
+  <link rel="stylesheet" href="css/github-markdown.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/rubynaxela-darkmode.css">
+  <script type="text/javascript" src="js/rubynaxela-navbar.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" type="image/x-icon" href="http://jug.put.poznan.pl/lab-psio/_static/favicon.ico">
+</head>
+
+<body>
+  <main class="markdown-body">
+    <header id="title-block-header">
+      <h1 class="title">Przygotowanie aplikacji .exe (Deploy)</h1>
+    </header>
+    <h1 id="przygotowanie-aplikacji-exe-deploy">Przygotowanie aplikacji .exe (Deploy)</h1>
+    <h2 id="czym-jest-deploy">Czym jest Deploy</h2>
+    <p>Dotychczas wszystkie nasze programy uruchamialiśmy w środowisku przygotowanym przez używane przez nas środowisko
+      programistyczne (np. <em>Qt Creator</em> lub <em>Visual Studio</em>). Zazwyczaj, kiedy program/aplikacja jest
+      gotowa konieczne jest przygotowanie programu, tak aby możliwe było jego uruchomienie przez użytkownika końcowego.
+      Dla systemu Windows zazwyczaj konieczne jest przygotowanie pliku <code>.exe</code> wraz z towarzyszącymi mu
+      plikami <code>.dll</code> oraz plikami wczytywanymi przez nasz program, na przykład tekstury lub bliki bazy
+      danych.</p>
+    <h2 id="przykład-przygotowania-deploy-programu-dla-systemu-windows">Przykład przygotowania deploy programu dla
+      systemu Windows</h2>
+    <p>Poniższy przykład zakłada zakłada wykorzystanie środowiska <em>Qt Creator</em>, procedura nie będzie się znacząco
+      różnić w przypadku innych środowisk, zmieni się jedynie ścieżka adresów źródłowych folderów. Na potrzeby przykładu
+      zakładamy, że nazwa projektu, którego deploy chcemy wykonać to <em><strong>sfml_animation</strong></em>.</p>
+    <h3 id="1-kompilacja-wersji-release">1. Kompilacja wersji <em>Release</em></h3>
+    <p>Dotychczas, w trakcie pracy nad wszystkimi programami, kompilację wykonywaliśmy w trybie <em>Debug</em>. Tryb
+      <em>Debug</em>, jak sama nazwa wskazuje, pozwala na debugowanie naszych aplikacji, co powoduje że docelowy plik
+      binarny/wykonywalny zawiera dodatkowe informacje, które nie są potrzebne użytkownikowi końcowemu. Właściwą dla
+      deploy wersją kompilacji programu zawsze powinno być <em>Release</em>.
+    </p>
+    <p>W celu zmiany na <em>Release</em> w <em>Qt Creator</em> klikamy ikonę konfiguracji trybu budowania (1), a
+      następnie wybieramy <strong>Release</strong> (2):</p>
+    <p><img src="img/01_change_to_release.png" alt="01_change_to_release"></p>
+    <p>Następnie budujemy projekt (<em>Ctrl + B</em>) i czekamy na zakończenie procesu kompilacji. Na czas dalszego
+      rozwijania warto zawsze wrócić do trybu <em>Debug</em>.</p>
+    <h3 id="2-przygotowanie-folderu-docelowego">2. Przygotowanie folderu docelowego</h3>
+    <p>W dowolnym miejscu na dysku tworzymy folder docelowy, do którego będziemy kopiować wszystkie pliki konieczne do
+      uruchomienia naszego programu. Nazwa folderu jest dowolna nie ma ona znaczenia.</p>
+    <h3 id="3-kopiowanie-pliku-exe">3. Kopiowanie pliku .exe</h3>
+    <p><em>Qt Creator</em> automatycznie buduje projektu w specjalnie, automatycznie, tworzonych do tego celu folderach,
+      tzw. <em>build folders</em>. Jest to ten sam folder, w którym umieszczaliśmy pliki z teksturami, z tą różnicą, że
+      na końcu jego nazwy znajdziemy <em>Release</em> (<strong>UWAGA</strong>: Jeżeli wcześniej wykonywaliśmy kompilacje
+      w trybie <em>Debug</em> znajdziemy dwa foldery o bardzo zbliżonej nazwie, interesuje nas ten z <em>Release</em> na
+      końcu).</p>
+    <p>Otwieramy folder budowania w trybie <em>Release</em>:</p>
+    <p><img class="black-and-white" src="img/02_build_folder.png" alt="02_build_folder"></p>
+    <p>Po otwarciu folderu otwieramy folder <em>release</em> i kopiujemy plik <code>.exe</code> do naszego folderu
+      docelowego.</p>
+    <h3 id="4-kopiowanie-plików-dll-kompilatora">4. Kopiowanie plików .dll kompilatora</h3>
+    <p>Nasz plik wykonywalny <code>.exe</code> nie zawiera wszystkich informacji potrzebnych do jego uruchomienia,
+      znacząca część funkcjonalności zawarta jest w plikach <code>.dll</code> dostarczanych wraz z kompilatorem. Te
+      prekompilowane biblioteki są konieczne do niezależnego uruchomienia naszej aplikacji.</p>
+    <h4 id="jeżeli-korzystasz-z-kompilatora-mingw">Jeżeli korzystasz z kompilatora <em>MinGW</em></h4>
+    <p><em>MinGW</em> jest kompilatorem domyślnie wykorzystywanym w trakcie zajęć. Jeżeli nie zmieniłeś/łaś domyślnego
+      folderu instalacji <em>Qt Creator</em> poszukiwane pliki znajdziesz w folderze (<strong>UWAGA</strong>: w
+      przypadku korzystania z innej wersji kompilatora wybierz folder oznaczony odpowiednią dla ciebie wersją):</p>
+    <pre class="plaintext"><code>C:\Qt\Tools\mingw730_64\bin</code></pre>
+    <p>Z powyższego folderu, do folderu docelowego skopiuj następujące pliki:</p>
+    <ul>
+      <li><code>libgcc_s_seh-1.dll</code>,</li>
+      <li><code>libstdc++-6.dll</code>,</li>
+      <li><code>libwinpthread-1.dll</code>.</li>
+    </ul>
+    <h4 id="jeżeli-korzystasz-z-kompilatora-msvc">Jeżeli korzystasz z kompilatora <em>MSVC</em></h4>
+    <p>...</p>
+    <h3 id="5-kopiowanie-plików-dll-bibliotek">5. Kopiowanie plików .dll bibliotek</h3>
+    <p>Jeżeli korzystasz z zewnętrznych bibliotek (na przykład <em>SFML</em>), w folderze docelowym należy umieścić
+      pliki <code>.dll</code> odpowiednie dla danej biblioteki. Zestaw plików <code>.dll</code> różnić się będzie
+      znacząco pomiędzy bibliotekami. Jeżeli nie wiesz dokładnie, które pliki <code>.dll</code> są konieczne, możesz na
+      tym etapie spróbować uruchomić aplikację w folderze docelowym, okienko błędu powinno poinformować, jakich plików
+      brakuje. Uzupełniaj brakujące pliki, aż błędy przestaną się pojawiać:</p>
+    <p><img class="black-and-white" src="img/03_dll_error.png" alt="03_dll_error"></p>
+    <p>Dla biblioteki <em>SFML</em> w folderze docelowym należy umieścić następujące pliki:</p>
+    <ul>
+      <li><code>sfml-audio-2.dll</code>,</li>
+      <li><code>sfml-graphics-2.dll</code>,</li>
+      <li><code>sfml-network-2.dll</code>,</li>
+      <li><code>sfml-system-2.dll</code>,</li>
+      <li><code>sfml-window-2.dll</code>.</li>
+    </ul>
+    <p>Zwróć uwagę, że nazwy plików nie zawierają w nazwie <code>-d-</code>, które opisuje pliki <code>.dll</code>
+      właściwe dla tryby <em>Debug</em>.</p>
+    <h3 id="6-kopiowanie-plików-dodatkowych---tzw-assets">6. Kopiowanie plików dodatkowych - tzw. assets</h3>
+    <p>Jeżeli twój program korzysta z zewnętrznych plików (na przykład tekstur, pików dźwiękowych, baz danych, plików
+      tekstowych), to należy je skopiować do folderu docelowego, podobnie jak robiłeś/aś to umieszczając je w <em>build
+        folderze</em> w trakcie tworzenia programu i uruchamiania go w środowisku programistycznym. Pamiętaj aby
+      zachować strukturę/hierarchię folderów.</p>
+    <p>Jeżeli w aplikacji zostały wykorzystane bezwzględne ścieżki do plików zewnętrznych, popraw je na ścieżki względne
+      i ponownie przygotuj deploy.</p>
+    <h3 id="7-uruchom-program">7. Uruchom program</h3>
+    <p>Tak przygotowany deploy, po podwójnym kliknięciu <code>.exe</code> powinien poprawnie uruchomić nasz program na
+      każdym, dowolnym, komputerze działającym pod kontrolą systemu Windows w wersji 64 bit.</p>
+    <hr>
+    <p>Autorzy: <em>Tomasz Mańkowski</em></p>
+  </main>
+
+
+</body>
+
+</html>
