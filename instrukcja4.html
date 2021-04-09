@@ -388,12 +388,40 @@
     <hr>
     <h3 id="kwantyfikatory">Kwantyfikatory</h3>
     <p>Dla powtarzających się elementów wzorca możemy określić reguły dotyczące ich wystąpień:</p>
-    <p>| Symbol | Znaczenie| |----|---| | <code>*</code> | Dany element występuje 0 lub więcej razy|
-      |<code>+</code>|Dany element występuje 1 lub więcej razy| |<code>?</code>|Dany element występuje 0 lub 1 razy|
-      |<code>{n}</code>|Dany element występuje dokładnie n razy| |<code>{n,}</code>|Dany element występuje
-      <code>n</code> lub więcej razy| |<code>{min,max}</code>|Dany element występuje <code>min</code>, nie więcej niż
-      <code>max</code> razy|
-    </p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>Symbol</th>
+          <th>Znaczenie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td><code>*</code></td>
+          <td>Dany element występuje 0 lub więcej razy</td>
+        </tr>
+        <tr class="even">
+          <td><code>+</code></td>
+          <td>Dany element występuje 1 lub więcej razy</td>
+        </tr>
+        <tr class="odd">
+          <td><code>?</code></td>
+          <td>Dany element występuje 0 lub 1 razy</td>
+        </tr>
+        <tr class="even">
+          <td><code>{n}</code></td>
+          <td>Dany element występuje dokładnie <code>n</code> razy</td>
+        </tr>
+        <tr class="odd">
+          <td><code>{n,}</code></td>
+          <td>Dany element występuje <code>n</code> lub więcej razy</td>
+        </tr>
+        <tr class="even">
+          <td><code>{min,max}</code></td>
+          <td>Dany element występuje <code>{min}</code>, nie więcej niż <code>{max}</code> razy</td>
+        </tr>
+      </tbody>
+    </table>
     <p><strong>Uwaga</strong>: jeśli w danym wzorcu chcemy wykorzystać któryś z w/w kwantyfikatorów lub symboli
       uogólniających jako zwykły znak należy go poprzedzić backslashem np.: <code>\.</code> zostanie potraktowana jako
       znak kropki a nie oznaczenie dowolnego znaku.</p>
@@ -481,15 +509,55 @@
 <span id="cb4-2"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2004%20-%20Pliki,%20wyra%bfenia%20regularne.html#cb4-2" aria-hidden="true" tabindex="-1"></a>m.empty() == <span class="kw">true</span></span>
 <span id="cb4-3"><a href="http://jug.put.poznan.pl/lab-psio/Lab%2004%20-%20Pliki,%20wyra%bfenia%20regularne.html#cb4-3" aria-hidden="true" tabindex="-1"></a>m.size() == <span class="dv">0</span></span></code></pre>
     </div>
-    <p>jeśli znaleziono dopasowanie to: |Atrybut|Wartość lub opis| |---|---| |m.ready()|true |m.empty()|false
-      |m.size()|liczba istniejących w wyrażeniu liczba grup + 1 |m.prefix()| <code>std::string</code> zawierający część
-      tekstu poprzedzającą dopasowany wzorzec |m.suffix()| <code>std::string</code> zawierający część tekstu następującą
-      po dopasowanym wzorcu |m[0]| <code>std::string</code> zawierający tekst dopasowany wg wzorca |m[n]|
-      <code>std::string</code> zawierający tekst dopasowanej <em>n</em>-tej grupy umieszczonej we wzorcu (gdzie
-      <em>n</em> &lt;= liczbie grup) |m[n].matched()| true/false - w zależności od tego czy dana grupa została
-      dopasowana (nie każda grupa, poprawnie dopasowanego wzorca, musi zostać dopasowana np. <code>(sth)\|(sth)</code> -
-      w wyrażeniu są 2 grupy, dla dopasowania wzorca wystarczy, że zostanie dopasowana tylko jedna z nich)
-    </p>
+    <p>jeśli znaleziono dopasowanie to:</p>
+    <table>
+      <thead>
+        <tr class="header">
+          <th>Atrybut</th>
+          <th>Wartość lub opis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="odd">
+          <td><code>m.ready()</code></td>
+          <td><code>true</code></td>
+        </tr>
+        <tr class="even">
+          <td><code>m.empty()</code></td>
+          <td><code>false</code></td>
+        </tr>
+        <tr class="odd">
+          <td><code>m.size()</code></td>
+          <td>liczba istniejących w wyrażeniu liczba grup + 1</td>
+        </tr>
+        <tr class="even">
+          <td><code>m.prefix()</code></td>
+          <td><code>std::string</code> zawierający część tekstu poprzedzającą dopasowany wzorzec</td>
+        </tr>
+        <tr class="odd">
+          <td><code>m.sufhix()</code></td>
+          <td><code>std::string</code> zawierający część tekstu następującą po dopasowanym wzorcu</td>
+        </tr>
+        <tr class="even">
+          <td><code>m[0]</code></td>
+          <td><code>std::string</code> zawierający tekst dopasowany wg wzorca</td>
+        </tr>
+        <tr class="odd">
+          <td><code>m[n]</code></td>
+          <td><code>std::string</code> zawierający tekst dopasowanej <em>n</em>-tej grupy umieszczonej we wzorcu (gdzie
+            <em>n</em> &lt;= liczbie grup)
+          </td>
+        </tr>
+        <tr class="even">
+          <td><code>m[n].matched()</code></td>
+          <td>true/false - w zależności od tego czy dana grupa została
+            dopasowana (nie każda grupa, poprawnie dopasowanego wzorca, musi zostać dopasowana np.
+            <code>(sth)\|(sth)</code> -
+            w wyrażeniu są 2 grupy, dla dopasowania wzorca wystarczy, że zostanie dopasowana tylko jedna z nich)
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <p>Żeby znaleźć w tekście więcej (wszystkie) pasujące do wzorca ciągi funkcję <code>std::regex_search</code> można
       wywoływać cyklicznie, podając jako tekst <code>m.sufix()</code> z ostatnio znalezionego dopasowania. Przeanalizuj
       poniższy przykład zawierający użycie grup i iterowane przeszukiwanie tekstu:</p>
